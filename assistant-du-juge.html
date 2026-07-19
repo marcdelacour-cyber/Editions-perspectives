@@ -1,332 +1,350 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Assistant du juge — Éditions Perspectives</title>
+  <meta name="description" content="Un assistant spécialisé pour prolonger le livre Le jugement en danse, les cahiers d’application et la collection Développement du regard du juge." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      color: #222;
-      background-color: #fafafa;
+    :root{
+      --text:#1c1c1c;
+      --muted:#5a5a5a;
+      --line:#e5e5e5;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --soft:#f4f4f2;
+      --btn:#111111;
+      --btnText:#ffffff;
     }
-
-    h1, h2, h3 {
-      color: #222;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
     }
-
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
+    a{color:inherit}
+    .wrap{max-width:1040px;margin:0 auto;padding:24px 20px 72px}
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;gap:18px;
+      padding:4px 0 22px;border-bottom:1px solid var(--line);
     }
-
-    .subtitle {
-      font-size: 1.2em;
-      color: #555;
-      margin-bottom: 30px;
+    .brand{font-weight:700;letter-spacing:.02em;text-decoration:none}
+    .lang{font-size:.95rem;color:var(--muted);white-space:nowrap}
+    .lang a{text-decoration:none;border-bottom:1px solid transparent}
+    .lang a:hover{border-bottom-color:currentColor}
+    .back{margin-top:22px;font-size:.95rem;color:var(--muted)}
+    .back a{text-decoration:none}
+    .back a:hover{text-decoration:underline}
+    header{padding:38px 0 30px;max-width:900px}
+    .eyebrow{
+      margin:0 0 10px;color:var(--muted);font-size:.95rem;font-weight:650;
+      text-transform:uppercase;letter-spacing:.08em;
     }
-
-    .box {
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 22px;
-      margin: 24px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    h1{
+      font-size:clamp(2.35rem,6vw,4.25rem);line-height:1.05;
+      margin:0 0 16px;letter-spacing:-.035em;
     }
-
-    .highlight {
-      background: #f3f3f3;
-      border-left: 5px solid #555;
-      padding: 18px;
-      margin: 24px 0;
-      border-radius: 8px;
+    .subtitle{
+      font-size:clamp(1.18rem,2.4vw,1.5rem);line-height:1.4;
+      color:var(--muted);margin:0 0 20px;max-width:820px;
     }
-
-    ul {
-      padding-left: 22px;
+    .lead{font-size:1.08rem;max-width:840px;margin:0}
+    .key{
+      margin:0 0 38px;padding:18px 20px;border-left:4px solid var(--text);
+      background:var(--soft);font-size:1.08rem;
     }
-
-    .examples li {
-      margin-bottom: 10px;
+    section{margin-top:46px}
+    h2{font-size:1.65rem;line-height:1.25;margin:0 0 10px}
+    h3{font-size:1.18rem;line-height:1.3;margin:0 0 8px}
+    p{margin:0 0 12px}
+    .section-intro{color:var(--muted);max-width:840px;margin-bottom:22px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media (min-width:780px){
+      .grid.two{grid-template-columns:1fr 1fr}
+      .grid.three{grid-template-columns:repeat(3,1fr)}
     }
-
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      background-color: #333;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 10px;
+    .card{
+      border:1px solid var(--line);background:var(--card);
+      border-radius:16px;padding:22px;
     }
-
-    .button:hover {
-      background-color: #555;
+    .card p:last-child{margin-bottom:0}
+    .number{
+      display:inline-block;margin-bottom:8px;color:var(--muted);
+      font-size:.84rem;font-weight:750;text-transform:uppercase;letter-spacing:.06em;
     }
-
-    .small {
-      font-size: 0.95em;
-      color: #555;
+    ul{margin:0;padding-left:21px}
+    li{margin:7px 0}
+    .softbox{padding:24px;background:var(--soft);border-radius:16px}
+    .media{
+      border:1px solid var(--line);background:var(--card);
+      border-radius:16px;padding:22px;
     }
-input, select, textarea {
-  width: 100%;
-  max-width: 600px;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-}
-
-textarea {
-  resize: vertical;
-}
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-      font-size: 0.95em;
-      color: #555;
+    video{display:block;width:100%;max-width:780px;border-radius:12px;background:#000}
+    .examples li{margin-bottom:10px}
+    .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    a.btn, button.btn{
+      display:inline-block;background:var(--btn);color:var(--btnText);
+      text-decoration:none;padding:11px 14px;border-radius:10px;
+      font-weight:680;border:0;cursor:pointer;font:inherit;
     }
-.language-switch {
-  text-align: right;
-  font-size: 0.95em;
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.language-switch a {
-  color: #333;
-  text-decoration: none;
-  margin: 0 4px;
-}
-
-.language-switch a:hover {
-  text-decoration: underline;
-}
-  </style>
+    a.btn.secondary{background:#333333}
+    form{
+      border:1px solid var(--line);background:var(--card);
+      border-radius:16px;padding:24px;
+    }
+    label{font-weight:650}
+    input,select,textarea{
+      width:100%;padding:11px 12px;margin-top:6px;border:1px solid #cfcfcf;
+      border-radius:8px;background:#fff;color:var(--text);font:inherit;
+    }
+    textarea{resize:vertical}
+    .field{margin-bottom:16px}
+    .small{color:var(--muted);font-size:.94rem}
+    .note{color:var(--muted);font-style:italic}
+    footer{
+      margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+      color:var(--muted);font-size:.92rem;display:flex;
+      justify-content:space-between;gap:18px;flex-wrap:wrap;
+    }
+</style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">Éditions Perspectives</a>
+      <div class="lang">Français &nbsp;|&nbsp; <a href="assistant-du-juge-en.html" lang="en">English</a></div>
+    </div>
 
-<div class="language-switch">
-  <strong>Langue :</strong>
-  <a href="assistant-du-juge.html">Français</a> |
-  <a href="assistant-du-juge-en.html">English</a>
-</div>
-  <h1>Assistant du juge</h1>
-  <p class="subtitle">Comprendre, questionner et faire progresser sa manière de juger</p>
+    <div class="back"><a href="index.html">← Retour à l’ensemble des publications</a></div>
 
-  <p>
-    Prolongement pratique du livre <em>Le jugement en danse</em>, l’Assistant du juge aide les juges,
-    futurs juges, formateurs, danseurs et coachs à analyser les situations concrètes de jugement :
-    perception, attention, émotions, biais cognitifs, intuition, comparaison, fatigue et progression.
-  </p>
+    <header>
+      <p class="eyebrow">Comprendre — Interroger — Approfondir</p>
+      <h1>Assistant du juge</h1>
+      <p class="subtitle">Un dialogue spécialisé pour prolonger le livre, les cahiers d’application et la collection.</p>
+      <p class="lead">
+        L’Assistant du juge aide à examiner une situation concrète, clarifier une notion,
+        reformuler une observation ou poursuivre une réflexion personnelle sur le jugement en danse.
+        Il ne dit pas quoi voir : il aide à comprendre comment on voit, compare et décide.
+      </p>
+    </header>
 
-  <div class="highlight">
-    <p>
-      Le livre expose les mécanismes humains du jugement. L’Assistant du juge permet de les appliquer
-à une situation concrète : un doute, une difficulté rencontrée en compétition, une question de
-formation, un débriefing ou un axe personnel de progression.
-    </p>
+    <div class="key">
+      <strong>Multilingue, l’Assistant répond dans la langue de la question.</strong><br>
+      Un lecteur peut donc consulter une publication française ou anglaise et poursuivre l’échange
+      dans la langue qui lui est la plus familière.
+    </div>
+
+    <main>
+      <section aria-labelledby="purpose-title">
+        <h2 id="purpose-title">À quoi sert-il&nbsp;?</h2>
+        <p class="section-intro">
+          Les situations de jugement sont rarement réductibles à une réponse unique.
+          L’Assistant aide à poser le cadre, distinguer les faits des impressions
+          et examiner plusieurs mécanismes possibles sans accuser ni trancher à la place de l’utilisateur.
+        </p>
+
+        <div class="grid three">
+          <article class="card">
+            <span class="number">01</span>
+            <h3>Comprendre</h3>
+            <p>
+              Clarifier une notion liée à l’attention, la perception, la mémoire,
+              l’émotion, la fatigue, l’intuition, la comparaison ou aux biais cognitifs.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="number">02</span>
+            <h3>Analyser</h3>
+            <p>
+              Revenir sur une situation vécue par un juge, un danseur, un couple,
+              un coach ou une personne chargée de transmettre une pratique du jugement.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="number">03</span>
+            <h3>Formuler</h3>
+            <p>
+              Passer d’un ressenti global à une observation plus précise,
+              identifier un point de vigilance et construire une question réellement utile.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="publications-title">
+        <h2 id="publications-title">Un prolongement des publications</h2>
+        <p class="section-intro">
+          L’Assistant ne remplace ni le livre, ni les cahiers, ni les volumes.
+          Il aide à les utiliser en reliant leurs contenus aux questions personnelles du lecteur.
+        </p>
+
+        <div class="grid three">
+          <article class="card">
+            <h3>Avec le livre</h3>
+            <p>
+              Demander une explication complémentaire, vérifier une distinction,
+              rapprocher un concept d’une situation vécue ou reformuler une idée.
+            </p>
+            <div class="btnrow">
+              <a class="btn secondary" href="livre-jugement-danse.html">Découvrir le livre</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Avec les cahiers</h3>
+            <p>
+              Approfondir une réponse, comparer plusieurs formulations,
+              explorer un cas pratique ou poursuivre les prompts proposés dans les exercices.
+            </p>
+            <div class="btnrow">
+              <a class="btn secondary" href="cahiers-application-jugement-danse.html">Découvrir les cahiers</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Avec les 36 volumes</h3>
+            <p>
+              Examiner plus finement un mécanisme, confronter plusieurs lectures possibles
+              et prolonger une réflexion sur sa propre manière de juger.
+            </p>
+            <div class="btnrow">
+              <a class="btn secondary" href="developpement-regard-juge.html">Découvrir la collection</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="can-title">
+        <h2 id="can-title">Ce que l’Assistant peut faire</h2>
+        <div class="grid two">
+          <div class="card">
+            <ul>
+              <li>expliquer un mécanisme humain du jugement&nbsp;;</li>
+              <li>analyser une situation concrète sans désigner un coupable&nbsp;;</li>
+              <li>distinguer observation, impression, interprétation et hypothèse&nbsp;;</li>
+              <li>repérer un biais ou un effet possible sans conclure automatiquement qu’il a déterminé le résultat&nbsp;;</li>
+              <li>aider à préparer un débriefing ou une réflexion après une compétition.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul>
+              <li>proposer des questions d’auto-observation&nbsp;;</li>
+              <li>aider à reformuler une appréciation de manière plus précise et respectueuse&nbsp;;</li>
+              <li>suggérer un point de vigilance ou un mini-protocole personnel&nbsp;;</li>
+              <li>adapter son analyse à un juge, un danseur, un couple, un coach ou un groupe&nbsp;;</li>
+              <li>répondre dans la langue utilisée par l’interlocuteur.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="limits-title">
+        <div class="softbox">
+          <h2 id="limits-title">Ce que l’Assistant ne fait pas</h2>
+          <ul>
+            <li>Il ne dit pas qui aurait dû gagner une compétition.</li>
+            <li>Il ne remplace pas les règlements, les systèmes de notation ni les institutions.</li>
+            <li>Il ne tranche pas un litige ou une contestation.</li>
+            <li>Il n’accuse pas un juge, un danseur, un coach ou une organisation.</li>
+            <li>Il ne remplace pas l’expérience, la responsabilité et la décision personnelles.</li>
+            <li>Il reste centré sur le jugement en danse et les disciplines chorégraphiques.</li>
+          </ul>
+          <p class="note" style="margin-top:14px;">
+            Sa fonction est d’éclairer les mécanismes possibles, pas de juger les personnes.
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="questions-title">
+        <h2 id="questions-title">Exemples de questions</h2>
+        <div class="card">
+          <ul class="examples">
+            <li>« Je pense avoir été influencé par un couple très visible. Comment puis-je le vérifier&nbsp;? »</li>
+            <li>« Pourquoi deux juges compétents ne voient-ils pas toujours la même chose&nbsp;? »</li>
+            <li>« Comment distinguer mon impression immédiate de mon observation réelle&nbsp;? »</li>
+            <li>« Je suis danseur et je ne comprends pas l’écart entre mon ressenti et le résultat. »</li>
+            <li>« Aide-moi à reformuler cette appréciation sans être accusatoire. »</li>
+            <li>« Quel point de vigilance puis-je retenir pour ma prochaine compétition&nbsp;? »</li>
+            <li>« Je travaille sur le cahier consacré à l’attention. Peux-tu approfondir ce cas&nbsp;? »</li>
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="demo-title">
+        <h2 id="demo-title">Voir comment il répond</h2>
+        <p class="section-intro">
+          La courte vidéo montre le principe général. L’exemple écrit présente une réponse plus complète,
+          avec un mécanisme possible, des distinctions, des points de vigilance et une piste de progression.
+        </p>
+
+        <div class="media">
+          <video controls preload="metadata">
+            <source src="demo-assistant-fr.mp4" type="video/mp4">
+            Votre navigateur ne permet pas de lire cette vidéo.
+          </video>
+          <div class="btnrow">
+            <a class="btn" href="exemple-reponse-assistant.html">Lire un exemple de réponse complète</a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="access-title">
+        <h2 id="access-title">Accès et renseignements</h2>
+        <p class="section-intro">
+          Utilisez ce formulaire pour demander un renseignement ou recevoir les modalités d’accès à l’Assistant du juge.
+        </p>
+
+        <form action="https://formsubmit.co/marc-delacour@orange.fr" method="POST">
+          <div class="field">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="Nom" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Adresse électronique</label>
+            <input type="email" id="email" name="Email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="profil">Profil</label>
+            <select id="profil" name="Profil">
+              <option value="Juge">Juge</option>
+              <option value="Futur juge">Futur juge</option>
+              <option value="Danseur">Danseur</option>
+              <option value="Coach ou enseignant">Coach ou enseignant</option>
+              <option value="Responsable ou intervenant">Responsable ou intervenant</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="Message" rows="6" required></textarea>
+          </div>
+
+          <input type="hidden" name="_subject" value="Demande concernant l’Assistant du juge">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="https://editions-perspectives.fr/merci.html">
+
+          <p class="small">
+            Une vérification anti-robot peut être demandée après l’envoi.
+            Les informations transmises servent uniquement à répondre à votre demande
+            et ne sont pas cédées à des tiers.
+          </p>
+
+          <button class="btn" type="submit">Envoyer la demande</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <span>© Éditions Perspectives — Marc Delacour</span>
+      <span><a href="index.html">Toutes les publications</a></span>
+    </footer>
   </div>
-
-  <div class="box">
-    <h2>Pourquoi cet assistant ?</h2>
-    <p>
-      Juger ne consiste pas seulement à appliquer une grille ou à produire un classement.
-      Le juge observe, sélectionne, compare, ressent, doute parfois, puis décide dans un contexte réel,
-      avec des contraintes d’attention, de perception, d’émotion, d’expérience et de temps.
-    </p>
-    <p>
-      L’Assistant du juge a été conçu pour aider à mieux comprendre ce qui se passe dans ce processus.
-      Il ne remplace ni les règlements, ni les formations officielles, ni l’expérience du terrain.
-      Il propose un espace de réflexion, de clarification et de progression.
-    </p>
-  </div>
-
-<div class="box">
-  <h2>Un cadre spécialisé pour poser les bonnes questions</h2>
-
-  <p>
-    Une IA généraliste peut être utile, surtout si la question est bien formulée.
-    Mais pour obtenir une réponse vraiment adaptée au jugement en danse, il faut déjà savoir
-    poser le bon cadre : préciser le contexte, éviter les accusations, distinguer les faits,
-    les ressentis et les hypothèses, tenir compte de la perception, de l’attention, des émotions,
-    de la fatigue, du rôle du panel et des biais possibles.
-  </p>
-
-  <p>
-    L’utilisateur pourrait construire lui-même ce cadre dans une IA généraliste, mais cela demanderait
-    du temps, de l’expérience et une bonne maîtrise du questionnement. Ici, le cadre est déjà posé :
-    l’assistant reste centré sur le jugement, la perception, l’attention, les émotions, les biais cognitifs,
-    la comparaison, la réception du jugement et la progression du juge.
-  </p>
-
-  <p>
-  Sa valeur ajoutée n’est donc pas de remplacer une IA généraliste, ni la réflexion de l’utilisateur, mais de l’accompagner dans un espace spécialisé, cohérent et respectueux, sans chercher à trancher un résultat, accuser une personne ou remplacer les règlements officiels. 
-  </p>
-</div>
-  <div class="box">
-    <h2>À qui s’adresse-t-il ?</h2>
-    <p>
-      L’assistant peut être utile à plusieurs publics :
-    </p>
-    <ul>
-      <li>aux juges qui souhaitent analyser leur pratique ;</li>
-      <li>aux futurs juges qui veulent comprendre les mécanismes du jugement ;</li>
-      <li>aux formateurs qui souhaitent créer des exercices ou des mises en situation ;</li>
-      <li>aux danseurs et coachs qui veulent mieux comprendre la logique du jugement ;</li>
-      <li>aux personnes intéressées par les biais cognitifs, l’attention, la perception et la décision.</li>
-    </ul>
-  </div>
-
-  <div class="box">
-    <h2>Ce que l’assistant peut faire</h2>
-    <ul>
-      <li>expliquer une notion liée au jugement : attention, perception, émotion, biais cognitif, intuition ;</li>
-      <li>analyser une situation vécue par un juge, un danseur, un coach ou un formateur ;</li>
-      <li>proposer une grille d’auto-positionnement ou un mini-questionnaire ;</li>
-      <li>aider à identifier un point de vigilance ;</li>
-      <li>préparer un débriefing après une compétition ;</li>
-      <li>construire un mini-protocole personnel de progression ;</li>
-      <li>préparer un exercice de formation pour des juges débutants ou confirmés.</li>
-    </ul>
-  </div>
-
-  <div class="box">
-    <h2>Ce que l’assistant ne fait pas</h2>
-    <p>
-      L’Assistant du juge reste volontairement limité à son domaine.
-    </p>
-    <ul>
-      <li>Il ne dit pas qui aurait dû gagner une compétition.</li>
-      <li>Il ne remplace pas les règlements officiels.</li>
-      <li>Il ne tranche pas un litige.</li>
-      <li>Il n’accuse pas un juge, un danseur, un coach ou une institution.</li>
-      <li>Il ne donne pas de conseil juridique, fiscal, médical, social ou administratif.</li>
-      <li>Il ne répond pas comme une IA généraliste hors du thème du jugement.</li>
-    </ul>
-    <p>
-      Sa fonction est d’éclairer les mécanismes possibles, pas de juger les personnes.
-    </p>
-  </div>
-
-   
-  <div class="box">
-    <h2>Exemples de questions à lui poser</h2>
-    <ul class="examples">
-      <li>« Je suis juge et je ne sais pas par quoi commencer. »</li>
-      <li>« Je pense avoir été influencé par un couple très visible. »</li>
-      <li>« Pourquoi deux juges compétents ne voient-ils pas toujours la même chose ? »</li>
-      <li>« Je voudrais savoir quel axe de progression travailler comme juge. »</li>
-      <li>« Prépare-moi un exercice pour former des juges débutants à l’attention limitée. »</li>
-      <li>« Quand je juge, je tiens souvent compte du classement précédent. »</li>
-      <li>« Je suis danseur et je ne comprends pas pourquoi mon résultat est différent de mon ressenti. »</li>
-    </ul>
-  </div>
- 
- <div class="box">
-  <h2>Pour plus de renseignements</h2>
-
-  <p>
-    Si vous êtes juge, formateur, danseur, coach ou simplement intéressé par le jugement en danse,
-    n'héistez pas à demander plus amples renseignements.
-  </p>
-
-  <form action="https://formsubmit.co/marc-delacour@orange.fr" method="POST">
-
-  <p>
-    <label for="nom">Nom</label><br>
-    <input type="text" id="nom" name="Nom" required>
-  </p>
-
-  <p>
-    <label for="email">Votre adresse mail</label><br>
-    <input type="email" id="email" name="Email" required>
-  </p>
-
-  <p>
-    <label for="profil">Votre profil</label><br>
-    <select id="profil" name="Profil">
-      <option value="Juge">Juge</option>
-      <option value="Futur juge">Futur juge</option>
-      <option value="Formateur">Formateur</option>
-      <option value="Danseur">Danseur</option>
-      <option value="Coach ou enseignant">Coach ou enseignant</option>
-      <option value="Autre">Autre</option>
-    </select>
-  </p>
-
-  <p>
-    <label for="message">Votre message</label><br>
-    <textarea id="message" name="Message" rows="6" required></textarea>
-  </p>
-
-  <input type="hidden" name="_subject" value="Demande d'accès test à l'Assistant du juge">
-  <input type="hidden" name="_captcha" value="true">
-  <input type="hidden" name="_next" value="https://editions-perspectives.fr/merci.html">
-
-  <p class="small">
-  Une vérification anti-robot pourra vous être demandée après l’envoi.
-  Elle protège ce formulaire contre les messages automatisés et permet de préserver la qualité des échanges.
-</p>
-  <p>
-    <button class="button" type="submit">Envoyer la demande</button>
-  </p>
-
-</form>
-
-  <p class="small">
-    Votre message sera transmis par mail afin de vous recontacter au sujet de la phase de test.
-    
-  </p>
-   <p class="small">
-  Les informations transmises servent uniquement à répondre à votre demande d’accès test
-  et à vous recontacter au sujet de l’Assistant du juge.
-</p>
-
-</div>
- <div class="box">
-  <h2>Le livre associé</h2>
-
-  <p>
-    L’Assistant du juge est directement lié au livre <em>Le jugement en danse</em>.
-    L’assistant permet de partir d’une question personnelle ; le livre, lui, propose
-    une réflexion complète et structurée sur les mécanismes humains du jugement.
-  </p>
-
-  <p>
-    Il permet de comprendre progressivement ce qui intervient dans l’acte de juger :
-    perception, attention, émotions, fatigue, biais cognitifs, comparaison, rôle du panel
-    et réception du jugement par les danseurs, coachs ou publics.
-  </p>
-
-  <p>
-    Le livre constitue donc le socle de compréhension. L’assistant en est le prolongement
-    pratique : il aide à appliquer ces notions à une situation concrète, un doute,
-    un débriefing ou un axe personnel de progression.
-  </p>
-
-  <p>
-    <a class="button" href="index.html">Découvrir le livre</a>
-  </p>
-</div> 
-
-  <footer>
-    <p>
-      Éditions Perspectives — Assistant du juge.
-    </p>
-    <p>
-      <a href="index.html">Retour à l’accueil</a>
-    </p>
-  </footer>
-
 </body>
 </html>

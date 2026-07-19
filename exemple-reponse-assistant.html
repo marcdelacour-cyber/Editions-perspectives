@@ -1,373 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Exemple de réponse complète — Assistant du juge</title>
-
+  <meta name="description" content="Exemple d’analyse proposée par l’Assistant du juge à propos de l’influence possible d’un couple très visible." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      color: #222;
-      background-color: #fafafa;
+    :root{
+      --text:#1c1c1c;--muted:#5a5a5a;--line:#e5e5e5;--bg:#ffffff;
+      --card:#fafafa;--soft:#f4f4f2;--btn:#111;--btnText:#fff;
     }
-
-    h1, h2, h3 {
-      color: #222;
+    *{box-sizing:border-box}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.68;
     }
-
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
+    a{color:inherit}
+    .wrap{max-width:920px;margin:0 auto;padding:24px 20px 72px}
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;gap:18px;
+      padding:4px 0 22px;border-bottom:1px solid var(--line);
     }
-
-    h2 {
-      margin-top: 34px;
+    .brand{font-weight:700;text-decoration:none}
+    .back{margin-top:22px;color:var(--muted);font-size:.95rem}
+    .back a{text-decoration:none}
+    header{padding:38px 0 24px}
+    h1{font-size:clamp(2.2rem,5vw,3.7rem);line-height:1.08;margin:0 0 14px;letter-spacing:-.03em}
+    .subtitle{font-size:1.22rem;color:var(--muted);margin:0}
+    h2{font-size:1.48rem;line-height:1.3;margin:34px 0 12px}
+    h3{font-size:1.15rem;margin:25px 0 8px}
+    p{margin:0 0 13px}
+    ul{padding-left:22px}
+    li{margin:7px 0}
+    .intro,.question,.highlight{
+      padding:19px 21px;border-radius:14px;margin:22px 0;
     }
-
-    .subtitle {
-      font-size: 1.2em;
-      color: #555;
-      margin-bottom: 30px;
+    .intro{background:var(--soft)}
+    .question{border:1px solid var(--line);background:var(--card);font-size:1.07rem;font-style:italic}
+    .answer{border:1px solid var(--line);background:#fff;border-radius:16px;padding:24px}
+    .highlight{background:var(--soft);border-left:4px solid var(--text);font-weight:650}
+    .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    a.btn{
+      display:inline-block;background:var(--btn);color:var(--btnText);
+      text-decoration:none;padding:11px 14px;border-radius:10px;font-weight:680;
     }
-
-    .box {
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 22px;
-      margin: 24px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    footer{
+      margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+      color:var(--muted);font-size:.92rem;
     }
-
-    .highlight {
-      background: #f3f3f3;
-      border-left: 5px solid #555;
-      padding: 18px;
-      margin: 24px 0;
-      border-radius: 8px;
-    }
-
-    .question {
-      font-size: 1.1em;
-      font-style: italic;
-    }
-
-    ul {
-      padding-left: 22px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      background-color: #333;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .button:hover {
-      background-color: #555;
-    }
-
-    .small {
-      font-size: 0.95em;
-      color: #555;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-      font-size: 0.95em;
-      color: #555;
-    }
-  </style>
+</style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">Éditions Perspectives</a>
+      <span>Assistant du juge</span>
+    </div>
+    <div class="back"><a href="assistant-du-juge.html">← Retour à la présentation de l’Assistant</a></div>
+    <header>
+      <h1>Exemple de réponse complète</h1>
+      <p class="subtitle">Une démonstration développée de l’Assistant du juge</p>
+    </header>
+    <main>
+      
+      <div class="intro">
+        <p>
+          La vidéo présente volontairement une réponse simplifiée. L’exemple ci-dessous montre
+          comment l’Assistant peut aller plus loin : mécanisme possible, distinctions utiles,
+          points de vigilance, mini-protocole et piste de progression.
+        </p>
+      </div>
 
-  <h1>Exemple de réponse complète</h1>
+      <div class="question">
+        <strong>Question posée à l’Assistant</strong><br><br>
+        « Je pense avoir été influencé par un couple très visible.
+        Comment puis-je éviter cela lors d’une prochaine compétition ? »
+      </div>
 
-  <p class="subtitle">
-    Une démonstration plus développée de l’Assistant du juge
-  </p>
+      <article class="answer">
+        <h2>Réponse de l’Assistant du juge</h2>
+        <p>
+          Votre question ne suppose pas que vous avez « mal jugé ». Elle montre surtout que vous cherchez
+          à comprendre ce qui a pu se passer dans votre manière d’observer. Cette attitude de recul est déjà utile.
+        </p>
+        <p>
+          Dans une compétition, certains couples attirent naturellement davantage le regard :
+          énergie, amplitude, tenue, placement sur la piste, style, présence scénique ou simple proximité
+          avec la zone que vous observez le plus facilement.
+        </p>
+        <p>
+          Cela ne signifie pas automatiquement qu’ils sont meilleurs. Cela signifie d’abord qu’ils ont pris
+          davantage de place dans votre attention.
+        </p>
 
-  <div class="highlight">
-    <p>
-      La vidéo présente volontairement une réponse simplifiée pour montrer le principe de fonctionnement.
-      L’exemple ci-dessous montre comment l’Assistant du juge peut aller plus loin dans l’analyse :
-      mécanisme possible, points de vigilance, mini-protocole et piste de progression.
-    </p>
+        <h2>1. Le mécanisme possible</h2>
+        <p>
+          Lorsqu’un élément est très saillant, le juge peut lui consacrer davantage de temps mental.
+          Le couple devient plus présent dans la mémoire immédiate et peut donner l’impression d’avoir
+          davantage marqué la danse.
+        </p>
+        <p>
+          Ce phénomène peut être rapproché d’un biais attentionnel : notre regard et notre esprit
+          donnent plus de poids à ce qui est visible, marquant ou facile à retenir.
+        </p>
+        <p>
+          L’enjeu n’est pas de supprimer cette attention spontanée, mais de la rendre plus consciente.
+        </p>
+
+        <h2>2. Distinguer « visible » et « meilleur »</h2>
+        <p>
+          Un couple peut être très visible sans être supérieur sur l’ensemble des critères.
+          Il peut attirer le regard parce qu’il danse grand, occupe bien l’espace ou possède une forte présence.
+        </p>
+        <div class="highlight">
+          Ce que j’ai vu correspond-il réellement aux critères que je dois évaluer ?
+        </div>
+        <p>Il faut ainsi distinguer :</p>
+        <ul>
+          <li>ce qui attire le regard ;</li>
+          <li>ce qui impressionne ;</li>
+          <li>ce qui reste en mémoire ;</li>
+          <li>ce qui répond effectivement aux critères de jugement.</li>
+        </ul>
+
+        <h2>3. Questions à se poser après coup</h2>
+        <ul>
+          <li>Qu’est-ce qui a attiré mon regard en premier ?</li>
+          <li>Ai-je regardé ce couple plus longtemps que les autres ?</li>
+          <li>Est-ce que je me souviens de faits précis ou surtout de l’impression produite ?</li>
+          <li>Ai-je observé les couples plus discrets avec la même disponibilité ?</li>
+          <li>Ai-je confondu présence visuelle et qualité globale ?</li>
+          <li>Ai-je comparé les couples à partir des mêmes critères ?</li>
+        </ul>
+        <p>
+          Ces questions ne servent pas à remettre tout le jugement en cause. Elles permettent seulement
+          de repérer un point de vigilance possible.
+        </p>
+
+        <h2>4. Un mini-protocole pour la prochaine compétition</h2>
+        <h3>Avant l’épreuve</h3>
+        <div class="highlight">
+          « Un couple très visible peut attirer mon regard. Je vais le noter,
+          puis vérifier volontairement les couples plus discrets. »
+        </div>
+
+        <h3>Pendant l’épreuve</h3>
+        <p>
+          Ne cherchez pas à ignorer le couple visible. Observez-le, puis obligez-vous à revenir vers les autres.
+        </p>
+        <div class="highlight">« Je l’ai vu. Maintenant, je vérifie les autres. »</div>
+
+        <h3>Au moment de comparer</h3>
+        <div class="highlight">
+          « Ce couple répond-il mieux aux critères, ou est-ce seulement celui dont je me souviens le plus facilement ? »
+        </div>
+
+        <h3>Après l’épreuve</h3>
+        <p>
+          Conservez un seul point de vigilance. Une consigne simple est souvent plus efficace qu’une liste trop longue.
+        </p>
+
+        <h2>5. Éviter l’excès inverse</h2>
+        <p>
+          Le but n’est pas de pénaliser un couple parce qu’il est visible. Sa visibilité peut correspondre
+          à une réelle qualité technique, musicale ou artistique.
+        </p>
+        <div class="highlight">
+          « Ce couple attire mon regard. Je vérifie maintenant si cette visibilité correspond bien
+          à une qualité réelle au regard des critères. »
+        </div>
+
+        <h2>6. Point de progression possible</h2>
+        <div class="highlight">
+          Apprendre à distinguer ce qui attire mon attention de ce qui fonde réellement mon jugement.
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>
+          Vous ne pouvez pas empêcher votre regard d’être attiré par un couple très visible.
+          En revanche, vous pouvez repérer ce moment, revenir volontairement vers les autres
+          et vérifier si votre impression correspond bien aux critères.
+        </p>
+        <p>
+          L’objectif n’est pas de supprimer l’intuition du juge, mais de la rendre plus lucide.
+        </p>
+      </article>
+
+      <div class="btnrow">
+        <a class="btn" href="assistant-du-juge.html">Découvrir l’Assistant du juge</a>
+      </div>
+    </main>
+    <footer>© Éditions Perspectives — Marc Delacour</footer>
   </div>
-
-  <div class="box">
-    <h2>Question posée à l’assistant</h2>
-
-    <p class="question">
-      « Je pense avoir été influencé par un couple très visible.
-      Comment puis-je éviter cela lors d’une prochaine compétition ? »
-    </p>
-  </div>
-
-  <div class="box">
-    <h2>Réponse de l’Assistant du juge</h2>
-
-    <p>
-      Votre question est intéressante, car elle ne suppose pas que vous avez “mal jugé”.
-      Elle montre surtout que vous cherchez à mieux comprendre ce qui a pu se passer
-      dans votre manière d’observer. C’est déjà une attitude utile pour progresser comme juge.
-    </p>
-
-    <p>
-      Dans une compétition, certains couples ou danseurs attirent naturellement davantage le regard.
-      Ils peuvent être plus visibles par leur énergie, leur amplitude, leur tenue, leur placement sur la piste,
-      leur style, leur présence scénique ou simplement parce qu’ils occupent une zone que vous regardez plus facilement.
-    </p>
-
-    <p>
-      Cela ne signifie pas forcément qu’ils sont meilleurs. Cela signifie qu’ils ont pris plus de place dans votre attention.
-    </p>
-
-    <h2>1. Le mécanisme possible</h2>
-
-    <p>
-      Le mécanisme principal est ici lié à l’attention.
-    </p>
-
-    <p>
-      Lorsqu’un élément attire fortement le regard, le juge peut, sans le vouloir, lui consacrer plus de temps mental
-      qu’aux autres. Ce couple devient alors plus présent dans la mémoire immédiate du juge.
-      Il peut donner l’impression d’avoir davantage “marqué” la danse, même si d’autres couples ont peut-être présenté
-      une qualité plus discrète, mais plus constante.
-    </p>
-
-    <p>
-      Ce phénomène peut être rapproché d’un biais attentionnel : notre regard et notre esprit donnent plus de poids
-      à ce qui est le plus visible, le plus saillant ou le plus facile à retenir.
-    </p>
-
-    <p>
-      Le point important est de ne pas transformer cette hypothèse en faute personnelle.
-      Tous les juges sont exposés à ce type de mécanisme.
-      L’enjeu n’est pas de supprimer l’attention spontanée, mais de la rendre plus consciente.
-    </p>
-
-    <h2>2. La différence entre “visible” et “meilleur”</h2>
-
-    <p>
-      Un couple peut être très visible sans être nécessairement supérieur sur l’ensemble des critères.
-    </p>
-
-    <p>
-      Il peut attirer le regard parce qu’il danse grand, parce qu’il occupe bien l’espace,
-      parce qu’il a une forte présence, ou parce que son style se remarque davantage.
-      Mais le jugement doit ensuite revenir à une question plus précise :
-    </p>
-
-    <div class="highlight">
-      <p>
-        Ce que j’ai vu correspond-il réellement aux critères que je dois évaluer ?
-      </p>
-    </div>
-
-    <p>
-      Autrement dit, il faut distinguer :
-    </p>
-
-    <ul>
-      <li>ce qui attire le regard ;</li>
-      <li>ce qui impressionne ;</li>
-      <li>ce qui reste en mémoire ;</li>
-      <li>ce qui répond réellement aux critères de jugement.</li>
-    </ul>
-
-    <p>
-      Cette distinction est importante, car un couple plus discret peut parfois être plus juste,
-      plus cohérent, plus musical ou plus constant, même s’il attire moins immédiatement l’attention.
-    </p>
-
-    <h2>3. Les questions à se poser après coup</h2>
-
-    <p>
-      Après la compétition, vous pouvez vous poser quelques questions simples :
-    </p>
-
-    <ul>
-      <li>Qu’est-ce qui a attiré mon regard en premier ?</li>
-      <li>Ai-je regardé ce couple plus longtemps que les autres ?</li>
-      <li>Est-ce que je me souviens précisément de ce qu’il a fait, ou seulement de l’impression qu’il a produite ?</li>
-      <li>Ai-je observé les couples plus discrets avec la même disponibilité ?</li>
-      <li>Ai-je confondu présence visuelle et qualité globale ?</li>
-      <li>Ai-je comparé les couples sur les mêmes critères ou à partir d’impressions différentes ?</li>
-    </ul>
-
-    <p>
-      Ces questions ne servent pas à remettre tout votre jugement en cause.
-      Elles servent à repérer un possible point de vigilance.
-    </p>
-
-    <h2>4. Un mini-protocole pour la prochaine compétition</h2>
-
-    <h3>Avant l’épreuve</h3>
-
-    <p>
-      Rappelez-vous mentalement :
-    </p>
-
-    <div class="highlight">
-      <p>
-        “Un couple très visible peut attirer mon regard. Je vais le noter,
-        mais je vais aussi vérifier les couples plus discrets.”
-      </p>
-    </div>
-
-    <p>
-      Cette phrase suffit souvent à créer une vigilance.
-    </p>
-
-    <h3>Pendant l’épreuve</h3>
-
-    <p>
-      Quand vous repérez un couple très visible, ne cherchez pas à l’ignorer.
-      Ce serait artificiel. Observez-le, mais obligez-vous ensuite à revenir vers les autres.
-    </p>
-
-    <p>
-      Vous pouvez vous dire intérieurement :
-    </p>
-
-    <div class="highlight">
-      <p>
-        “Je l’ai vu. Maintenant, je vérifie les autres.”
-      </p>
-    </div>
-
-    <p>
-      Cela évite de rester trop longtemps capté par un seul couple.
-    </p>
-
-    <h3>Au moment de comparer</h3>
-
-    <p>
-      Essayez de distinguer l’impression générale de l’observation utile :
-    </p>
-
-    <div class="highlight">
-      <p>
-        “Est-ce que ce couple répond mieux aux critères,
-        ou est-ce seulement celui dont je me souviens le plus facilement ?”
-      </p>
-    </div>
-
-    <p>
-      Cette question est très importante, car la mémoire immédiate peut favoriser
-      ce qui a été le plus marquant.
-    </p>
-
-    <h3>Après l’épreuve</h3>
-
-    <p>
-      Gardez un seul point de vigilance, pas dix.
-    </p>
-
-    <p>
-      Par exemple :
-    </p>
-
-    <div class="highlight">
-      <p>
-        “Aujourd’hui, je surveille mon attention aux couples très visibles.”
-      </p>
-    </div>
-
-    <p>
-      Un seul point de vigilance est plus efficace qu’une liste trop longue.
-    </p>
-
-    <h2>5. Ce qu’il ne faut pas faire</h2>
-
-    <p>
-      Il ne faut pas tomber dans l’excès inverse.
-    </p>
-
-    <p>
-      Le but n’est pas de pénaliser un couple parce qu’il est visible.
-      Un couple peut être visible parce qu’il est réellement fort, présent, musical ou techniquement efficace.
-    </p>
-
-    <p>
-      Le but n’est donc pas de se dire :
-    </p>
-
-    <div class="highlight">
-      <p>
-        “Attention, ce couple est visible, je dois m’en méfier.”
-      </p>
-    </div>
-
-    <p>
-      Mais plutôt :
-    </p>
-
-    <div class="highlight">
-      <p>
-        “Ce couple attire mon regard.
-        Je vérifie maintenant si cette visibilité correspond bien à une qualité réelle au regard des critères.”
-      </p>
-    </div>
-
-    <p>
-      La nuance est essentielle.
-    </p>
-
-    <h2>6. Point de progression possible</h2>
-
-    <p>
-      Votre point de progression pourrait être formulé ainsi :
-    </p>
-
-    <div class="highlight">
-      <p>
-        Apprendre à distinguer ce qui attire mon attention de ce qui fonde réellement mon jugement.
-      </p>
-    </div>
-
-    <p>
-      C’est un axe de travail très utile pour un juge, car il ne remet pas en cause sa compétence.
-      Il permet simplement de rendre son observation plus consciente, plus équilibrée et plus stable.
-    </p>
-
-    <h2>Conclusion</h2>
-
-    <p>
-      Vous ne pouvez pas empêcher votre regard d’être attiré par un couple plus visible.
-      C’est humain. En revanche, vous pouvez apprendre à repérer ce moment,
-      à revenir volontairement vers les autres couples, et à vérifier si votre impression
-      correspond bien aux critères de jugement.
-    </p>
-
-    <p>
-      L’objectif n’est donc pas de supprimer l’intuition du juge, mais de la rendre plus lucide.
-    </p>
-  </div>
-
-  <p>
-    <a class="button" href="assistant-du-juge.html">Retour à la page de l’Assistant du juge</a>
-  </p>
-
-  <p>
-    <a href="index.html">Retour à l’accueil</a>
-  </p>
-
-  <footer>
-    Éditions Perspectives — Assistant du juge.
-  </footer>
-
 </body>
 </html>

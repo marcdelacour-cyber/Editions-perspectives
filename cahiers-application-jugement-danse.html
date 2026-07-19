@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Les 12 cahiers d’application — Le jugement en danse | Éditions Perspectives</title>
+  <meta name="description" content="Douze cahiers d’application et quatre bonus pour assimiler Le jugement en danse à travers des QCM, cas pratiques, reformulations, questions ouvertes et prompts pour l’Assistant du juge." />
+  <style>
+    :root{
+      --text:#1c1c1c;
+      --muted:#5a5a5a;
+      --line:#e5e5e5;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --soft:#f4f4f2;
+      --btn:#111111;
+      --btnText:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      max-width:1040px;
+      margin:0 auto;
+      padding:24px 20px 72px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      padding:4px 0 22px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand{
+      font-weight:700;
+      letter-spacing:.02em;
+      text-decoration:none;
+    }
+
+    .lang{
+      font-size:.95rem;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .lang a{
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+    }
+
+    .lang a:hover{border-bottom-color:currentColor}
+
+    .back{
+      margin-top:22px;
+      font-size:.95rem;
+      color:var(--muted);
+    }
+
+    .back a{text-decoration:none}
+    .back a:hover{text-decoration:underline}
+
+    header{
+      padding:38px 0 30px;
+      max-width:880px;
+    }
+
+    .eyebrow{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:.95rem;
+      font-weight:650;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    h1{
+      font-size:clamp(2.35rem,6vw,4.25rem);
+      line-height:1.05;
+      margin:0 0 16px;
+      letter-spacing:-.035em;
+    }
+
+    .subtitle{
+      font-size:clamp(1.18rem,2.4vw,1.5rem);
+      line-height:1.4;
+      color:var(--muted);
+      margin:0 0 20px;
+      max-width:800px;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      max-width:820px;
+      margin:0;
+    }
+
+    .key{
+      margin:0 0 38px;
+      padding:18px 20px;
+      border-left:4px solid var(--text);
+      background:var(--soft);
+      font-size:1.08rem;
+    }
+
+    section{margin-top:46px}
+
+    h2{
+      font-size:1.65rem;
+      line-height:1.25;
+      margin:0 0 10px;
+    }
+
+    h3{
+      font-size:1.22rem;
+      line-height:1.3;
+      margin:0 0 8px;
+    }
+
+    p{margin:0 0 12px}
+
+    .section-intro{
+      color:var(--muted);
+      max-width:820px;
+      margin-bottom:22px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+
+    @media (min-width:780px){
+      .grid.two{grid-template-columns:1fr 1fr}
+      .grid.three{grid-template-columns:repeat(3,1fr)}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:22px;
+    }
+
+    .card p:last-child{margin-bottom:0}
+
+    ul{
+      margin:0;
+      padding-left:21px;
+    }
+
+    li{margin:7px 0}
+
+    .sequence{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      counter-reset:item;
+    }
+
+    @media (min-width:780px){
+      .sequence{grid-template-columns:1fr 1fr}
+    }
+
+    .step{
+      position:relative;
+      padding:18px 18px 18px 58px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--card);
+    }
+
+    .step::before{
+      counter-increment:item;
+      content:counter(item, decimal-leading-zero);
+      position:absolute;
+      left:18px;
+      top:18px;
+      width:28px;
+      height:28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid #cfcfcf;
+      border-radius:50%;
+      color:var(--muted);
+      font-size:.78rem;
+      font-weight:700;
+    }
+
+    .step strong{display:block;margin-bottom:3px}
+
+    .assistant{
+      padding:24px;
+      background:var(--soft);
+      border-radius:16px;
+    }
+
+    .assistant strong{font-weight:750}
+
+    .offer{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:var(--card);
+    }
+
+    @media (min-width:780px){
+      .offer{grid-template-columns:1.35fr .65fr;align-items:center}
+    }
+
+    .offer-title{
+      font-weight:760;
+      font-size:1.25rem;
+      margin:0 0 8px;
+    }
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    a.btn{
+      display:inline-block;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      padding:11px 14px;
+      border-radius:10px;
+      font-weight:680;
+    }
+
+    a.btn.secondary{background:#333333}
+
+    .small{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    footer{
+      margin-top:38px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:.92rem;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">Éditions Perspectives</a>
+      <div class="lang">Français &nbsp;|&nbsp; <a href="judging-in-dance-workbooks.html">English</a></div>
+    </div>
+
+    <div class="back"><a href="index.html">← Retour à l’ensemble des publications</a></div>
+
+    <header>
+      <p class="eyebrow">Assimiler et mettre en pratique</p>
+      <h1>Les 12 cahiers d’application</h1>
+      <p class="subtitle">Douze cahiers et quatre bonus pour prolonger la lecture du livre <em>Le jugement en danse</em>.</p>
+      <p class="lead">
+        Les cahiers ont été conçus pour aider le lecteur à s’approprier les notions du livre, à les relier à des situations concrètes et à mieux expliciter son propre raisonnement face à une prestation ou à une décision de jugement.
+      </p>
+    </header>
+
+    <div class="key">
+      <strong>Le livre apporte les repères. Les cahiers invitent à les mobiliser, à les questionner et à les appliquer à des situations concrètes.</strong>
+    </div>
+
+    <main>
+      <section aria-labelledby="role-title">
+        <h2 id="role-title">Pourquoi des cahiers d’application&nbsp;?</h2>
+        <p class="section-intro">
+          Lire permet de comprendre. Répondre à une question, analyser un cas ou reformuler une impression oblige à aller plus loin : il faut distinguer ce que l’on a observé, ce que l’on a ressenti et la manière dont une décision peut se construire.
+        </p>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Assimiler les notions essentielles</h3>
+            <p>Chaque cahier reprend un thème du livre de manière ciblée, avec des rappels courts et des exercices destinés à vérifier la compréhension et à en préciser les nuances.</p>
+          </div>
+          <div class="card">
+            <h3>Développer une expression plus précise</h3>
+            <p>Les situations proposées encouragent à dépasser les formulations générales, à mettre des mots sur son raisonnement et à distinguer observation, interprétation et préférence personnelle.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="inside-title">
+        <h2 id="inside-title">Ce que contient chaque cahier</h2>
+        <div class="sequence">
+          <div class="step">
+            <strong>Un rappel synthétique</strong>
+            Les idées essentielles du thème sont reprises de manière concise avant leur mise en application.
+          </div>
+          <div class="step">
+            <strong>Des QCM de compréhension et de nuance</strong>
+            Les questions invitent à distinguer les réponses immédiates des raisonnements plus précis.
+          </div>
+          <div class="step">
+            <strong>Des cas pratiques</strong>
+            Des situations inspirées du terrain permettent d’identifier les mécanismes susceptibles d’intervenir.
+          </div>
+          <div class="step">
+            <strong>Des analyses de discours</strong>
+            Le lecteur apprend à repérer ce que révèlent certaines formulations sur la manière d’observer ou de décider.
+          </div>
+          <div class="step">
+            <strong>Un travail sur le dialogue intérieur</strong>
+            Certaines activités invitent à prendre conscience des raisonnements rapides, hésitations et priorités personnelles.
+          </div>
+          <div class="step">
+            <strong>Des reformulations professionnelles</strong>
+            Les exercices aident à transformer une impression générale en formulation plus claire, argumentée et mesurée.
+          </div>
+          <div class="step">
+            <strong>Des questions ouvertes</strong>
+            Elles permettent de relier les notions à sa propre expérience et à ses habitudes de perception.
+          </div>
+          <div class="step">
+            <strong>Des corrigés indicatifs</strong>
+            Ils proposent des pistes de lecture sans prétendre imposer une réponse unique à toutes les situations.
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="audience-title">
+        <h2 id="audience-title">À qui s’adressent-ils&nbsp;?</h2>
+        <div class="grid two">
+          <div class="card">
+            <ul>
+              <li>Aux lecteurs du livre souhaitant mieux en assimiler le contenu&nbsp;;</li>
+              <li>Aux juges débutants ou expérimentés désirant interroger leur propre pratique&nbsp;;</li>
+              <li>Aux personnes qui se préparent à exercer une fonction de juge, selon les cadres de leur discipline&nbsp;;</li>
+              <li>Aux enseignants, coachs et entraîneurs souhaitant mieux comprendre les mécanismes du jugement.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Une utilisation autonome</h3>
+            <p>Les cahiers ne constituent ni un règlement ni un programme institutionnel. Ils peuvent être utilisés librement, dans l’ordre proposé ou en sélectionnant les thèmes les plus proches des questions du lecteur.</p>
+            <p>La progression peut également être répartie sur six mois, à raison de deux cahiers par mois.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="bonus-title">
+        <h2 id="bonus-title">Quatre bonus complémentaires</h2>
+        <p class="section-intro">
+          La collection comprend également quatre documents complémentaires destinés à prolonger le travail réalisé dans les cahiers.
+        </p>
+        <div class="grid two">
+          <div class="card">
+            <h3>Mise en situation et synthèse</h3>
+            <p>Des situations transversales permettent de mobiliser plusieurs notions à la fois et de construire une lecture plus complète d’un cas.</p>
+          </div>
+          <div class="card">
+            <h3>Expression orale et reformulation</h3>
+            <p>Des questions, formulations et exemples aident à présenter un raisonnement de manière claire, professionnelle et compréhensible.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="assistant-title">
+        <div class="assistant">
+          <h2 id="assistant-title">Des prompts pour prolonger chaque cahier avec l’Assistant</h2>
+          <p>
+            Les cahiers proposent des questions spécialement conçues pour être adressées à l’Assistant du juge. Elles permettent d’approfondir une réponse, de soumettre une situation personnelle ou d’explorer plusieurs lectures possibles.
+          </p>
+          <p>
+            <strong>Multilingue, l’Assistant répond dans la langue de la question.</strong> Le lecteur peut donc consulter les publications françaises ou anglaises et poursuivre l’échange dans la langue qui lui est la plus familière.
+          </p>
+          <p class="small">
+            L’Assistant ne remplace ni le livre, ni les règlements, ni les cadres institutionnels. Il aide à clarifier les mécanismes en jeu et à prolonger la réflexion.
+          </p>
+          <div class="btnrow">
+            <a class="btn" href="assistant-du-juge.html">Découvrir l’Assistant du juge</a>
+            <a class="btn secondary" href="exemple-reponse-assistant.html">Voir un exemple de réponse</a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="collection-title">
+        <h2 id="collection-title">La collection complète</h2>
+        <div class="offer">
+          <div>
+            <p class="offer-title">12 cahiers d’application + 4 bonus</p>
+            <p>Une collection numérique autonome, directement liée au livre <em>Le jugement en danse</em>, destinée à accompagner l’assimilation progressive de ses principales notions.</p>
+            <p class="small">Le prix et les modalités de mise à disposition seront ajoutés avant la publication de cette page.</p>
+          </div>
+          <div>
+            <div class="btnrow">
+              <a class="btn secondary" href="mailto:contact@editions-perspectives.fr?subject=Cahiers%20d%27application%20-%20Le%20jugement%20en%20danse">Nous contacter</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© Éditions Perspectives — Marc Delacour</div>
+      <div><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></div>
+    </footer>
+  </div>
+</body>
+</html>

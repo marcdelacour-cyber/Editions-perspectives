@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Le jugement en danse — Le livre | Éditions Perspectives</title>
+  <meta name="description" content="Le jugement en danse, de Marc Delacour : comprendre les mécanismes attentionnels, perceptifs, cognitifs, émotionnels et sociaux du jugement." />
+  <style>
+    :root{
+      --text:#1c1c1c;
+      --muted:#5a5a5a;
+      --line:#e5e5e5;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --soft:#f4f4f2;
+      --btn:#111111;
+      --btnText:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      max-width:1040px;
+      margin:0 auto;
+      padding:24px 20px 72px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      padding:4px 0 22px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand{
+      font-weight:700;
+      letter-spacing:.02em;
+      text-decoration:none;
+    }
+
+    .lang{
+      font-size:.95rem;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .lang a{
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+    }
+
+    .lang a:hover{border-bottom-color:currentColor}
+
+    .back{
+      margin-top:22px;
+      font-size:.95rem;
+      color:var(--muted);
+    }
+
+    .back a{text-decoration:none}
+    .back a:hover{text-decoration:underline}
+
+    header{
+      padding:38px 0 30px;
+      max-width:860px;
+    }
+
+    .eyebrow{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:.95rem;
+      font-weight:650;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    h1{
+      font-size:clamp(2.35rem,6vw,4.25rem);
+      line-height:1.05;
+      margin:0 0 16px;
+      letter-spacing:-.035em;
+    }
+
+    .subtitle{
+      font-size:clamp(1.18rem,2.4vw,1.5rem);
+      line-height:1.4;
+      color:var(--muted);
+      margin:0 0 20px;
+      max-width:780px;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      max-width:800px;
+      margin:0;
+    }
+
+    .key{
+      margin:0 0 38px;
+      padding:18px 20px;
+      border-left:4px solid var(--text);
+      background:var(--soft);
+      font-size:1.08rem;
+    }
+
+    section{margin-top:46px}
+
+    h2{
+      font-size:1.65rem;
+      line-height:1.25;
+      margin:0 0 10px;
+    }
+
+    h3{
+      font-size:1.22rem;
+      line-height:1.3;
+      margin:0 0 8px;
+    }
+
+    p{margin:0 0 12px}
+
+    .section-intro{
+      color:var(--muted);
+      max-width:800px;
+      margin-bottom:22px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+
+    @media (min-width:780px){
+      .grid.two{grid-template-columns:1fr 1fr}
+      .grid.three{grid-template-columns:repeat(3,1fr)}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:22px;
+    }
+
+    .card p:last-child{margin-bottom:0}
+
+    .quote{
+      font-size:1.05rem;
+      line-height:1.6;
+      margin-bottom:16px;
+    }
+
+    .person{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    ul{
+      margin:0;
+      padding-left:21px;
+    }
+
+    li{margin:7px 0}
+
+    .assistant{
+      padding:24px;
+      background:var(--soft);
+      border-radius:16px;
+    }
+
+    .assistant strong{font-weight:750}
+
+    .offers{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+
+    @media (min-width:780px){
+      .offers{grid-template-columns:1fr 1fr}
+    }
+
+    .offer{
+      display:flex;
+      flex-direction:column;
+      min-height:285px;
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:24px;
+    }
+
+    .price{
+      font-weight:760;
+      font-size:1.25rem;
+      margin:0 0 12px;
+    }
+
+    .offer .spacer{flex:1}
+
+    .small{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    a.btn{
+      display:inline-block;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      padding:11px 14px;
+      border-radius:10px;
+      font-weight:680;
+    }
+
+    a.btn.secondary{background:#333333}
+
+    .practical{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:16px;
+    }
+
+    @media (min-width:780px){
+      .practical{grid-template-columns:1fr 1fr}
+    }
+
+    footer{
+      margin-top:38px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:.92rem;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">Éditions Perspectives</a>
+      <div class="lang">Français &nbsp;|&nbsp; <a href="judging-in-dance.html">English</a></div>
+    </div>
+
+    <div class="back"><a href="index.html">← Retour à l’ensemble des publications</a></div>
+
+    <header>
+      <p class="eyebrow">Le livre</p>
+      <h1>Le jugement en danse</h1>
+      <p class="subtitle">Ce qui se joue réellement lorsque nous observons, comparons et décidons.</p>
+      <p class="lead">
+        Un ouvrage de Marc Delacour consacré aux mécanismes humains du jugement en danse : attention, perception, émotions, fatigue, expérience, préférences, biais cognitifs et influence du contexte.
+      </p>
+    </header>
+
+    <div class="key">
+      <strong>Comprendre le jugement ne consiste pas à imposer une manière de juger, mais à mieux reconnaître ce qui influence notre regard et nos décisions.</strong>
+    </div>
+
+    <main>
+      <section aria-labelledby="why-title">
+        <h2 id="why-title">Pourquoi ce livre&nbsp;?</h2>
+        <p class="section-intro">
+          Des juges compétents et de bonne foi peuvent observer la même prestation et parvenir à des lectures différentes. Ces écarts ne relèvent pas nécessairement de l’erreur ou de l’arbitraire : ils trouvent aussi leur origine dans le fonctionnement normal de l’attention, de la perception et de la décision humaines.
+        </p>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Rendre les mécanismes plus lisibles</h3>
+            <p>Le livre met des mots sur des processus souvent vécus sans être clairement identifiés : ce qui attire l’attention, ce que l’on retient, la façon dont on compare et ce qui oriente une décision.</p>
+          </div>
+          <div class="card">
+            <h3>Dépasser les oppositions simplistes</h3>
+            <p>Il aide à sortir des lectures réduites à « bon juge » ou « mauvais juge », « objectif » ou « subjectif », pour mieux comprendre la complexité réelle d’un jugement situé.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="contents-title">
+        <h2 id="contents-title">Ce que vous trouverez dans l’ouvrage</h2>
+        <div class="grid two">
+          <div class="card">
+            <ul>
+              <li>Les limites de l’attention et la perception sélective&nbsp;;</li>
+              <li>Le rôle des émotions, de la fatigue et du contexte&nbsp;;</li>
+              <li>La sensibilité artistique et les préférences personnelles&nbsp;;</li>
+              <li>Les biais cognitifs les plus fréquents dans le jugement&nbsp;;</li>
+              <li>Le raisonnement intuitif, analytique et l’expertise.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul>
+              <li>Le discours intérieur et les protocoles personnels du juge&nbsp;;</li>
+              <li>L’effet du groupe et le rôle du panel&nbsp;;</li>
+              <li>La perception du jugement par les danseurs, les coachs et le public&nbsp;;</li>
+              <li>La réputation, l’apparence et l’effet de halo&nbsp;;</li>
+              <li>Des pistes de lucidité et d’amélioration de sa pratique.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="audience-title">
+        <h2 id="audience-title">À qui s’adresse-t-il&nbsp;?</h2>
+        <p class="section-intro">L’ouvrage peut être lu à partir de plusieurs points de vue, selon la place occupée dans la danse.</p>
+
+        <div class="grid three">
+          <div class="card">
+            <h3>Juges et présidents de jury</h3>
+            <p>Pour interroger leur regard, mieux expliciter leurs choix et reconnaître les contraintes dans lesquelles le jugement se construit.</p>
+          </div>
+          <div class="card">
+            <h3>Danseurs, couples et coachs</h3>
+            <p>Pour mieux comprendre comment une prestation peut être perçue, comparée et interprétée par plusieurs juges.</p>
+          </div>
+          <div class="card">
+            <h3>Enseignants, encadrants et public</h3>
+            <p>Pour dépasser une lecture uniquement émotionnelle ou soupçonneuse des résultats et mieux saisir le rôle du panel.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="views-title">
+        <h2 id="views-title">Deux regards complémentaires</h2>
+        <p class="section-intro">
+          La démarche du livre est éclairée à la fois par un regard scientifique sur les mécanismes du jugement et par l’expérience du plus haut niveau en danse.
+        </p>
+
+        <div class="grid two">
+          <div class="card">
+            <p class="quote">Patrick Lemaire souligne la richesse, l’actualité et l’accessibilité des connaissances psychologiques mobilisées pour comprendre l’activité de jugement.</p>
+            <p class="person"><strong>Patrick Lemaire</strong><br>Professeur de psychologie<br>Aix-Marseille Université &amp; CNRS</p>
+          </div>
+          <div class="card">
+            <p class="quote">Steeve Gaudet rappelle que mieux comprendre le jugement peut aider le danseur à reprendre prise sur ce qu’il présente, le coach à mieux orienter son travail et le juge à assumer sa responsabilité avec clarté.</p>
+            <p class="person"><strong>Steeve Gaudet</strong><br>Champion du monde professionnel 10 Danses et Show Dance<br>15 fois champion de France — Juge international</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="assistant-title">
+        <div class="assistant">
+          <h2 id="assistant-title">Un livre qui se prolonge par le dialogue</h2>
+          <p>
+            La lecture ne répond pas toujours à toutes les situations personnelles rencontrées par un juge, un danseur ou un coach. L’Assistant du juge permet de poser une question, d’éclaircir une notion, d’analyser une situation vécue ou de prolonger une réflexion à partir du contenu du livre.
+          </p>
+          <p><strong>Multilingue, il répond dans la langue de la question.</strong> Il ne remplace ni les règlements, ni les cadres institutionnels, ni l’appréciation personnelle.</p>
+          <div class="btnrow">
+            <a class="btn" href="assistant-du-juge.html">Découvrir l’Assistant</a>
+            <a class="btn secondary" href="exemple-reponse-assistant.html">Voir un exemple de réponse</a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="formats-title">
+        <h2 id="formats-title">Choisir votre format</h2>
+        <p class="section-intro">Paiement sécurisé par carte bancaire avec Stripe.</p>
+
+        <div class="offers">
+          <article class="offer">
+            <div class="price">Livre papier — 24&nbsp;€</div>
+            <p>Format imprimé.</p>
+            <p>Envoi postal en France métropolitaine.</p>
+            <p><strong>Participation aux frais d’envoi et d’emballage&nbsp;: 5&nbsp;€.</strong></p>
+            <div class="spacer"></div>
+            <div class="btnrow">
+              <a class="btn" href="https://buy.stripe.com/6oU9AS0N50w64OCfwW87K01" target="_blank" rel="noopener">Acheter le livre papier</a>
+            </div>
+          </article>
+
+          <article class="offer">
+            <div class="price">E-book PDF — 12&nbsp;€</div>
+            <p>Téléchargement immédiat après paiement.</p>
+            <p>Lecture sur ordinateur, tablette ou liseuse compatible PDF.</p>
+            <p>Fichier destiné à un usage strictement personnel.</p>
+            <div class="spacer"></div>
+            <div class="btnrow">
+              <a class="btn secondary" href="https://buy.stripe.com/7sY5kCdzR4Mm80O4Si87K00" target="_blank" rel="noopener">Acheter l’e-book</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="practical-title">
+        <h2 id="practical-title">Informations pratiques</h2>
+        <div class="practical">
+          <div>
+            <strong>Éditeur</strong>
+            <p>Éditions Perspectives — Marc Delacour</p>
+          </div>
+          <div>
+            <strong>ISBN</strong>
+            <p>ISBN attribué selon le format.</p>
+          </div>
+          <div>
+            <strong>Nature de l’ouvrage</strong>
+            <p>Ouvrage éditorial autonome, complémentaire aux règlements et cadres institutionnels existants.</p>
+          </div>
+          <div>
+            <strong>Contact</strong>
+            <p><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© Éditions Perspectives — Marc Delacour</span>
+      <span><a href="index.html">Toutes les publications</a></span>
+    </footer>
+  </div>
+</body>
+</html>
