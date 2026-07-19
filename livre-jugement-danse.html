@@ -235,6 +235,26 @@
 
     a.btn.secondary{background:#333333}
 
+    .purchase-option{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .purchase-option h3{
+      margin:0 0 6px;
+      font-size:1.05rem;
+    }
+
+    .purchase-option p{
+      margin:0 0 10px;
+    }
+
+    stripe-buy-button{
+      display:block;
+      margin-top:10px;
+    }
+
     .practical{
       display:grid;
       grid-template-columns:1fr;
@@ -386,11 +406,23 @@
           <article class="offer">
             <div class="price">Livre papier — 24&nbsp;€</div>
             <p>Format imprimé.</p>
-            <p>Envoi postal en France métropolitaine.</p>
-            <p><strong>Participation aux frais d’envoi et d’emballage&nbsp;: 5&nbsp;€.</strong></p>
-            <div class="spacer"></div>
-            <div class="btnrow">
-              <a class="btn" href="https://buy.stripe.com/6oU9AS0N50w64OCfwW87K01" target="_blank" rel="noopener">Acheter le livre papier</a>
+
+            <div class="purchase-option">
+              <h3>France métropolitaine</h3>
+              <p><strong>Livraison offerte.</strong></p>
+              <stripe-buy-button
+                buy-button-id="buy_btn_1SqgOZBLF5IwE45QtQnSLzeV"
+                publishable-key="pk_live_51SqBzzBLF5IwE45QYjDwtHmpYnCdiLbNkgwSqy3IQ4JfPldF1RTfUyakGmSR0v7I9Kkf4pBcwgDiKagkWl7JJUTE000dC3BA02">
+              </stripe-buy-button>
+            </div>
+
+            <div class="purchase-option">
+              <h3>Étranger et outre-mer</h3>
+              <p>Participation forfaitaire aux frais d’envoi&nbsp;: <strong>5&nbsp;€</strong>.</p>
+              <stripe-buy-button
+                buy-button-id="buy_btn_1TuyGWBLF5IwE45QzfBlp2hj"
+                publishable-key="pk_live_51SqBzzBLF5IwE45QYjDwtHmpYnCdiLbNkgwSqy3IQ4JfPldF1RTfUyakGmSR0v7I9Kkf4pBcwgDiKagkWl7JJUTE000dC3BA02">
+              </stripe-buy-button>
             </div>
           </article>
 
@@ -435,5 +467,6 @@
       <span><a href="index.html">Toutes les publications</a></span>
     </footer>
   </div>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </body>
 </html>
