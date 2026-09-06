@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>When the Unexpected Takes the Floor — Éditions Perspectives</title><meta name="description" content="When the Unexpected Takes the Floor by Marc Delacour: mental preparation for dance competitions. Understand what changes when competition no longer resembles training and prepare ways of responding." /><style>
+    :root{
+      --text:#1c1c1c;
+      --muted:#5a5a5a;
+      --line:#e5e5e5;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --soft:#f6f2e7;
+      --btn:#111111;
+      --btnText:#ffffff;
+      --mental:#d9ac32;
+      --mental-dark:#866516;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+    a{color:inherit}
+    .wrap{max-width:1060px;margin:0 auto;padding:24px 20px 72px}
+
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;gap:18px;
+      padding:4px 0 22px;border-bottom:1px solid var(--line);
+    }
+    .brand{font-weight:750;letter-spacing:.02em;text-decoration:none}
+    .lang{font-size:.95rem;color:var(--muted);white-space:nowrap}
+    .lang a{text-decoration:none;border-bottom:1px solid transparent}
+    .lang a:hover{border-bottom-color:currentColor}
+    .back{margin-top:22px;font-size:.95rem;color:var(--muted)}
+    .back a{text-decoration:none}.back a:hover{text-decoration:underline}
+
+    .hero{
+      display:grid;grid-template-columns:1fr;gap:34px;align-items:center;
+      padding:42px 0 34px;
+    }
+    @media(min-width:820px){.hero{grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);gap:54px}}
+    .eyebrow{margin:0 0 10px;color:var(--mental-dark);font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.03;margin:0 0 12px;letter-spacing:-.04em}
+    .subtitle{font-size:clamp(1.14rem,2.4vw,1.45rem);line-height:1.4;color:var(--muted);margin:0 0 22px;max-width:720px}
+    .signature{font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.35;font-weight:780;max-width:750px;margin:0}
+
+    .coverbox{text-align:center}
+    .coverbox img{width:min(100%,270px);height:auto;aspect-ratio:148/210;object-fit:cover;border:1px solid #d5d5d5;box-shadow:0 16px 38px rgba(0,0,0,.16)}
+    .coverbox .price{margin-top:13px;font-weight:800;font-size:1.08rem}
+
+    .key{margin:0 0 42px;padding:20px 22px;border-left:5px solid var(--mental);background:var(--soft);font-size:1.12rem}
+    section{margin-top:48px}
+    h2{font-size:1.72rem;line-height:1.25;margin:0 0 10px}
+    h3{font-size:1.22rem;line-height:1.3;margin:0 0 8px}
+    p{margin:0 0 12px}
+    .section-intro{color:var(--muted);max-width:830px;margin-bottom:22px}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:760px){.grid.two{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:21px}
+    .card p:last-child{margin-bottom:0}
+    .card.accent{border-top:5px solid var(--mental)}
+
+    .situations{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:720px){.situations{grid-template-columns:repeat(2,1fr)}}
+    .situation{padding:17px 18px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-weight:670}
+
+    .parts{counter-reset:part;display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:760px){.parts{grid-template-columns:1fr 1fr}}
+    .part{position:relative;padding:19px 20px 19px 58px;border:1px solid var(--line);border-radius:15px;background:#fff}
+    .part::before{counter-increment:part;content:counter(part);position:absolute;left:18px;top:18px;width:28px;height:28px;border-radius:50%;background:var(--mental);display:grid;place-items:center;font-weight:850;font-size:.9rem}
+    .part strong{display:block;margin-bottom:3px}
+    .part span{color:#3b3b3b}
+
+    .principle{padding:24px;border-radius:16px;background:var(--soft);border:1px solid #eadfbf}
+    .principle blockquote{margin:16px 0 0;padding-left:18px;border-left:3px solid var(--mental-dark);font-size:1.08rem;font-weight:680}
+
+    .assistant{padding:26px;border-radius:18px;background:#171717;color:#fff}
+    .assistant h2,.assistant h3{color:#fff}
+    .assistant .section-intro{color:#d7d7d7}
+    .assistant-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}
+    @media(min-width:760px){.assistant-grid{grid-template-columns:repeat(2,1fr)}}
+    .prompt{padding:17px 18px;border:1px solid #4b4b4b;border-radius:13px;background:#222;font-weight:650}
+    .example{margin-top:22px;padding:20px;background:#fff;color:var(--text);border-radius:14px}
+    .example .q{font-weight:800;margin-bottom:12px}
+    .steps{margin:0;padding-left:21px}.steps li{margin:7px 0}
+    .assistant-note{color:#cfcfcf;font-size:.93rem;margin-top:14px}
+
+    .audiences{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:760px){.audiences{grid-template-columns:repeat(3,1fr)}}
+
+    .offer{display:grid;grid-template-columns:1fr;gap:20px;padding:24px;border:1px solid var(--line);background:var(--card);border-radius:16px}
+    @media(min-width:760px){.offer{grid-template-columns:1.3fr .7fr;align-items:center}}
+    .offer-price{font-size:1.8rem;font-weight:850;margin-bottom:6px}
+    .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    a.btn,.btn-static{display:inline-block;background:var(--btn);color:var(--btnText);text-decoration:none;padding:11px 15px;border-radius:10px;font-weight:750}
+    .btn-static{background:#777;cursor:default}
+    .small{color:var(--muted);font-size:.93rem}
+
+    footer{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  </style><link rel="stylesheet" href="assets/cart.css" /></head><body><div class="wrap">
+<div class="topbar"><a class="brand" href="index-en.html">Éditions Perspectives</a><div class="top-actions"><div class="lang"><a href="prevoir-imprevu.html" lang="fr">Français</a> &nbsp;|&nbsp; English</div><button type="button" class="ep-cart-open">Cart <span class="ep-cart-count" data-cart-count>0</span></button></div></div><div class="back"><a href="index-en.html">← Back to the English editions</a></div>
+<header class="hero"><div><p class="eyebrow">Mental preparation and competition</p><h1>When the Unexpected Takes the Floor</h1><p class="subtitle">Mental Preparation for Dance Competitions</p><p class="signature">You step onto the floor with your choreography and your certainties. The unexpected steps onto the floor too.</p></div><div class="coverbox"><img src="assets/covers/when-the-unexpected-takes-the-floor.png" alt="Cover of When the Unexpected Takes the Floor" /><div class="price">Printed book — €30</div><div class="btnrow" style="justify-content:center"><button type="button" class="ep-add-button" data-cart-add="unexpected_en">Add to cart</button></div></div></header>
+<div class="key"><strong>You cannot make competition entirely predictable. You can learn to recognise what is happening and train ways of responding when the real situation no longer matches the plan.</strong></div><main>
+<section aria-labelledby="recognize-title"><h2 id="recognize-title">You may recognise yourself in one of these situations</h2><p class="section-intro">The competition you actually face is never exactly the one you prepared for. Sometimes a few seconds are enough to unsettle reference points that felt completely secure in training.</p><div class="situations"><div class="situation">I dance better in training than I do in competition.</div><div class="situation">After one mistake, I try to make up for it… and things get worse.</div><div class="situation">I lose the music or the choreography and no longer know what to do.</div><div class="situation">My partner does not react as expected and we become disorganised.</div><div class="situation">The judges, the waiting or the result take up too much mental space.</div><div class="situation">I cannot leave one bad dance behind before the next one begins.</div></div></section>
+<section aria-labelledby="why-title"><h2 id="why-title">The issue is not simply to “manage stress”</h2><div class="grid two"><div class="card accent"><h3>Understand what has changed</h3><p>A mistake, an unfamiliar floor, music you would not have chosen, another couple, a loss of connection or an intrusive thought can alter attention, reference points and communication.</p></div><div class="card accent"><h3>Prepare responses rather than a perfect scenario</h3><p>The aim is not to make competition predictable. It is to widen your range of possible actions when reality no longer resembles the initial plan.</p></div></div></section>
+<section aria-labelledby="contents-title"><h2 id="contents-title">What you will work on</h2><p class="section-intro">The book begins with concrete situations and explores several approaches drawn from mental preparation. It does not propose one universal method: it helps readers test, combine and build their own responses.</p><div class="parts"><div class="part"><strong>Build your resources</strong><span>Goals, routines, a toolbox, communication and preparation for adaptation.</span></div><div class="part"><strong>When the dance goes off course</strong><span>Mistakes, memory, choreography, loss of reference points and the relationship with a partner.</span></div><div class="part"><strong>When the environment forces you to adapt</strong><span>The floor, other couples, trajectories, music and the capacity to change.</span></div><div class="part"><strong>Attention, thoughts and being watched</strong><span>Judges, audiences, comparison, inner dialogue and returning to what is happening now.</span></div><div class="part"><strong>Emotions, arousal and recovery</strong><span>Too much or too little arousal, breathing, refocusing and the period between dances.</span></div><div class="part"><strong>Support, results and feedback</strong><span>Choosing the support you need, putting a placing in perspective and making feedback useful.</span></div><div class="part"><strong>Build your personal protocol</strong><span>Test, observe, combine, practise and adjust what actually works for you.</span></div></div></section>
+<section aria-labelledby="method-title"><div class="principle"><h2 id="method-title">No miracle recipe. No universal profile.</h2><p>Two dancers facing an apparently similar situation may need different responses. Research and tools are used here to illuminate mechanisms and open possible paths — not to turn field examples into rules that apply to everyone.</p><blockquote>“Here is what you may be able to observe. Here are several possibilities. Now test them and discover what actually helps you.”</blockquote></div></section>
+<section aria-labelledby="assistant-title"><div class="assistant"><h2 id="assistant-title">The book continues with you: Competitor Assistant included</h2><p class="section-intro">A personal situation does not always fit neatly into a chapter. The Competitor Assistant extends the book: you describe what happened, and it helps you turn the book’s principles into lines of enquiry adapted to your situation. It is not intended to be consulted in the few seconds between two dances. Its value lies mainly in preparing beforehand or analysing afterwards, so that a response can be understood, tested and trained before it is needed.</p><div class="assistant-grid"><div class="prompt">“At my last competition I made a mistake in the waltz and carried it into the tango. How can I understand what happened and prepare for next time?”</div><div class="prompt">“I lose the music after a small mistake. How can I work out what triggers that loss of reference points for me?”</div><div class="prompt">“My partner wants to talk while we are waiting, but I need silence. How can we find a way of functioning that suits both of us?”</div><div class="prompt">“In the 15 minutes before I dance, how can I identify what really helps me instead of copying somebody else’s routine?”</div></div><div class="example"><div class="q">Fictitious and deliberately shortened example — “I made a mistake in the waltz and carried it into the tango. How can I prepare for next time?”</div><p>The Assistant would not begin by imposing a routine. It would first try to understand what actually happened: what the dancer was thinking, what changed in the body or within the couple, what they tried, and what helped — or did not.</p><p>In the fuller example, three successive exchanges reveal that the dancer did not lose the music. Instead, they began trying to <em>make up for</em> the waltz, became tighter and carried that intention into the tango. They also explain that a prescribed breathing technique does not suit them, whereas a few seconds of silence and a simple bodily cue help more.</p><p><strong>The possible response therefore becomes personal:</strong> learn to recognise the signal “I am trying to compensate”, test outside competition a return to a cue that genuinely suits this dancer, then observe whether it actually helps. Different answers from the dancer would have led to a different line of enquiry.</p><div class="btnrow"><a class="btn" href="example-competitor-assistant-conversation.html">See the full fictitious 3-question conversation</a></div></div><p class="assistant-note"><strong>The Assistant is multilingual and replies in the language used to ask the question.</strong> It does not impose a single answer and does not replace a coach or individual professional support. Its role is to observe, question, connect elements of a situation and explore possibilities to test. The more personal the need, the more personal the response should become.</p></div></section>
+<section aria-labelledby="audience-title"><h2 id="audience-title">Who is this book for?</h2><div class="audiences"><div class="card"><h3>Competitors</h3><p>To understand what changes between training and competition and prepare responses when a familiar reference point disappears.</p></div><div class="card"><h3>Couples</h3><p>To identify more clearly what happens in connection, communication and recovery after a difficulty.</p></div><div class="card"><h3>Coaches and teachers</h3><p>To use situations, questions and tools that help a dancer without imposing one universal recipe.</p></div></div></section>
+<section id="order" aria-labelledby="format-title"><h2 id="format-title">The book</h2><p class="section-intro">Add one or more books to your cart, then pay for the whole order securely through Stripe.</p><div class="offer"><div><div class="offer-price">Printed book — €30</div><p>A5 format — Éditions Perspectives.</p><p><strong>Competitor Assistant included with the book.</strong></p><p class="ep-purchase-note"><strong>Delivery in France:</strong> €3 for a book order below €35; €0.01 from €35 of book purchases.</p><p class="small">For readers outside France, the English editions are also distributed through Casa Musica.</p></div><div class="btnrow"><button type="button" class="ep-add-button" data-cart-add="unexpected_en">Add to cart</button><button type="button" class="ep-cart-open ep-add-button secondary">View cart</button></div></div></section>
+<section aria-labelledby="practical-title"><h2 id="practical-title">Practical information</h2><div class="grid two"><div class="card"><h3>Publisher</h3><p>Éditions Perspectives — Marc Delacour</p></div><div class="card"><h3>Print ISBN</h3><p>979-10-982893-6-1</p></div><div class="card"><h3>Legal deposit</h3><p>September 2026</p></div><div class="card"><h3>Contact</h3><p><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p></div></div></section>
+</main><footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="index-en.html">English editions</a></span></footer></div><script src="assets/cart.js" defer></script></body></html>
