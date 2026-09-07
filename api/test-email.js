@@ -122,7 +122,7 @@ async function sendTestEmail() {
   ].join("\r\n");
 
   // Escape any line beginning with "." as required by SMTP DATA.
-  const dotStuffed = message.replace(/(^|\r\n)\./g, "$1..");
+  const dotStuffed = body.replace(/(^|\r\n)\./g, "$1..");
   socket.write(dotStuffed + "\r\n.\r\n");
   await expect(socket, [250]);
 
