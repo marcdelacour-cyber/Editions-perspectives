@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Retrouver mes accès — Éditions Perspectives</title>
+  <style>
+    :root{--text:#1d1d1d;--muted:#666;--line:#e5e5e5;--soft:#f6f6f4;--btn:#111;--btnText:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:#fff;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    .wrap{max-width:820px;margin:0 auto;padding:28px 20px 70px}
+    .top{padding-bottom:20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .brand{font-weight:750;text-decoration:none;color:inherit}
+    header{padding:48px 0 24px}
+    h1{font-size:clamp(2.1rem,6vw,3.7rem);line-height:1.08;margin:0 0 14px;letter-spacing:-.035em}
+    h2{margin:0 0 12px;font-size:1.35rem}
+    p{margin:0 0 14px}
+    .lead{font-size:1.08rem;color:var(--muted)}
+    .box{margin-top:22px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--soft)}
+    .access{margin-top:16px;padding:19px;background:#fff;border:1px solid var(--line);border-radius:12px}
+    .btn{display:inline-block;margin-top:8px;padding:11px 15px;border:0;border-radius:10px;background:var(--btn);color:var(--btnText);text-decoration:none;font-weight:750;cursor:pointer;font-size:1rem}
+    label{display:block;font-weight:700;margin-bottom:7px}
+    input{width:100%;padding:12px 13px;border:1px solid #cfcfcf;border-radius:10px;font:inherit;background:#fff}
+    .muted{color:var(--muted)}
+    footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/">Éditions Perspectives</a>
+    <a id="lang-switch" href="?lang=en">English</a>
+  </div>
+
+  <header>
+    <h1 id="title">Retrouver mes accès</h1>
+    <p id="lead" class="lead">Saisissez l’adresse e-mail utilisée lors de votre commande.</p>
+  </header>
+
+  <main>
+    <section class="box">
+      <form id="recovery-form">
+        <label id="email-label" for="email">Adresse e-mail utilisée lors de l’achat</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <button id="submit-btn" class="btn" type="submit">M’envoyer mon lien d’accès</button>
+      </form>
+      <p id="request-status" class="muted" style="margin-top:16px"></p>
+    </section>
+
+    <section id="access-box" class="box" hidden>
+      <h2 id="access-title">Vos Assistants</h2>
+      <p id="access-text">Votre lien sécurisé a été vérifié. Les Assistants auxquels vos achats donnent droit apparaissent ci-dessous.</p>
+      <div id="assistant-links"></div>
+      <p id="expiry-note" class="muted" style="margin-top:16px">Ce lien de récupération est temporaire. Vous pourrez en demander un nouveau à tout moment.</p>
+    </section>
+
+    <section id="error-box" class="box" hidden>
+      <h2 id="error-title">Lien non valide</h2>
+      <p id="error-text">Ce lien est invalide ou a expiré. Demandez simplement un nouveau lien avec votre adresse e-mail.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><a id="back-link" href="/">Retour aux livres</a> · <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const lang = params.get("lang") === "en" ? "en" : "fr";
+  const sessionId = params.get("session_id");
+  const token = params.get("token");
+
+  const T = {
+    fr: {
+      title:"Retrouver mes accès", lead:"Saisissez l’adresse e-mail utilisée lors de votre commande.",
+      label:"Adresse e-mail utilisée lors de l’achat", submit:"M’envoyer mon lien d’accès", sending:"Envoi en cours…",
+      neutral:"Si cette adresse correspond à une commande éligible, un e-mail vous sera envoyé dans quelques instants. Pensez à vérifier vos courriers indésirables.",
+      accessTitle:"Vos Assistants", accessText:"Votre lien sécurisé a été vérifié. Les Assistants auxquels vos achats donnent droit apparaissent ci-dessous.",
+      judgeTitle:"Assistant du juge", judgeButton:"Accéder à l’Assistant du juge",
+      competitorTitle:"Assistant du compétiteur", competitorButton:"Accéder à l’Assistant du compétiteur",
+      expiry:"Ce lien de récupération est temporaire. Vous pourrez en demander un nouveau à tout moment.",
+      invalidTitle:"Lien non valide", invalidText:"Ce lien est invalide ou a expiré. Demandez simplement un nouveau lien avec votre adresse e-mail.",
+      back:"Retour aux livres", switch:"English", home:"/"
+    },
+    en: {
+      title:"Retrieve my access", lead:"Enter the email address used for your order.",
+      label:"Email address used for the purchase", submit:"Send me my access link", sending:"Sending…",
+      neutral:"If this address matches an eligible order, an email will be sent shortly. Please also check your spam folder.",
+      accessTitle:"Your Assistants", accessText:"Your secure link has been verified. The Assistants included with your purchases are shown below.",
+      judgeTitle:"Judging Assistant", judgeButton:"Open the Judging Assistant",
+      competitorTitle:"Competitor Assistant", competitorButton:"Open the Competitor Assistant",
+      expiry:"This recovery link is temporary. You can request a new one at any time.",
+      invalidTitle:"Invalid link", invalidText:"This link is invalid or has expired. Simply request a new link using your email address.",
+      back:"Back to books", switch:"Français", home:"/index-en.html"
+    }
+  };
+
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.title = `${t.title} — Éditions Perspectives`;
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("lead").textContent = t.lead;
+  document.getElementById("email-label").textContent = t.label;
+  document.getElementById("submit-btn").textContent = t.submit;
+  document.getElementById("access-title").textContent = t.accessTitle;
+  document.getElementById("access-text").textContent = t.accessText;
+  document.getElementById("expiry-note").textContent = t.expiry;
+  document.getElementById("error-title").textContent = t.invalidTitle;
+  document.getElementById("error-text").textContent = t.invalidText;
+  document.getElementById("back-link").textContent = t.back;
+  document.getElementById("back-link").href = t.home;
+
+  const switchLink = document.getElementById("lang-switch");
+  switchLink.textContent = t.switch;
+  const other = new URL(location.href);
+  other.searchParams.set("lang", lang === "fr" ? "en" : "fr");
+  switchLink.href = other.pathname + "?" + other.searchParams.toString();
+
+  const form = document.getElementById("recovery-form");
+  const status = document.getElementById("request-status");
+  const button = document.getElementById("submit-btn");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    button.disabled = true;
+    button.textContent = t.sending;
+    status.textContent = "";
+    try {
+      await fetch("/api/request-access-recovery", {
+        method:"POST",
+        headers:{"Content-Type":"application/json","Accept":"application/json"},
+        body:JSON.stringify({email:document.getElementById("email").value}),
+        cache:"no-store"
+      });
+    } catch (_) {}
+    status.textContent = t.neutral;
+    button.disabled = false;
+    button.textContent = t.submit;
+  });
+
+  async function validateLink() {
+    if (!sessionId || !token) return;
+    try {
+      const response = await fetch(`/api/recovery-access?session_id=${encodeURIComponent(sessionId)}&token=${encodeURIComponent(token)}`, {
+        headers:{"Accept":"application/json"}, cache:"no-store"
+      });
+      const data = await response.json();
+      if (!response.ok || !data.ok) throw new Error();
+
+      document.getElementById("access-box").hidden = false;
+      const container = document.getElementById("assistant-links");
+      const links = [];
+
+      if (data.access?.judge) {
+        const aLang = data.access.judge === "en" ? "en" : "fr";
+        links.push({title:t.judgeTitle,text:t.judgeButton,href:`/assistant-du-juge.html?lang=${aLang}`});
+      }
+      if (data.access?.competitor) {
+        const aLang = data.access.competitor === "en" ? "en" : "fr";
+        links.push({title:t.competitorTitle,text:t.competitorButton,href:`/assistant-competitor.html?lang=${aLang}`});
+      }
+
+      for (const link of links) {
+        const block = document.createElement("div");
+        block.className = "access";
+        const strong = document.createElement("strong");
+        strong.textContent = link.title;
+        const br = document.createElement("br");
+        const a = document.createElement("a");
+        a.className = "btn";
+        a.href = link.href;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = link.text;
+        block.append(strong, br, a);
+        container.appendChild(block);
+      }
+    } catch (_) {
+      document.getElementById("error-box").hidden = false;
+    }
+  }
+
+  validateLink();
+})();
+</script>
+</body>
+</html>
