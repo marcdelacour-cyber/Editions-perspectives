@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Rétractation — Éditions Perspectives</title>
+  <meta name="description" content="Exercer en ligne le droit de rétractation pour une commande de livre papier Éditions Perspectives.">
+  <style>
+    :root{--text:#1d1d1d;--muted:#626262;--line:#e5e5e5;--soft:#f6f6f4;--btn:#111;--btnText:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:#fff;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65}
+    a{color:inherit}
+    .wrap{max-width:900px;margin:0 auto;padding:26px 20px 72px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:4px 0 22px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+    .brand{font-weight:750;text-decoration:none;letter-spacing:.02em}
+    header{padding:48px 0 24px;max-width:800px}
+    .eyebrow{margin:0 0 10px;color:var(--muted);font-size:.95rem;font-weight:650;text-transform:uppercase;letter-spacing:.08em}
+    h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.06;margin:0 0 16px;letter-spacing:-.035em}
+    h2{font-size:1.45rem;line-height:1.25;margin:0 0 12px}
+    p{margin:0 0 12px}
+    .lead{font-size:1.06rem;color:var(--muted)}
+    .summary,.detail,.formbox,.success{margin-top:18px;padding:22px;border:1px solid var(--line);border-radius:16px}
+    .summary,.success{background:var(--soft)}
+    ul{margin:10px 0 0;padding-left:22px}
+    .field{margin-top:17px}
+    label{display:block;font-weight:700;margin-bottom:6px}
+    input,textarea{width:100%;padding:12px 13px;border:1px solid #cfcfcf;border-radius:10px;font:inherit;background:#fff}
+    textarea{min-height:105px;resize:vertical}
+    .help{color:var(--muted);font-size:.92rem;margin-top:5px}
+    .check{display:flex;gap:10px;align-items:flex-start;margin-top:19px}
+    .check input{width:auto;margin-top:5px}
+    .btn{display:inline-block;margin-top:20px;padding:12px 17px;border:0;border-radius:10px;background:var(--btn);color:var(--btnText);font:inherit;font-weight:750;cursor:pointer}
+    .btn:disabled{opacity:.55;cursor:wait}
+    .status{margin-top:15px;font-weight:650}
+    .hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+    footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="/">Éditions Perspectives</a>
+    <a href="/">Retour aux livres</a>
+  </div>
+
+  <header>
+    <p class="eyebrow">Commande en ligne</p>
+    <h1>Renoncer au contrat ici</h1>
+    <p class="lead">Cette page vous permet d’exercer en ligne votre droit de rétractation pour un livre papier acheté sur editions-perspectives.fr.</p>
+  </header>
+
+  <main>
+    <section class="summary">
+      <h2>En bref</h2>
+      <ul>
+        <li>Vous disposez en principe de <strong>14 jours à compter de la réception</strong> du livre pour notifier votre rétractation.</li>
+        <li>Après notification, le livre doit être renvoyé dans les <strong>14 jours</strong>.</li>
+        <li>Les <strong>frais directs de retour</strong> restent à votre charge.</li>
+        <li>Une dépréciation résultant de manipulations allant au-delà de celles nécessaires pour examiner le livre peut être prise en compte.</li>
+        <li>Le remboursement peut être différé jusqu’à la réception du livre ou jusqu’à la fourniture d’une preuve de son expédition.</li>
+      </ul>
+    </section>
+
+    <section class="detail">
+      <h2>Retour du livre</h2>
+      <p>Le livre doit être emballé avec soin et adressé à :</p>
+      <p><strong>Éditions Perspectives — Marc DELACOUR</strong><br>
+      4-6 rue des Chauffours<br>
+      95000 Cergy — France</p>
+      <p>Le remboursement est effectué selon les règles légales applicables, en principe par le même moyen de paiement que celui utilisé lors de l’achat. Les frais de livraison standard de la commande sont compris dans le remboursement ; les frais directs de retour restent à votre charge.</p>
+    </section>
+
+    <section class="formbox" aria-labelledby="form-title">
+      <h2 id="form-title">Déclaration de rétractation</h2>
+      <p>Remplissez les informations ci-dessous afin d’identifier votre commande. Vous recevrez un accusé de réception par e-mail avec le contenu de votre déclaration ainsi que la date et l’heure de son envoi.</p>
+
+      <form id="withdrawal-form">
+        <div class="hp" aria-hidden="true">
+          <label for="company">Société</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="firstName">Prénom *</label>
+          <input id="firstName" name="firstName" type="text" maxlength="80" required autocomplete="given-name">
+        </div>
+
+        <div class="field">
+          <label for="lastName">Nom *</label>
+          <input id="lastName" name="lastName" type="text" maxlength="100" required autocomplete="family-name">
+        </div>
+
+        <div class="field">
+          <label for="email">Adresse e-mail utilisée pour la commande *</label>
+          <input id="email" name="email" type="email" maxlength="254" required autocomplete="email">
+          <p class="help">L’accusé de réception sera envoyé à cette adresse.</p>
+        </div>
+
+        <div class="field">
+          <label for="orderDetails">Commande concernée *</label>
+          <textarea id="orderDetails" name="orderDetails" maxlength="1000" required placeholder="Ex. : Le jugement en danse — commande passée le 5 septembre 2026"></textarea>
+          <p class="help">Indiquez au minimum le ou les livres concernés et, si possible, la date de commande.</p>
+        </div>
+
+        <div class="field">
+          <label for="receivedDate">Date de réception du livre</label>
+          <input id="receivedDate" name="receivedDate" type="date">
+        </div>
+
+        <div class="check">
+          <input id="confirm" name="confirm" type="checkbox" required>
+          <label for="confirm">Je confirme ma volonté de me rétracter de la commande indiquée ci-dessus.</label>
+        </div>
+
+        <button id="submit" class="btn" type="submit">Confirmer la rétractation</button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="success" class="success" hidden>
+      <h2>Votre déclaration a été transmise</h2>
+      <p>Un accusé de réception vient d’être envoyé à l’adresse e-mail indiquée. Conservez ce message. Pensez à vérifier votre dossier « Courriers indésirables / Spam » s’il n’apparaît pas dans votre boîte de réception.</p>
+      <p>Vous pouvez maintenant procéder au retour du livre à l’adresse indiquée ci-dessus.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Éditions Perspectives — Marc DELACOUR · <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const form = document.getElementById("withdrawal-form");
+  const button = document.getElementById("submit");
+  const status = document.getElementById("status");
+  const success = document.getElementById("success");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    button.disabled = true;
+    status.textContent = "Envoi en cours…";
+
+    const payload = {
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      email: document.getElementById("email").value,
+      orderDetails: document.getElementById("orderDetails").value,
+      receivedDate: document.getElementById("receivedDate").value,
+      confirm: document.getElementById("confirm").checked,
+      company: document.getElementById("company").value
+    };
+
+    try {
+      const response = await fetch("/api/retractation", {
+        method: "POST",
+        headers: {"Content-Type":"application/json","Accept":"application/json"},
+        body: JSON.stringify(payload),
+        cache: "no-store"
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error || "Envoi impossible.");
+      }
+
+      form.hidden = true;
+      success.hidden = false;
+      status.textContent = "";
+    } catch (error) {
+      status.textContent = "La demande n’a pas pu être envoyée. Vous pouvez réessayer ou écrire à contact@editions-perspectives.fr.";
+      button.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
