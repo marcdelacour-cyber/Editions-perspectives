@@ -52,7 +52,7 @@
 
         <div id="assistant-area" class="box" hidden>
           <h2>Your included Assistants</h2>
-          <p>The access links below correspond only to books included in this order.</p>
+          <p>The access links below correspond only to books included in this order. Each Assistant opens in a new tab so this page remains available if your order includes both Assistants.</p>
           <div id="assistant-links"></div>
         </div>
 
@@ -131,7 +131,7 @@
       links.forEach(link => {
         const block = document.createElement("div");
         block.className = "access";
-        block.innerHTML = `<strong>${link.title}</strong><br><a class="btn" href="${link.href}">${link.text}</a>`;
+        block.innerHTML = `<strong>${link.title}</strong><br><a class="btn" href="${link.href}" target="_blank" rel="noopener">${link.text}</a>`;
         assistantLinks.appendChild(block);
       });
     } else {

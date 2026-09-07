@@ -52,7 +52,7 @@
 
         <div id="assistant-area" class="box" hidden>
           <h2>Vos Assistants inclus</h2>
-          <p>Les accès ci-dessous correspondent uniquement aux livres compris dans cette commande.</p>
+          <p>Les accès ci-dessous correspondent uniquement aux livres compris dans cette commande. Chaque Assistant s’ouvre dans un nouvel onglet afin que cette page reste disponible si votre commande comprend les deux Assistants.</p>
           <div id="assistant-links"></div>
         </div>
 
@@ -131,7 +131,7 @@
       links.forEach(link => {
         const block = document.createElement("div");
         block.className = "access";
-        block.innerHTML = `<strong>${link.title}</strong><br><a class="btn" href="${link.href}">${link.text}</a>`;
+        block.innerHTML = `<strong>${link.title}</strong><br><a class="btn" href="${link.href}" target="_blank" rel="noopener">${link.text}</a>`;
         assistantLinks.appendChild(block);
       });
     } else {
