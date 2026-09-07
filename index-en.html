@@ -281,6 +281,17 @@
     }
   </style>
   <link rel="stylesheet" href="assets/cart.css" />
+
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -334,7 +345,22 @@
       </div></div></section>
 
     </main>
-    <footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></span></footer>
+    <footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></span>
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html?lang=en">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Withdrawal</a>
+  </span>
+</div>
+</footer>
   </div>
   <script src="assets/cart.js" defer></script>
 </body></html>

@@ -105,6 +105,17 @@
       .button{display:block;text-align:center;width:100%}
     }
 </style>
+
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
 </head>
 <body>
   <header>
@@ -142,7 +153,22 @@
     </section>
   </main>
 
-  <footer>© 2026 Éditions Perspectives — Marc Delacour</footer>
+  <footer>© 2026 Éditions Perspectives — Marc Delacour
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html?lang=en">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Withdrawal</a>
+  </span>
+</div>
+</footer>
 
   <script>
     const texts = {"fr": {"title": "Votre Assistant du compétiteur — Éditions Perspectives", "desc": "Accès à l’Assistant du compétiteur associé à Prévoir l’imprévu ?", "eyebrow": "Inclus avec votre livre", "h1": "Votre Assistant du compétiteur", "p1": "Votre exemplaire de <span class='book'>Prévoir l’imprévu ?</span> comprend l’accès à l’<strong>Assistant du compétiteur</strong>.", "p2": "Il est conçu pour vous aider à appliquer les idées du livre à vos propres situations de compétition : préparation, attention, stress, routines, récupération après une erreur, communication avec le partenaire et adaptation à l’imprévu.", "key": "<strong>L’Assistant est multilingue et répond dans la langue utilisée pour poser la question.</strong>", "button": "Accéder à l’Assistant du compétiteur", "helpTitle": "Difficulté sur téléphone ?", "help1": "Vous devez être connecté à un compte ChatGPT pour commencer la conversation.", "help2": "Si un appui normal ouvre ChatGPT sans charger directement l’Assistant, faites un appui long sur le bouton ci-dessus puis choisissez l’ouverture dans votre navigateur (Chrome, Safari, etc.).", "help3": "Si nécessaire, ouvrez le lien dans un nouvel onglet ou en navigation privée, puis connectez-vous à ChatGPT.", "catalogue": "← Retour aux livres"}, "en": {"title": "Your Competitor Assistant — Éditions Perspectives", "desc": "Access to the Competitor Assistant associated with When the Unexpected Takes the Floor.", "eyebrow": "Included with your book", "h1": "Your Competitor Assistant", "p1": "Your copy of <span class='book'>When the Unexpected Takes the Floor</span> includes access to the <strong>Competitor Assistant</strong>.", "p2": "It is designed to help you apply the ideas in the book to your own competition situations: preparation, focus, stress, routines, recovery after a mistake, communication with your partner and adapting to the unexpected.", "key": "<strong>The Assistant is multilingual and replies in the language used to ask the question.</strong>", "button": "Access the Competitor Assistant", "helpTitle": "Having trouble on your phone?", "help1": "You need to be signed in to a ChatGPT account to start the conversation.", "help2": "If a normal tap opens ChatGPT without loading the Assistant, press and hold the button above, then choose to open it in your browser (Chrome, Safari, etc.).", "help3": "If necessary, open the link in a new tab or private browsing window, then sign in to ChatGPT.", "catalogue": "← Back to the books"}};

@@ -55,7 +55,18 @@
     .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}a.btn{display:inline-block;background:var(--btn);color:var(--btnText);text-decoration:none;padding:11px 15px;border-radius:10px;font-weight:750}a.btn.secondary{background:#3b3b3b}
     .small{color:var(--muted);font-size:.93rem}
     footer{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-  </style><link rel="stylesheet" href="assets/cart.css" /></head>
+  </style><link rel="stylesheet" href="assets/cart.css" />
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
+</head>
 <body><div class="wrap">
 <div class="topbar"><a class="brand" href="index-en.html">Éditions Perspectives</a><div class="top-actions"><div class="lang"><a href="livre-jugement-danse.html" lang="fr">Français</a> &nbsp;|&nbsp; English</div><button type="button" class="ep-cart-open">Cart <span class="ep-cart-count" data-cart-count>0</span></button></div></div>
 <div class="back"><a href="index-en.html">← Back to the English editions</a></div>
@@ -73,4 +84,19 @@
 <section aria-labelledby="audience-title"><h2 id="audience-title">Who is this book for?</h2><div class="audiences"><div class="card"><h3>Adjudicators and panel chairs</h3><p>To question their own attention, explain their choices more clearly and recognise the constraints within which judgement is formed.</p></div><div class="card"><h3>Dancers, couples and coaches</h3><p>To understand more clearly how a performance may be perceived, compared and interpreted by different adjudicators.</p></div><div class="card"><h3>Teachers, trainers and audiences</h3><p>To move beyond a purely emotional or suspicious interpretation of results and better understand the role of the panel.</p></div></div></section>
 <section id="order" aria-labelledby="format-title"><h2 id="format-title">The book</h2><p class="section-intro">Add one or more books to your cart, then pay for the whole order securely through Stripe.</p><div class="offer"><div class="offer-price">Printed book — €24</div><p>A5 format — Éditions Perspectives.</p><p><strong>Judging Assistant included with the book.</strong></p><p class="ep-purchase-note"><strong>Delivery in France:</strong> €3 for a book order below €35; €0.01 from €35 of book purchases.</p><p class="small">For readers outside France, the English editions are also distributed through Casa Musica.</p><div class="spacer"></div><div class="btnrow"><button type="button" class="ep-add-button" data-cart-add="judging_en">Add to cart</button><button type="button" class="ep-cart-open ep-add-button secondary">View cart</button></div></div></section>
 <section aria-labelledby="practical-title"><h2 id="practical-title">Practical information</h2><div class="grid two"><div class="card"><h3>Publisher</h3><p>Éditions Perspectives — Marc Delacour</p></div><div class="card"><h3>Print ISBN</h3><p>979-10-98289-30-9</p></div><div class="card"><h3>Legal deposit</h3><p>September 2026</p></div><div class="card"><h3>Contact</h3><p><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p></div></div></section>
-</main><footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="index-en.html">English editions</a></span></footer></div><script src="assets/cart.js" defer></script></body></html>
+</main><footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="index-en.html">English editions</a></span>
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html?lang=en">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Withdrawal</a>
+  </span>
+</div>
+</footer></div><script src="assets/cart.js" defer></script></body></html>
