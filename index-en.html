@@ -66,6 +66,29 @@
 
     .lang a:hover{border-bottom-color:currentColor}
 
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .access-link{
+      display:inline-block;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:9px;
+      font-size:.92rem;
+      font-weight:700;
+      text-decoration:none;
+      white-space:nowrap;
+      background:#fff;
+    }
+
+    .access-link:hover{background:var(--soft)}
+
     header{
       padding:56px 0 42px;
       max-width:900px;
@@ -265,6 +288,7 @@
       <a class="brand" href="index-en.html">Éditions Perspectives</a>
       <div class="top-actions">
         <div class="lang"><a href="/" lang="fr">Français</a> &nbsp;|&nbsp; English</div>
+        <a class="access-link" href="retrouver-mes-acces.html?lang=en">My access / Mes accès</a>
         <button type="button" class="ep-cart-open">Cart <span class="ep-cart-count" data-cart-count>0</span></button>
       </div>
     </div>
@@ -308,18 +332,6 @@
         <h2 id="distribution-title">Buying the English editions</h2>
         <p>Orders placed on this website are currently intended for delivery in France. For readers in other countries, the English editions are also distributed through Casa Musica.</p>
       </div></div></section>
-
-      <section aria-labelledby="access-recovery-title">
-        <div class="english">
-          <div>
-            <h2 id="access-recovery-title">Already bought a book with an Assistant?</h2>
-            <p>Retrieve your access using the email address entered when you placed your order.</p>
-          </div>
-          <div class="btnrow">
-            <a class="btn secondary" href="retrouver-mes-acces.html?lang=en">Retrieve my access</a>
-          </div>
-        </div>
-      </section>
 
     </main>
     <footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></span></footer>
