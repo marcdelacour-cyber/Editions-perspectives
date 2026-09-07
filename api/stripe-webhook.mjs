@@ -170,7 +170,7 @@ function euro(cents) {
   }).format((Number(cents) || 0) / 100);
 }
 
-async function sendConfirmationEmail({ to, books, amountTotal, sessionId, lang }) {
+async function sendConfirmationEmail({ to, books, amountTotal, lang, recoveryUrl }) {
   const host = process.env.SMTP_HOST;
   const port = Number(process.env.SMTP_PORT || 465);
   const user = process.env.SMTP_USER;
@@ -183,41 +183,128 @@ async function sendConfirmationEmail({ to, books, amountTotal, sessionId, lang }
   const english = lang === "en";
   const subject = english
     ? "Order confirmation — Éditions Perspectives"
-    : "Confirmation de commande — Éditions Perspectives";
+    : "Confirmation de votre commande — Éditions Perspectives";
 
   const lines = books.length
     ? books.map((book) => `• ${book.name}${book.quantity > 1 ? ` × ${book.quantity}` : ""}`)
     : [english ? "• Your book order" : "• Votre commande de livres"];
 
-  const textBody = english
+  const plain = english
     ? [
+        "Hello,",
+        "",
         "Thank you for your order from Éditions Perspectives.",
         "",
-        "Books ordered:",
+        "Your order",
         ...lines,
         "",
         `Amount paid: ${euro(amountTotal)}`,
-        `Order reference: ${sessionId}`,
         "",
-        "If your order includes an Assistant, access was displayed on the confirmation page after payment.",
-        "This email deliberately contains no direct Assistant link.",
+        "Your payment has been successfully recorded.",
         "",
+        "If one of the books ordered includes an Assistant, access was offered immediately after payment.",
+        "",
+        "Lost the access page?",
+        `Retrieve your access here: ${recoveryUrl}`,
+        "Enter the email address used for your order. If it matches an eligible purchase, you will receive a secure recovery link.",
+        "If the message does not appear in your inbox, please check your spam or junk folder.",
+        "",
+        "For any question about your order, simply reply to this message.",
+        "",
+        "Thank you and enjoy your reading,",
         "Éditions Perspectives",
       ].join("\r\n")
     : [
+        "Bonjour,",
+        "",
         "Merci pour votre commande auprès des Éditions Perspectives.",
         "",
-        "Livres commandés :",
+        "Votre commande",
         ...lines,
         "",
         `Montant payé : ${euro(amountTotal)}`,
-        `Référence de commande : ${sessionId}`,
         "",
-        "Si votre commande comprend un Assistant, son accès a été affiché sur la page de confirmation après paiement.",
-        "Ce courriel ne contient volontairement aucun lien direct vers les Assistants.",
+        "Votre paiement a bien été enregistré.",
         "",
+        "Si l’un des ouvrages commandés comprend un Assistant, son accès vous a été proposé immédiatement après le paiement.",
+        "",
+        "Vous avez perdu la page d’accès à votre Assistant ?",
+        `Retrouvez vos accès ici : ${recoveryUrl}`,
+        "Saisissez simplement l’adresse e-mail utilisée lors de votre commande. Si elle correspond à un achat éligible, vous recevrez un lien sécurisé permettant de retrouver vos accès.",
+        "Si le message n’apparaît pas dans votre boîte de réception, pensez à vérifier vos courriers indésirables / spam.",
+        "",
+        "Pour toute question concernant votre commande, vous pouvez simplement répondre à ce message.",
+        "",
+        "Merci et bonne lecture,",
         "Éditions Perspectives",
       ].join("\r\n");
+
+  const escapeHtml = (value) => String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+  const safeRecoveryUrl = escapeHtml(recoveryUrl);
+  const bookItems = books.length
+    ? books.map((book) => `<li>${escapeHtml(book.name)}${book.quantity > 1 ? ` × ${book.quantity}` : ""}</li>`).join("")
+    : `<li>${english ? "Your book order" : "Votre commande de livres"}</li>`;
+
+  const html = english
+    ? `<!doctype html><html><body style="font-family:Arial,sans-serif;line-height:1.6;color:#1d1d1d">
+        <p>Hello,</p>
+        <p>Thank you for your order from <strong>Éditions Perspectives</strong>.</p>
+        <p><strong>Your order</strong></p><ul>${bookItems}</ul>
+        <p><strong>Amount paid: ${euro(amountTotal)}</strong></p>
+        <p>Your payment has been successfully recorded.</p>
+        <p>If one of the books ordered includes an <strong>Assistant</strong>, access was offered immediately after payment.</p>
+        <p><strong>Lost the access page?</strong></p>
+        <p><a href="${safeRecoveryUrl}" style="display:inline-block;padding:12px 18px;background:#111;color:#fff;text-decoration:none;border-radius:8px;font-weight:700">Retrieve my access</a></p>
+        <p>Enter the email address used for your order. If it matches an eligible purchase, you will receive a secure recovery link.</p>
+        <p><strong>If the message does not appear in your inbox, please check your spam or junk folder.</strong></p>
+        <p>For any question about your order, simply reply to this message.</p>
+        <p>Thank you and enjoy your reading,<br><strong>Éditions Perspectives</strong></p>
+      </body></html>`
+    : `<!doctype html><html><body style="font-family:Arial,sans-serif;line-height:1.6;color:#1d1d1d">
+        <p>Bonjour,</p>
+        <p>Merci pour votre commande auprès des <strong>Éditions Perspectives</strong>.</p>
+        <p><strong>Votre commande</strong></p><ul>${bookItems}</ul>
+        <p><strong>Montant payé : ${euro(amountTotal)}</strong></p>
+        <p>Votre paiement a bien été enregistré.</p>
+        <p>Si l’un des ouvrages commandés comprend un <strong>Assistant</strong>, son accès vous a été proposé immédiatement après le paiement.</p>
+        <p><strong>Vous avez perdu la page d’accès à votre Assistant ?</strong></p>
+        <p><a href="${safeRecoveryUrl}" style="display:inline-block;padding:12px 18px;background:#111;color:#fff;text-decoration:none;border-radius:8px;font-weight:700">Retrouver mes accès</a></p>
+        <p>Saisissez simplement l’adresse e-mail utilisée lors de votre commande. Si elle correspond à un achat éligible, vous recevrez un lien sécurisé permettant de retrouver vos accès.</p>
+        <p><strong>Si le message n’apparaît pas dans votre boîte de réception, pensez à vérifier vos courriers indésirables / spam.</strong></p>
+        <p>Pour toute question concernant votre commande, vous pouvez simplement répondre à ce message.</p>
+        <p>Merci et bonne lecture,<br><strong>Éditions Perspectives</strong></p>
+      </body></html>`;
+
+  const boundary = `ep_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+  const message = [
+    `From: ${encodeHeader("Éditions Perspectives")} <${user}>`,
+    `To: <${to}>`,
+    `Reply-To: <${user}>`,
+    `Subject: ${encodeHeader(subject)}`,
+    `Date: ${new Date().toUTCString()}`,
+    `Message-ID: <order-${Date.now()}@editions-perspectives.fr>`,
+    "MIME-Version: 1.0",
+    `Content-Type: multipart/alternative; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    "Content-Type: text/plain; charset=UTF-8",
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    plain,
+    "",
+    `--${boundary}`,
+    "Content-Type: text/html; charset=UTF-8",
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    html,
+    "",
+    `--${boundary}--`,
+  ].join("\r\n");
 
   const socket = tls.connect({
     host,
@@ -246,21 +333,7 @@ async function sendConfirmationEmail({ to, books, amountTotal, sessionId, lang }
   smtpSendLine(socket, "DATA");
   await smtpExpect(socket, [354]);
 
-  const headersAndBody = [
-    `From: ${encodeHeader("Éditions Perspectives")} <${user}>`,
-    `To: <${to}>`,
-    `Reply-To: <${user}>`,
-    `Subject: ${encodeHeader(subject)}`,
-    `Date: ${new Date().toUTCString()}`,
-    `Message-ID: <order-${Date.now()}@editions-perspectives.fr>`,
-    "MIME-Version: 1.0",
-    "Content-Type: text/plain; charset=UTF-8",
-    "Content-Transfer-Encoding: 8bit",
-    "",
-    textBody,
-  ].join("\r\n");
-
-  const dotStuffed = headersAndBody.replace(/(^|\r\n)\./g, "$1..");
+  const dotStuffed = message.replace(/(^|\r\n)\./g, "$1..");
   socket.write(dotStuffed + "\r\n.\r\n");
   await smtpExpect(socket, [250]);
 
@@ -269,7 +342,7 @@ async function sendConfirmationEmail({ to, books, amountTotal, sessionId, lang }
   socket.end();
 }
 
-async function processCheckoutSession(sessionFromEvent) {
+async function processCheckoutSession(sessionFromEvent, siteOrigin) {
   const sessionId = sessionFromEvent?.id;
   if (!sessionId) throw new Error("Checkout Session absente.");
 
@@ -324,8 +397,8 @@ async function processCheckoutSession(sessionFromEvent) {
     to: email,
     books,
     amountTotal: session.amount_total,
-    sessionId,
     lang,
+    recoveryUrl: `${siteOrigin}/retrouver-mes-acces.html?lang=${lang === "en" ? "en" : "fr"}`,
   });
 
   const params = new URLSearchParams();
@@ -382,7 +455,8 @@ export async function POST(request) {
       event.type === "checkout.session.completed" ||
       event.type === "checkout.session.async_payment_succeeded"
     ) {
-      const result = await processCheckoutSession(event.data?.object);
+      const siteOrigin = new URL(request.url).origin;
+      const result = await processCheckoutSession(event.data?.object, siteOrigin);
       return Response.json({ ok: true, result });
     }
 
