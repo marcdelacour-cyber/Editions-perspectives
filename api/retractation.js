@@ -19,6 +19,20 @@ function validEmail(value) {
   return email;
 }
 
+function formatReceivedDate(value) {
+  const raw = clean(value, 20);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw || "non renseignée";
+  const [y, m, d] = raw.split("-").map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  if (Number.isNaN(date.getTime())) return raw;
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC"
+  }).format(date);
+}
+
 function readResponse(socket) {
   return new Promise((resolve, reject) => {
     let buffer = "";
@@ -135,6 +149,7 @@ module.exports = async function handler(req, res) {
   const email = validEmail(body.email);
   const orderDetails = clean(body.orderDetails, 1000);
   const receivedDate = clean(body.receivedDate, 20);
+  const receivedDateFr = formatReceivedDate(receivedDate);
   const confirmed = body.confirm === true;
 
   if (!firstName || !lastName || !email || !orderDetails || !confirmed) {
@@ -160,7 +175,7 @@ module.exports = async function handler(req, res) {
     `Prénom : ${firstName}`,
     `Adresse e-mail : ${email}`,
     `Commande concernée : ${orderDetails}`,
-    `Date de réception indiquée : ${receivedDate || "non renseignée"}`,
+    `Date de réception indiquée : ${receivedDateFr}`,
     "Décision : je confirme ma volonté de me rétracter de la commande indiquée.",
     "",
     "Retour du livre :",
@@ -184,7 +199,7 @@ module.exports = async function handler(req, res) {
     `Prénom : ${firstName}`,
     `E-mail : ${email}`,
     `Commande : ${orderDetails}`,
-    `Date de réception indiquée : ${receivedDate || "non renseignée"}`,
+    `Date de réception indiquée : ${receivedDateFr}`,
     "",
     "Le client a confirmé sa volonté de se rétracter.",
   ].join("\r\n");
