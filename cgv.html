@@ -66,7 +66,10 @@
     .contact-card{
       padding:18px 20px;border-left:4px solid var(--accent);background:var(--soft)
     }
-    footer{
+    .legal-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:.83rem;color:var(--muted)}
+.legal-links a{text-decoration:none}
+.legal-links a:hover{text-decoration:underline}
+footer{
       margin-top:35px;padding-top:22px;border-top:1px solid var(--line);
       color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;
       gap:18px;flex-wrap:wrap
@@ -78,11 +81,7 @@
 <div class="wrap">
   <div class="topbar">
     <a class="brand" href="/">Éditions Perspectives</a>
-    <div class="toplinks">
-      <a href="mentions-legales.html">Mentions légales</a>
-      <a href="retractation.html">Se rétracter</a>
-      <a href="/">Retour aux livres</a>
-    </div>
+    <div class="toplinks"><a href="/">Retour aux livres</a></div>
   </div>
 
   <header>
@@ -197,6 +196,20 @@
       <p>Les frais directs de retour restent à la charge du client. Le livre doit être correctement emballé. Le consommateur n’est responsable que de la dépréciation du bien résultant de manipulations autres que celles nécessaires pour établir la nature et les caractéristiques du livre.</p>
       <p>En cas de rétractation valable, Éditions Perspectives rembourse les sommes dues, y compris les frais de livraison standard de la commande, dans les conditions et délais légaux. Pour une vente de biens, le remboursement peut être différé jusqu’à la récupération du livre ou jusqu’à la fourniture d’une preuve de son expédition, la première de ces dates étant retenue.</p>
       <p>Le remboursement est réalisé par le même moyen de paiement que celui utilisé lors de la commande, sauf accord exprès du consommateur pour un autre moyen n’occasionnant pas de frais.</p>
+
+      <details class="box">
+        <summary><strong>Modèle de formulaire de rétractation</strong></summary>
+        <p style="margin-top:14px">Ce modèle peut être utilisé si le consommateur préfère notifier sa rétractation par e-mail ou par courrier. Son utilisation n’est pas obligatoire.</p>
+        <p>À l’attention de : <strong>Marc DELACOUR — Éditions Perspectives, 4-6 rue des Chauffours, 95000 Cergy, France — contact@editions-perspectives.fr</strong></p>
+        <p>Je/nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat portant sur la vente du bien ci-dessous :</p>
+        <p>Ouvrage(s) concerné(s) : ............................................................</p>
+        <p>Commandé le (*) / reçu le (*) : .....................................................</p>
+        <p>Nom du (des) consommateur(s) : .....................................................</p>
+        <p>Adresse du (des) consommateur(s) : .................................................</p>
+        <p>Signature du (des) consommateur(s) (uniquement en cas de notification sur papier) :</p>
+        <p>Date : ............................................................</p>
+        <p><small>(*) Rayez la mention inutile.</small></p>
+      </details>
     </section>
 
     <section id="garanties">
@@ -263,6 +276,12 @@
   <footer>
     <span>© Éditions Perspectives — Marc DELACOUR</span>
     <span>CGV mises à jour le 8 septembre 2026</span>
+    <div class="legal-links" aria-label="Liens légaux">
+        <a href="mentions-legales.html">Mentions légales</a><span>·</span>
+        <a href="cgv.html">CGV</a><span>·</span>
+        <a href="politique-confidentialite.html">Confidentialité</a><span>·</span>
+        <a href="retractation.html">Se rétracter</a>
+      </div>
   </footer>
 </div>
 </body>

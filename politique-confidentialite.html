@@ -29,7 +29,10 @@
     table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.96rem}
     th,td{text-align:left;vertical-align:top;padding:12px;border:1px solid var(--line)}
     th{background:var(--soft)}
-    footer{margin-top:35px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .legal-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:.83rem;color:var(--muted)}
+.legal-links a{text-decoration:none}
+.legal-links a:hover{text-decoration:underline}
+footer{margin-top:35px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
     [data-lang="en"]{display:none}
     @media(max-width:720px){table{display:block;overflow-x:auto}}
   </style>
@@ -40,8 +43,6 @@
     <a class="brand" href="/">Éditions Perspectives</a>
     <div class="links">
       <a id="langSwitch" href="?lang=en">English</a>
-      <a data-lang="fr" href="mentions-legales.html">Mentions légales</a>
-      <a data-lang="en" href="mentions-legales.html">Legal notice</a>
       <a data-lang="fr" href="/">Retour aux livres</a>
       <a data-lang="en" href="/index-en.html">Back to books</a>
     </div>
@@ -223,6 +224,20 @@
     <span>© Éditions Perspectives — Marc DELACOUR</span>
     <span data-lang="fr">Mise à jour : 8 septembre 2026</span>
     <span data-lang="en">Updated: 8 September 2026</span>
+
+    <div class="legal-links" data-lang="fr" aria-label="Liens légaux">
+      <a href="mentions-legales.html">Mentions légales</a><span>·</span>
+      <a href="cgv.html">CGV</a><span>·</span>
+      <a href="politique-confidentialite.html">Confidentialité</a><span>·</span>
+      <a href="retractation.html">Se rétracter</a>
+    </div>
+
+    <div class="legal-links" data-lang="en" aria-label="Legal links">
+      <a href="mentions-legales.html">Legal notice</a><span>·</span>
+      <a href="cgv.html">Terms &amp; Conditions</a><span>·</span>
+      <a href="politique-confidentialite.html?lang=en">Privacy</a><span>·</span>
+      <a href="retractation.html">Withdraw</a>
+    </div>
   </footer>
 </div>
 

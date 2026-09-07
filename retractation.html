@@ -34,7 +34,10 @@
     .btn:disabled{opacity:.55;cursor:wait}
     .status{margin-top:15px;font-weight:650}
     .hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
-    footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+    .legal-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:.83rem;color:var(--muted)}
+.legal-links a{text-decoration:none}
+.legal-links a:hover{text-decoration:underline}
+footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
   </style>
 </head>
 <body>
@@ -127,6 +130,12 @@
 
   <footer>
     <p>Éditions Perspectives — Marc DELACOUR · <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
+    <div class="legal-links" aria-label="Liens légaux">
+        <a href="mentions-legales.html">Mentions légales</a><span>·</span>
+        <a href="cgv.html">CGV</a><span>·</span>
+        <a href="politique-confidentialite.html">Confidentialité</a><span>·</span>
+        <a href="retractation.html">Se rétracter</a>
+      </div>
   </footer>
 </div>
 
