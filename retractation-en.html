@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Withdrawal — Éditions Perspectives</title>
+  <meta name="description" content="Exercise your right of withdrawal online for a printed book purchased from Éditions Perspectives.">
+  <style>
+    :root{--text:#1d1d1d;--muted:#626262;--line:#e5e5e5;--soft:#f6f6f4;--btn:#111;--btnText:#fff}*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65}a{color:inherit}.wrap{max-width:900px;margin:0 auto;padding:26px 20px 72px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:4px 0 22px;border-bottom:1px solid var(--line);flex-wrap:wrap}.brand{font-weight:750;text-decoration:none;letter-spacing:.02em}.toplinks{display:flex;gap:16px;flex-wrap:wrap}header{padding:48px 0 24px;max-width:800px}.eyebrow{margin:0 0 10px;color:var(--muted);font-size:.95rem;font-weight:650;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.06;margin:0 0 16px;letter-spacing:-.035em}h2{font-size:1.45rem;line-height:1.25;margin:0 0 12px}p{margin:0 0 12px}.lead{font-size:1.06rem;color:var(--muted)}.summary,.detail,.formbox,.success,.notice{margin-top:18px;padding:22px;border:1px solid var(--line);border-radius:16px}.summary,.success,.notice{background:var(--soft)}.notice{color:var(--muted);font-size:.94rem}ul{margin:10px 0 0;padding-left:22px}.field{margin-top:17px}label{display:block;font-weight:700;margin-bottom:6px}input,textarea{width:100%;padding:12px 13px;border:1px solid #cfcfcf;border-radius:10px;font:inherit;background:#fff}textarea{min-height:105px;resize:vertical}.help{color:var(--muted);font-size:.92rem;margin-top:5px}.check{display:flex;gap:10px;align-items:flex-start;margin-top:19px}.check input{width:auto;margin-top:5px}.btn{display:inline-block;margin-top:20px;padding:12px 17px;border:0;border-radius:10px;background:var(--btn);color:var(--btnText);font:inherit;font-weight:750;cursor:pointer}.btn:disabled{opacity:.55;cursor:wait}.status{margin-top:15px;font-weight:650}.hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}.legal-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:.83rem;color:var(--muted)}.legal-links a{text-decoration:none}.legal-links a:hover{text-decoration:underline}footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><a class="brand" href="/index-en.html">Éditions Perspectives</a><div class="toplinks"><a href="retractation.html">Français</a><a href="/index-en.html">Back to books</a></div></div>
+
+  <header><p class="eyebrow">Online order</p><h1>Withdraw from the contract here</h1><p class="lead">This page allows you to exercise your right of withdrawal online for a printed book purchased on editions-perspectives.fr.</p></header>
+  <section class="notice">This English version is provided for convenience. The French version is the reference version, without prejudice to any mandatory consumer rights that may apply.</section>
+
+  <main>
+    <section class="summary"><h2>At a glance</h2><ul><li>As a general rule, you have <strong>14 days from receipt</strong> of the book to notify us of your withdrawal.</li><li>After notification, the book must be returned within <strong>14 days</strong>.</li><li>The <strong>direct cost of return</strong> is borne by you.</li><li>A reduction in value resulting from handling beyond what is necessary to examine the book may be taken into account.</li><li>Reimbursement may be withheld until the book is received or until proof of return shipment is provided.</li></ul></section>
+
+    <section class="detail"><h2>Returning the book</h2><p>The book must be carefully packaged and sent to:</p><p><strong>Éditions Perspectives — Marc DELACOUR</strong><br>4-6 rue des Chauffours<br>95000 Cergy — France</p><p>Reimbursement is made under the applicable statutory rules, in principle using the same payment method as used for the purchase. The standard delivery charge for the order is included in the refund; direct return costs remain your responsibility.</p></section>
+
+    <section class="formbox" aria-labelledby="form-title"><h2 id="form-title">Withdrawal declaration</h2><p>Complete the information below so that we can identify your order. You will receive an acknowledgement by email containing your declaration and the date and time it was submitted.</p>
+      <form id="withdrawal-form">
+        <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="field"><label for="firstName">First name *</label><input id="firstName" name="firstName" type="text" maxlength="80" required autocomplete="given-name"></div>
+        <div class="field"><label for="lastName">Last name *</label><input id="lastName" name="lastName" type="text" maxlength="100" required autocomplete="family-name"></div>
+        <div class="field"><label for="email">Email address used for the order *</label><input id="email" name="email" type="email" maxlength="254" required autocomplete="email"><p class="help">The acknowledgement will be sent to this address.</p></div>
+        <div class="field"><label for="orderDetails">Order concerned *</label><textarea id="orderDetails" name="orderDetails" maxlength="1000" required placeholder="Example: Judging in Dance — order placed on 5 September 2026"></textarea><p class="help">Please state at least the book or books concerned and, if possible, the order date.</p></div>
+        <div class="field"><label for="receivedDate">Date the book was received</label><input id="receivedDate" name="receivedDate" type="date"></div>
+        <div class="check"><input id="confirm" name="confirm" type="checkbox" required><label for="confirm">I confirm that I wish to withdraw from the order identified above.</label></div>
+        <button id="submit" class="btn" type="submit">Confirm withdrawal</button><p id="status" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="success" class="success" hidden><h2>Your declaration has been submitted</h2><p>An acknowledgement has just been sent to the email address provided. Please keep this message. If it does not appear in your inbox, check your spam or junk-mail folder.</p><p>You may now return the book to the address shown above.</p></section>
+  </main>
+
+  <footer><p>Éditions Perspectives — Marc DELACOUR · <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p><div class="legal-links" aria-label="Legal links"><a href="mentions-legales-en.html">Legal notice</a><span>·</span><a href="cgv-en.html">Terms &amp; Conditions</a><span>·</span><a href="politique-confidentialite-en.html">Privacy</a><span>·</span><a href="retractation-en.html">Withdrawal</a></div></footer>
+</div>
+
+<script>
+(() => {
+  const form = document.getElementById("withdrawal-form");
+  const button = document.getElementById("submit");
+  const status = document.getElementById("status");
+  const success = document.getElementById("success");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    button.disabled = true;
+    status.textContent = "Sending…";
+    const payload = {
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      email: document.getElementById("email").value,
+      orderDetails: document.getElementById("orderDetails").value,
+      receivedDate: document.getElementById("receivedDate").value,
+      confirm: document.getElementById("confirm").checked,
+      company: document.getElementById("company").value,
+      lang: "en"
+    };
+    try {
+      const response = await fetch("/api/retractation", {method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload),cache:"no-store"});
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.ok) throw new Error(data.error || "Unable to send your request.");
+      form.hidden = true; success.hidden = false; status.textContent = "";
+    } catch (error) {
+      status.textContent = "Your request could not be sent. Please try again or email contact@editions-perspectives.fr.";
+      button.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>

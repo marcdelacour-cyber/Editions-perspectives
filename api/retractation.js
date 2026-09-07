@@ -19,13 +19,13 @@ function validEmail(value) {
   return email;
 }
 
-function formatReceivedDate(value) {
+function formatReceivedDate(value, locale = "fr-FR") {
   const raw = clean(value, 20);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw || "non renseignée";
   const [y, m, d] = raw.split("-").map(Number);
   const date = new Date(Date.UTC(y, m - 1, d));
   if (Number.isNaN(date.getTime())) return raw;
-  return new Intl.DateTimeFormat("fr-FR", {
+  return new Intl.DateTimeFormat(locale, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -144,16 +144,20 @@ module.exports = async function handler(req, res) {
   // Honeypot: silently accept bot submissions.
   if (clean(body.company, 200)) return res.status(200).json({ok:true});
 
+  const lang = clean(body.lang, 5).toLowerCase() === "en" ? "en" : "fr";
   const firstName = clean(body.firstName, 80);
   const lastName = clean(body.lastName, 100);
   const email = validEmail(body.email);
   const orderDetails = clean(body.orderDetails, 1000);
   const receivedDate = clean(body.receivedDate, 20);
-  const receivedDateFr = formatReceivedDate(receivedDate);
+  const receivedDateText = formatReceivedDate(receivedDate, lang === "en" ? "en-GB" : "fr-FR");
   const confirmed = body.confirm === true;
 
   if (!firstName || !lastName || !email || !orderDetails || !confirmed) {
-    return res.status(400).json({ok:false,error:"Merci de compléter les champs obligatoires."});
+    return res.status(400).json({
+      ok:false,
+      error: lang === "en" ? "Please complete all required fields." : "Merci de compléter les champs obligatoires."
+    });
   }
 
   const submittedAt = new Date();
@@ -162,8 +166,13 @@ module.exports = async function handler(req, res) {
     timeStyle: "long",
     timeZone: "Europe/Paris"
   }).format(submittedAt);
+  const submittedEn = new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "full",
+    timeStyle: "long",
+    timeZone: "Europe/Paris"
+  }).format(submittedAt);
 
-  const receipt = [
+  const receiptFr = [
     `Bonjour ${firstName} ${lastName},`,
     "",
     "Nous accusons réception de votre déclaration de rétractation adressée aux Éditions Perspectives.",
@@ -175,7 +184,7 @@ module.exports = async function handler(req, res) {
     `Prénom : ${firstName}`,
     `Adresse e-mail : ${email}`,
     `Commande concernée : ${orderDetails}`,
-    `Date de réception indiquée : ${receivedDateFr}`,
+    `Date de réception indiquée : ${receivedDateText}`,
     "Décision : je confirme ma volonté de me rétracter de la commande indiquée.",
     "",
     "Retour du livre :",
@@ -191,15 +200,44 @@ module.exports = async function handler(req, res) {
     "contact@editions-perspectives.fr"
   ].join("\r\n");
 
+  const receiptEn = [
+    `Hello ${firstName} ${lastName},`,
+    "",
+    "We acknowledge receipt of your withdrawal declaration sent to Éditions Perspectives.",
+    "",
+    `Date and time submitted: ${submittedEn} (Paris time)`,
+    "",
+    "Your declaration:",
+    `Last name: ${lastName}`,
+    `First name: ${firstName}`,
+    `Email address: ${email}`,
+    `Order concerned: ${orderDetails}`,
+    `Date of receipt stated: ${receivedDateText}`,
+    "Decision: I confirm that I wish to withdraw from the order identified above.",
+    "",
+    "Return address:",
+    "Éditions Perspectives — Marc DELACOUR",
+    "4-6 rue des Chauffours",
+    "95000 Cergy — France",
+    "",
+    "The book must be returned within the applicable statutory period and properly packaged. Direct return costs remain your responsibility.",
+    "",
+    "Please keep this email as acknowledgement of receipt of your declaration.",
+    "",
+    "Éditions Perspectives",
+    "contact@editions-perspectives.fr"
+  ].join("\r\n");
+
   const internal = [
     "NOUVELLE DÉCLARATION DE RÉTRACTATION",
     "",
+    `Langue du formulaire : ${lang === "en" ? "anglais" : "français"}`,
     `Date et heure : ${submittedFr}`,
     `Nom : ${lastName}`,
     `Prénom : ${firstName}`,
     `E-mail : ${email}`,
     `Commande : ${orderDetails}`,
-    `Date de réception indiquée : ${receivedDateFr}`,
+    `Date de réception indiquée : ${receivedDateText}`,
     "",
     "Le client a confirmé sa volonté de se rétracter.",
   ].join("\r\n");
@@ -207,8 +245,10 @@ module.exports = async function handler(req, res) {
   try {
     await sendMail({
       to: email,
-      subject: "Accusé de réception de votre rétractation — Éditions Perspectives",
-      body: receipt
+      subject: lang === "en"
+        ? "Acknowledgement of your withdrawal — Éditions Perspectives"
+        : "Accusé de réception de votre rétractation — Éditions Perspectives",
+      body: lang === "en" ? receiptEn : receiptFr
     });
 
     await sendMail({
@@ -221,6 +261,11 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ok:true});
   } catch (error) {
     console.error("Withdrawal email error:", error?.message || error);
-    return res.status(500).json({ok:false,error:"Envoi de l'accusé de réception impossible."});
+    return res.status(500).json({
+      ok:false,
+      error: lang === "en"
+        ? "Unable to send the acknowledgement email."
+        : "Envoi de l'accusé de réception impossible."
+    });
   }
 };
