@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Éditions Perspectives — Books and tools for dance</title>
+  <meta name="description" content="Éditions Perspectives: English editions on dance judging and mental preparation for competition, with specialised AI assistants." />
+  <style>
+    :root{
+      --text:#1c1c1c;
+      --muted:#5a5a5a;
+      --line:#e5e5e5;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --soft:#f4f4f2;
+      --btn:#111111;
+      --btnText:#ffffff;
+      --judge:#c95d08;
+      --mental:#d9ac32;
+      --feedback:#6e91cf;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px 20px 72px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      padding:4px 0 22px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand{
+      font-weight:750;
+      letter-spacing:.02em;
+      text-decoration:none;
+    }
+
+    .lang{
+      font-size:.95rem;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .lang a{
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+    }
+
+    .lang a:hover{border-bottom-color:currentColor}
+
+    header{
+      padding:56px 0 42px;
+      max-width:900px;
+    }
+
+    .eyebrow{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:.95rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    h1{
+      font-size:clamp(2.45rem,6vw,4.6rem);
+      line-height:1.03;
+      margin:0 0 18px;
+      letter-spacing:-.04em;
+    }
+
+    .subtitle{
+      font-size:clamp(1.18rem,2.4vw,1.55rem);
+      line-height:1.45;
+      color:var(--muted);
+      margin:0 0 18px;
+      max-width:820px;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      max-width:820px;
+      margin:0;
+    }
+
+    .key{
+      margin:0 0 46px;
+      padding:18px 20px;
+      border-left:4px solid var(--text);
+      background:var(--soft);
+      font-size:1.08rem;
+    }
+
+    section{margin-top:48px}
+
+    h2{
+      font-size:1.75rem;
+      line-height:1.25;
+      margin:0 0 10px;
+    }
+
+    h3{
+      font-size:1.35rem;
+      line-height:1.25;
+      margin:0 0 9px;
+    }
+
+    p{margin:0 0 12px}
+
+    .section-intro{
+      color:var(--muted);
+      max-width:790px;
+      margin-bottom:24px;
+    }
+
+    .universes{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:22px;
+    }
+
+    @media (min-width:860px){
+      .universes{grid-template-columns:repeat(2,1fr)}
+    }
+
+    .universe{
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .accent{height:7px;background:#ccc}
+    .universe.judge .accent{background:var(--judge)}
+    .universe.mental .accent{background:var(--mental)}
+    .universe.feedback .accent{background:var(--feedback)}
+
+    .universe-inner{
+      display:flex;
+      flex-direction:column;
+      flex:1;
+      padding:24px;
+    }
+
+    .cover-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      min-height:300px;
+      margin-bottom:24px;
+    }
+
+    .cover-wrap img{
+      width:min(100%,205px);
+      height:auto;
+      aspect-ratio:148/210;
+      object-fit:cover;
+      border:1px solid #d5d5d5;
+      box-shadow:0 10px 24px rgba(0,0,0,.11);
+    }
+
+    .universe h3{margin-bottom:10px}
+    .universe .promise{font-weight:700;margin-bottom:12px}
+    .universe p{color:#353535}
+
+    .audience{
+      color:var(--muted)!important;
+      font-size:.94rem;
+      margin-top:2px;
+    }
+
+    .spacer{flex:1}
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    a.btn{
+      display:inline-block;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      padding:11px 14px;
+      border-radius:10px;
+      font-weight:700;
+    }
+
+    a.btn.secondary{background:#3b3b3b}
+
+    .subresources{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      font-size:.95rem;
+    }
+
+    .subresources strong{display:block;margin-bottom:7px}
+    .subresources a{text-decoration:none;border-bottom:1px solid #bbb}
+    .subresources a:hover{border-bottom-color:currentColor}
+
+    .english{
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:var(--soft);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    @media (min-width:760px){
+      .english{
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+        gap:24px;
+      }
+    }
+
+    .english p{margin:0;color:#353535}
+
+    .small{color:var(--muted);font-size:.94rem}
+
+    footer{
+      margin-top:42px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:.92rem;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/cart.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index-en.html">Éditions Perspectives</a>
+      <div class="top-actions">
+        <div class="lang"><a href="/" lang="fr">Français</a> &nbsp;|&nbsp; English</div>
+        <button type="button" class="ep-cart-open">Cart <span class="ep-cart-count" data-cart-count>0</span></button>
+      </div>
+    </div>
+    <header>
+      <p class="eyebrow">Books for real situations</p>
+      <h1>Understand differently.<br>Prepare differently.<br>Act differently.</h1>
+      <p class="subtitle">Practical perspectives on judging and performance in dance.</p>
+      <p class="lead">Two English-language books, each extended by a specialised Assistant designed to help readers explore their own situations rather than apply ready-made answers.</p>
+    </header>
+    <div class="key"><strong>Choose the situation that concerns you. The detailed book pages do the rest.</strong></div>
+    <main>
+      <section aria-labelledby="universes-title">
+        <h2 id="universes-title">Two areas, two ways in</h2>
+        <p class="section-intro">The English site currently presents the titles already available in English. Additional publications may be added later.</p>
+        <div class="universes">
+          <article class="universe judge">
+            <div class="accent"></div><div class="universe-inner">
+              <div class="cover-wrap"><img src="assets/covers/judging-in-dance.png" alt="Cover of Judging in Dance" /></div>
+              <h3>Judging and understanding judgement</h3>
+              <p class="promise">What if judging better began with understanding what our attention selects… and what it leaves out?</p>
+              <p><em>Judging in Dance</em> explores the human mechanisms involved when we observe, compare and decide.</p>
+              <p class="audience">For adjudicators, dancers, coaches, teachers and trainers.</p>
+              <div class="subresources"><strong>Included with the book</strong>Judging Assistant — a multilingual extension for exploring personal judging situations.</div>
+              <div class="spacer"></div><div class="btnrow"><a class="btn" href="judging-in-dance.html">Discover Judging in Dance</a></div>
+            </div>
+          </article>
+          <article class="universe mental">
+            <div class="accent"></div><div class="universe-inner">
+              <div class="cover-wrap"><img src="assets/covers/when-the-unexpected-takes-the-floor.png" alt="Cover of When the Unexpected Takes the Floor" /></div>
+              <h3>Mental preparation and competition</h3>
+              <p class="promise">You step onto the floor with your choreography and your certainties. The unexpected steps onto the floor too.</p>
+              <p><em>When the Unexpected Takes the Floor</em> helps competitors understand what changes when competition no longer resembles training — and prepare ways of responding.</p>
+              <p class="audience">For competitors, couples, coaches and teachers.</p>
+              <div class="subresources"><strong>Included with the book</strong>Competitor Assistant — to analyse situations, ask questions and explore personal strategies to test.</div>
+              <div class="spacer"></div><div class="btnrow"><a class="btn" href="when-the-unexpected-takes-the-floor.html">Discover the book</a></div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section aria-labelledby="distribution-title"><div class="english"><div>
+        <h2 id="distribution-title">Buying the English editions</h2>
+        <p>Orders placed on this website are currently intended for delivery in France. For readers in other countries, the English editions are also distributed through Casa Musica.</p>
+      </div></div></section>
+    </main>
+    <footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></span></footer>
+  </div>
+  <script src="assets/cart.js" defer></script>
+</body></html>
