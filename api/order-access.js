@@ -1,19 +1,32 @@
 /**
- * Éditions Perspectives — verifies a Stripe Checkout Session
- * and returns only the book-derived Assistant entitlements.
- *
- * No Assistant URL is hard-coded here: the API returns only
- * entitlement type + preferred language. The thank-you pages
- * link to site-owned intermediary pages.
+ * Éditions Perspectives — Stripe Checkout verification
+ * Robust recognition of purchased books despite typographic differences
+ * (apostrophes, accents, punctuation, spacing).
  */
 
-const PRODUCT_BY_NAME = Object.freeze({
-  "Le jugement en danse": { id: "jugement", assistant: "judge", lang: "fr" },
-  "Judging in Dance": { id: "judging_en", assistant: "judge", lang: "en" },
-  "Prévoir l’imprévu ?": { id: "imprevu", assistant: "competitor", lang: "fr" },
-  "When the Unexpected Takes the Floor": { id: "unexpected_en", assistant: "competitor", lang: "en" },
-  "Le Feedback en danse": { id: "feedback", assistant: null, lang: "fr" },
-});
+const CATALOGUE = Object.freeze([
+  { id: "feedback",      name: "Le Feedback en danse",                   assistant: null,         lang: "fr" },
+  { id: "jugement",      name: "Le jugement en danse",                   assistant: "judge",      lang: "fr" },
+  { id: "imprevu",       name: "Prévoir l’imprévu ?",                    assistant: "competitor", lang: "fr" },
+  { id: "judging_en",    name: "Judging in Dance",                       assistant: "judge",      lang: "en" },
+  { id: "unexpected_en", name: "When the Unexpected Takes the Floor",    assistant: "competitor", lang: "en" },
+]);
+
+function normalizeName(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")      // accents
+    .replace(/[’‘`´]/g, "'")              // apostrophes
+    .toLowerCase()
+    .replace(/[^a-z0-9']+/g, " ")         // punctuation
+    .replace(/'/g, "")                    // ignore apostrophes entirely
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const PRODUCT_BY_NORMALIZED_NAME = new Map(
+  CATALOGUE.map(product => [normalizeName(product.name), product])
+);
 
 function safeSessionId(value) {
   const id = String(value || "").trim();
@@ -22,9 +35,23 @@ function safeSessionId(value) {
 
 function preferredLang(current, incoming) {
   if (!current) return incoming;
-  // If both editions of the same family were bought, prefer French on
-  // the French thank-you page logic; the page can still switch language.
   return current === "fr" || incoming === "fr" ? "fr" : "en";
+}
+
+function identifyProduct(item) {
+  const candidates = [];
+
+  if (typeof item?.price?.product === "object") {
+    candidates.push(item.price.product?.name);
+  }
+  candidates.push(item?.description);
+
+  for (const candidate of candidates) {
+    const product = PRODUCT_BY_NORMALIZED_NAME.get(normalizeName(candidate));
+    if (product) return product;
+  }
+
+  return null;
 }
 
 module.exports = async function handler(req, res) {
@@ -37,12 +64,18 @@ module.exports = async function handler(req, res) {
   }
 
   if (!process.env.STRIPE_SECRET_KEY) {
-    return res.status(500).json({ ok: false, error: "Payment verification is not configured." });
+    return res.status(500).json({
+      ok: false,
+      error: "Payment verification is not configured."
+    });
   }
 
   const sessionId = safeSessionId(req.query?.session_id);
   if (!sessionId) {
-    return res.status(400).json({ ok: false, error: "Invalid Checkout Session." });
+    return res.status(400).json({
+      ok: false,
+      error: "Invalid Checkout Session."
+    });
   }
 
   try {
@@ -66,15 +99,21 @@ module.exports = async function handler(req, res) {
         type: session?.error?.type,
         code: session?.error?.code,
       });
-      return res.status(404).json({ ok: false, error: "Checkout Session not found." });
+      return res.status(404).json({
+        ok: false,
+        error: "Checkout Session not found."
+      });
     }
 
-    const paid = session.payment_status === "paid" && session.status === "complete";
+    const paid =
+      session.payment_status === "paid" &&
+      session.status === "complete";
+
     if (!paid) {
       return res.status(402).json({
         ok: false,
         paid: false,
-        error: "Payment is not confirmed.",
+        error: "Payment is not confirmed."
       });
     }
 
@@ -82,17 +121,12 @@ module.exports = async function handler(req, res) {
     const access = { judge: null, competitor: null };
 
     for (const item of session.line_items?.data || []) {
-      const productName =
-        (typeof item?.price?.product === "object" && item.price.product?.name) ||
-        item?.description ||
-        "";
-
-      const product = PRODUCT_BY_NAME[productName];
+      const product = identifyProduct(item);
       if (!product) continue;
 
       books.push({
         id: product.id,
-        name: productName,
+        name: product.name,
         quantity: Number(item.quantity || 1),
         lang: product.lang,
       });
@@ -112,10 +146,13 @@ module.exports = async function handler(req, res) {
       access,
     });
   } catch (error) {
-    console.error("Order access verification error:", error?.message || error);
+    console.error(
+      "Order access verification error:",
+      error?.message || error
+    );
     return res.status(500).json({
       ok: false,
-      error: "Unable to verify the payment at this time.",
+      error: "Unable to verify the payment at this time."
     });
   }
 };
