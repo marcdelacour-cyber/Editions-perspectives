@@ -158,7 +158,7 @@
       await fetch("/api/request-access-recovery", {
         method:"POST",
         headers:{"Content-Type":"application/json","Accept":"application/json"},
-        body:JSON.stringify({email:document.getElementById("email").value}),
+        body:JSON.stringify({email:document.getElementById("email").value, lang}),
         cache:"no-store"
       });
     } catch (_) {}
@@ -181,12 +181,10 @@
       const links = [];
 
       if (data.access?.judge) {
-        const aLang = data.access.judge === "en" ? "en" : "fr";
-        links.push({title:t.judgeTitle,text:t.judgeButton,href:`/assistant-du-juge.html?lang=${aLang}`});
+        links.push({title:t.judgeTitle,text:t.judgeButton,href:`/assistant-du-juge.html?lang=${lang}`});
       }
       if (data.access?.competitor) {
-        const aLang = data.access.competitor === "en" ? "en" : "fr";
-        links.push({title:t.competitorTitle,text:t.competitorButton,href:`/assistant-competitor.html?lang=${aLang}`});
+        links.push({title:t.competitorTitle,text:t.competitorButton,href:`/assistant-competitor.html?lang=${lang}`});
       }
 
       for (const link of links) {

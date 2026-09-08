@@ -294,7 +294,9 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ok:false,error:"Configuration Stripe incomplète."});
   }
 
-  const email = validEmail(parseBody(req)?.email);
+  const body = parseBody(req) || {};
+  const email = validEmail(body.email);
+  const requestedLang = body.lang === "en" ? "en" : "fr";
   if (!email) return res.status(200).json(neutral);
 
   try {
@@ -343,10 +345,9 @@ module.exports = async function handler(req, res) {
       access.competitor ? `competitor=${access.competitor}` : null
     ].filter(Boolean).join(";");
 
-    const uiLang =
-      access.judge === "en" && (!access.competitor || access.competitor === "en")
-        ? "en"
-        : access.competitor === "en" && !access.judge ? "en" : "fr";
+    // The language of the recovery email/page follows the language selected
+    // by the visitor, not the mix of FR/EN books found in purchase history.
+    const uiLang = requestedLang;
 
     const update = new URLSearchParams();
     update.append("metadata[ep_recovery_hash]", hash);
