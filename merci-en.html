@@ -1,101 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank you — Éditions Perspectives</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Thank you for your order — Éditions Perspectives</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      color: #222;
-      background-color: #fafafa;
-    }
-
-    .box {
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 26px;
-      margin: 30px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-
-    h1 {
-      font-size: 2.1em;
-      margin-bottom: 10px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      background-color: #333;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .button:hover {
-      background-color: #555;
-    }
-
-    .small {
-      font-size: 0.95em;
-      color: #555;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-      font-size: 0.95em;
-      color: #555;
-    }
+    :root{--text:#1d1d1d;--muted:#666;--line:#e5e5e5;--soft:#f6f6f4;--btn:#111;--btnText:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:#fff;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    .wrap{max-width:820px;margin:0 auto;padding:28px 20px 70px}
+    .top{padding-bottom:20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .brand{font-weight:750;text-decoration:none;color:inherit}
+    header{padding:48px 0 24px}
+    h1{font-size:clamp(2.1rem,6vw,3.7rem);line-height:1.08;margin:0 0 14px;letter-spacing:-.035em}
+    h2{margin:0 0 12px;font-size:1.35rem}
+    p{margin:0 0 14px}
+    .lead{font-size:1.08rem;color:var(--muted)}
+    .box{margin-top:22px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--soft)}
+    .access{margin-top:16px;padding:19px;background:#fff;border:1px solid var(--line);border-radius:12px}
+    .btn{display:inline-block;margin-top:8px;padding:11px 15px;border-radius:10px;background:var(--btn);color:var(--btnText);text-decoration:none;font-weight:750}
+    .status{font-weight:700}
+    .error{color:#8b1e1e}
+    ul{padding-left:21px}
+    footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
   </style>
+
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index-en.html">Éditions Perspectives</a>
+      <a href="/">Français</a>
+    </div>
 
-  <div class="box">
-    <h1>Thank you for your message</h1>
+    <header>
+      <h1>Thank you for your order.</h1>
+      <p class="lead">We automatically verify the payment with Stripe before displaying any Assistant access included with your books.</p>
+    </header>
 
-    <p>
-      Your request about the <strong>Judge’s Assistant — Judgment in Dance</strong>
-      has been successfully sent.
-    </p>
+    <main>
+      <div id="status" class="box">
+        <p class="status">Verifying payment…</p>
+      </div>
 
-    <p>
-      Thank you for your interest in this project. The assistant is currently in a testing phase,
-      and the first users’ feedback will help improve it progressively.
-    </p>
+      <div id="result" hidden>
+        <div class="box">
+          <h2>Payment confirmed</h2>
+          <p>Your order has been recorded.</p>
+          <div id="books"></div>
+        </div>
 
-    <p>
-      If your message concerns test access, I will reply as soon as possible.
-    </p>
+        <div id="assistant-area" class="box" hidden>
+          <h2>Your included Assistants</h2>
+          <p>The access links below correspond only to books included in this order. Each Assistant opens in a new tab so this page remains available if your order includes both Assistants.</p>
+          <div id="assistant-links"></div>
+        </div>
 
-    <p class="small">
-      The Judge’s Assistant is designed as a practical extension of the book
-      <em>Le jugement en danse</em>. It helps judges, future judges, trainers,
-      dancers and coaches reflect on the human mechanisms involved in judgment.
-    </p>
+        <div id="no-assistant" class="box" hidden>
+          <h2>Your order</h2>
+          <p>This order does not include a book that provides access to an Assistant.</p>
+        </div>
+      </div>
 
-    <p>
-      <a class="button" href="assistant-du-juge-en.html">Back to the Judge’s Assistant page</a>
-    </p>
+        <div class="box">
+          <h2>Retrieve my access</h2>
+          <p>If you lose this page, you can retrieve your access using the email address entered when you placed your order.</p>
+          <a class="btn" href="/retrouver-mes-acces.html?lang=en">Retrieve my access</a>
+        </div>
+    </main>
 
-    <p>
-      <a href="index.html">Back to home page</a>
-    </p>
+    <footer>
+      <p><a href="index-en.html">Back to the books</a> · <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
+    
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales-en.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv-en.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite-en.html">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation-en.html">Withdrawal</a>
+  </span>
+</div>
+</footer>
   </div>
 
-  <footer>
-    Éditions Perspectives — Marc Delacour
-  </footer>
+<script>
+(async () => {
+  const STORAGE_KEY = "ep_cart_v2";
+  const status = document.getElementById("status");
+  const result = document.getElementById("result");
+  const booksEl = document.getElementById("books");
+  const assistantArea = document.getElementById("assistant-area");
+  const assistantLinks = document.getElementById("assistant-links");
+  const noAssistant = document.getElementById("no-assistant");
 
+  const sessionId = new URLSearchParams(location.search).get("session_id");
+  if (!sessionId) {
+    status.innerHTML = '<p class="status error">We cannot verify this order because the payment reference is missing.</p><p>If you have just paid, contact us at <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a>.</p>';
+    return;
+  }
+
+  try {
+    const response = await fetch(`/api/order-access?session_id=${encodeURIComponent(sessionId)}`, {
+      headers: { "Accept": "application/json" },
+      cache: "no-store"
+    });
+    const data = await response.json();
+
+    if (!response.ok || !data.ok || !data.paid) {
+      throw new Error(data.error || "Payment not confirmed.");
+    }
+
+    status.hidden = true;
+    result.hidden = false;
+
+    if (Array.isArray(data.books) && data.books.length) {
+      const ul = document.createElement("ul");
+      data.books.forEach(book => {
+        const li = document.createElement("li");
+        li.textContent = `${book.name}${book.quantity > 1 ? " × " + book.quantity : ""}`;
+        ul.appendChild(li);
+      });
+      booksEl.appendChild(ul);
+    }
+
+    const links = [];
+    if (data.access?.judge) {
+      const lang = data.access.judge === "fr" ? "fr" : "en";
+      links.push({
+        title: "Judging Assistant",
+        text: "Access the Judging Assistant",
+        href: `/assistant-du-juge.html?lang=${lang}`
+      });
+    }
+    if (data.access?.competitor) {
+      const lang = data.access.competitor === "fr" ? "fr" : "en";
+      links.push({
+        title: "Competitor Assistant",
+        text: "Access the Competitor Assistant",
+        href: `/assistant-competitor.html?lang=${lang}`
+      });
+    }
+
+    if (links.length) {
+      assistantArea.hidden = false;
+      links.forEach(link => {
+        const block = document.createElement("div");
+        block.className = "access";
+        block.innerHTML = `<strong>${link.title}</strong><br><a class="btn" href="${link.href}" target="_blank" rel="noopener">${link.text}</a>`;
+        assistantLinks.appendChild(block);
+      });
+    } else {
+      noAssistant.hidden = false;
+    }
+
+    try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+  } catch (error) {
+    status.innerHTML = '<p class="status error">We could not automatically confirm the payment.</p><p>Do not pay again. If Stripe has confirmed the transaction, contact us at <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a>.</p>';
+  }
+})();
+</script>
 </body>
 </html>

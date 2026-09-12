@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Le Feedback en danse — Savoir quoi dire, quand le dire et comment le dire | Éditions Perspectives</title>
+  <meta name="description" content="Le Feedback en danse de Marc Delacour : comprendre, choisir et ajuster ses retours en danse. Exemples, exercices, 24 cas pratiques corrigés et fiches outils." />
+  <style>
+    :root{
+      --text:#1c1c1c;
+      --muted:#5a5a5a;
+      --line:#e5e5e5;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --soft:#eef4fb;
+      --btn:#111111;
+      --btnText:#ffffff;
+      --feedback:#6e91cf;
+      --feedback-dark:#345d98;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+    a{color:inherit}
+    .wrap{max-width:1060px;margin:0 auto;padding:24px 20px 72px}
+
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;gap:18px;
+      padding:4px 0 22px;border-bottom:1px solid var(--line);
+    }
+    .brand{font-weight:750;letter-spacing:.02em;text-decoration:none}
+    .lang{font-size:.95rem;color:var(--muted);white-space:nowrap}
+    .lang a{text-decoration:none;border-bottom:1px solid transparent}
+    .lang a:hover{border-bottom-color:currentColor}
+    .back{margin-top:22px;font-size:.95rem;color:var(--muted)}
+    .back a{text-decoration:none}.back a:hover{text-decoration:underline}
+
+    .hero{
+      display:grid;grid-template-columns:1fr;gap:34px;align-items:center;
+      padding:42px 0 34px;
+    }
+    @media(min-width:820px){.hero{grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);gap:54px}}
+    .eyebrow{margin:0 0 10px;color:var(--feedback-dark);font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    h1{font-size:clamp(2.45rem,6vw,4.35rem);line-height:1.03;margin:0 0 12px;letter-spacing:-.04em}
+    .subtitle{font-size:clamp(1.14rem,2.4vw,1.45rem);line-height:1.4;color:var(--muted);margin:0 0 22px;max-width:720px}
+    .signature{font-size:clamp(1.22rem,2.6vw,1.62rem);line-height:1.35;font-weight:780;max-width:760px;margin:0}
+
+    .coverbox{text-align:center}
+    .coverbox img{width:min(100%,270px);height:auto;aspect-ratio:148/210;object-fit:cover;border:1px solid #d5d5d5;box-shadow:0 16px 38px rgba(0,0,0,.16)}
+    .coverbox .price{margin-top:13px;font-weight:800;font-size:1.08rem}
+
+    .key{margin:0 0 42px;padding:20px 22px;border-left:5px solid var(--feedback);background:var(--soft);font-size:1.12rem}
+    section{margin-top:48px}
+    h2{font-size:1.72rem;line-height:1.25;margin:0 0 10px}
+    h3{font-size:1.22rem;line-height:1.3;margin:0 0 8px}
+    p{margin:0 0 12px}
+    .section-intro{color:var(--muted);max-width:850px;margin-bottom:22px}
+
+    .situations{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:720px){.situations{grid-template-columns:repeat(2,1fr)}}
+    .situation{padding:17px 18px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-weight:670}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:760px){.grid.two{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:21px}
+    .card p:last-child{margin-bottom:0}
+    .card.accent{border-top:5px solid var(--feedback)}
+
+    .axes{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:760px){.axes{grid-template-columns:repeat(2,1fr)}}
+    .axis{position:relative;padding:19px 20px 19px 20px;border:1px solid var(--line);border-radius:15px;background:#fff}
+    .axis strong{display:block;margin-bottom:4px;color:var(--feedback-dark)}
+    .axis span{color:#3b3b3b}
+
+    .principle{padding:24px;border-radius:16px;background:var(--soft);border:1px solid #cfdeef}
+    .principle blockquote{margin:16px 0 0;padding-left:18px;border-left:3px solid var(--feedback-dark);font-size:1.08rem;font-weight:680}
+
+    .practice{padding:27px;border-radius:18px;background:#171717;color:#fff}
+    .practice h2,.practice h3{color:#fff}
+    .practice .section-intro{color:#d7d7d7}
+    .practice-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}
+    @media(min-width:760px){.practice-grid{grid-template-columns:repeat(2,1fr)}}
+    .practice-card{padding:18px;border:1px solid #4b4b4b;border-radius:13px;background:#222}
+    .practice-card strong{display:block;margin-bottom:6px;color:#fff}
+    .practice-card p{color:#e7e7e7;margin:0}
+    .example{margin-top:22px;padding:21px;background:#fff;color:var(--text);border-radius:14px}
+    .example .label{font-weight:850;color:var(--feedback-dark);margin-bottom:8px}
+    .example .before{padding:12px 14px;border-left:4px solid #999;background:#f5f5f5;margin:10px 0}
+    .example .after{padding:12px 14px;border-left:4px solid var(--feedback);background:var(--soft);margin:10px 0}
+    .practice-note{color:#cfcfcf;font-size:.93rem;margin-top:14px}
+
+    .audiences{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:760px){.audiences{grid-template-columns:repeat(3,1fr)}}
+
+    .offer{display:grid;grid-template-columns:1fr;gap:20px;padding:24px;border:1px solid var(--line);background:var(--card);border-radius:16px}
+    @media(min-width:760px){.offer{grid-template-columns:1.3fr .7fr;align-items:center}}
+    .offer-price{font-size:1.8rem;font-weight:850;margin-bottom:6px}
+    .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    a.btn,.btn-static{display:inline-block;background:var(--btn);color:var(--btnText);text-decoration:none;padding:11px 15px;border-radius:10px;font-weight:750}
+    .btn-static{background:#777;cursor:default}
+    .small{color:var(--muted);font-size:.93rem}
+
+    footer{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  </style>
+  <link rel="stylesheet" href="assets/cart.css" />
+
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="/">Éditions Perspectives</a>
+      <div class="top-actions">
+        <div class="lang">Français &nbsp;|&nbsp; <a href="index-en.html">English</a></div>
+        <button type="button" class="ep-cart-open">Panier <span class="ep-cart-count" data-cart-count>0</span></button>
+      </div>
+    </div>
+
+    <div class="back"><a href="/">← Retour aux trois univers</a></div>
+
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Feedback et communication</p>
+        <h1>Le Feedback en danse</h1>
+        <p class="subtitle">Savoir quoi dire, quand le dire et comment le dire</p>
+        <p class="signature">Ce qui rend le feedback difficile, ce n’est pas seulement ce que l’on dit. C’est ce que l’autre entend — et ce qu’il peut en faire.</p>
+      </div>
+      <div class="coverbox">
+        <img src="assets/covers/le-feedback-en-danse.png" alt="Couverture du livre Le Feedback en danse" />
+        <div class="price">Livre papier — 18&nbsp;€</div>
+        <div class="btnrow" style="justify-content:center"><button type="button" class="ep-add-button" data-cart-add="feedback">Ajouter au panier</button></div>
+      </div>
+    </header>
+
+    <div class="key">
+      <strong>Un bon feedback ne se réduit pas à corriger. Il aide l’autre à comprendre, à s’ajuster… et à continuer d’avancer.</strong>
+    </div>
+
+    <main>
+      <section aria-labelledby="recognize-title">
+        <h2 id="recognize-title">Vous avez déjà voulu aider… sans obtenir l’effet attendu&nbsp;?</h2>
+        <p class="section-intro">En danse, quelques mots peuvent éclairer une situation, soutenir l’engagement ou ouvrir une piste de travail. Mais une remarque juste sur le fond peut aussi arriver trop tôt, trop tard, être trop vague, trop chargée… ou simplement ne pas convenir à la personne qui la reçoit.</p>
+        <div class="situations">
+          <div class="situation">Je vois clairement ce qui ne va pas, mais je ne sais pas comment le formuler sans décourager.</div>
+          <div class="situation">J’ai beaucoup de choses à corriger et je finis par surcharger le danseur.</div>
+          <div class="situation">Après une compétition, dois-je parler tout de suite… ou attendre&nbsp;?</div>
+          <div class="situation">Mon partenaire entend une critique là où je pensais simplement donner une information.</div>
+          <div class="situation">J’encourage, mais mon feedback reste trop vague pour aider à progresser.</div>
+          <div class="situation">Je donne le même type de retour à tout le monde, alors que chacun ne réagit pas de la même façon.</div>
+        </div>
+      </section>
+
+      <section aria-labelledby="why-title">
+        <h2 id="why-title">Le bon feedback n’est pas une phrase parfaite</h2>
+        <p class="section-intro">Le livre propose de déplacer la question. Il ne s’agit pas seulement de chercher « la bonne formulation », mais de comprendre ce que l’on veut produire, à quel moment, avec quelle personne et dans quelle situation.</p>
+        <div class="grid three">
+          <div class="card accent">
+            <h3>Quoi dire&nbsp;?</h3>
+            <p>Décrire, encourager, questionner, orienter vers l’avenir, utiliser la vidéo, différer le retour… les formes de feedback ne poursuivent pas toutes le même objectif.</p>
+          </div>
+          <div class="card accent">
+            <h3>Quand le dire&nbsp;?</h3>
+            <p>Pendant l’action, juste après ou à froid&nbsp;: le même message peut être utile à un moment et contre-productif à un autre.</p>
+          </div>
+          <div class="card accent">
+            <h3>À qui le dire&nbsp;?</h3>
+            <p>Débutant, compétiteur expérimenté, danseur stressé, perfectionniste, autonome, partenaire&nbsp;: le retour gagne à être ajusté, pas standardisé.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="contents-title">
+        <h2 id="contents-title">Ce que vous trouverez dans le livre</h2>
+        <p class="section-intro">Une boîte à outils progressive&nbsp;: des repères pour comprendre, mais aussi beaucoup de situations pour apprendre à choisir et reformuler.</p>
+        <div class="axes">
+          <div class="axis"><strong>Comprendre le feedback</strong><span>Ses fonctions, ses effets possibles, ce qu’il est — et ce qu’il n’est pas.</span></div>
+          <div class="axis"><strong>Élargir sa palette</strong><span>Feedback descriptif, visuel, comparatif, feedforward, réflexif, émotionnel, différé, non verbal, par les pairs…</span></div>
+          <div class="axis"><strong>Choisir selon la situation</strong><span>Niveau du danseur, moment, état émotionnel, contexte d’apprentissage ou de compétition.</span></div>
+          <div class="axis"><strong>Formuler avec précision</strong><span>Règles de formulation, langage non verbal, erreurs fréquentes et limites des recettes toutes faites.</span></div>
+          <div class="axis"><strong>S’entraîner</strong><span>Exercices de reformulation, identification des types de feedback, jeux de rôles et quiz d’auto-positionnement.</span></div>
+          <div class="axis"><strong>Passer à l’action</strong><span>24 cas pratiques avec propositions de solutions, puis des fiches outils pour le quotidien.</span></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="principle-title">
+        <div class="principle">
+          <h2 id="principle-title">Pas de recette universelle</h2>
+          <p>Le livre ne propose ni formule magique ni modèle rigide. Il invite à observer la situation, à préciser l’intention du retour et à tester des formulations adaptées. Un même feedback ne produira pas nécessairement le même effet selon la personne, le moment ou la relation.</p>
+          <blockquote>Parfois, le meilleur feedback est celui que l’on décide de différer.</blockquote>
+        </div>
+      </section>
+
+      <section aria-labelledby="practice-title">
+        <div class="practice">
+          <h2 id="practice-title">Mise en pratique : du réflexe à un feedback utile</h2>
+          <p class="section-intro">L’objectif n’est pas d’apprendre des phrases par cœur. Les exemples servent à comprendre ce qui change lorsqu’on passe d’un jugement global à un retour plus précis, contextualisé et orienté vers l’action.</p>
+
+          <div class="practice-grid">
+            <div class="practice-card"><strong>Exercices</strong><p>Reformuler un retour vague, reconnaître l’intention d’un feedback, choisir ce que l’on dirait — ou ce que l’on déciderait de ne pas dire tout de suite.</p></div>
+            <div class="practice-card"><strong>24 cas pratiques</strong><p>Sortie de piste, compétition, couple, démotivation, excès d’exigence, cours collectif, préparation d’une échéance…</p></div>
+            <div class="practice-card"><strong>Corrigés et pistes</strong><p>Des propositions sont données pour réfléchir et comparer, non comme des réponses uniques à mémoriser.</p></div>
+            <div class="practice-card"><strong>Fiches outils</strong><p>Préparer un feedback de compétition, débriefer à froid, conclure une séance ou tenir un journal de feedback.</p></div>
+          </div>
+
+          <div class="example">
+            <div class="label">Un exemple très simple</div>
+            <p><strong>Retour spontané :</strong></p>
+            <div class="before">« Franchement, c’était moyen. Vous étiez moins bons qu’à l’entraînement. »</div>
+            <p><strong>On peut déplacer le feedback vers ce qui est observable et travaillable :</strong></p>
+            <div class="after">« Vous avez mis beaucoup d’énergie au départ. Maintenant, regardons ce qui s’est passé ensuite et ce que vous pourrez ajuster à la prochaine séance. »</div>
+            <p>La seconde formulation n’est pas « la bonne réponse ». Elle illustre seulement une différence essentielle&nbsp;: passer d’un verdict global à un retour qui donne des repères et ouvre une possibilité de travail.</p>
+          </div>
+          <p class="practice-note">Les situations du livre vont plus loin que ces exemples courts&nbsp;: le contexte, le niveau, le moment et la personne modifient la manière de construire le retour.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="audience-title">
+        <h2 id="audience-title">À qui s’adresse ce livre&nbsp;?</h2>
+        <div class="audiences">
+          <div class="card"><h3>Entraîneurs, enseignants et formateurs</h3><p>Pour structurer leurs retours, varier leurs interventions et éviter que la correction technique ne prenne toute la place.</p></div>
+          <div class="card"><h3>Danseurs et couples</h3><p>Pour mieux recevoir un feedback, mieux se parler entre partenaires et transformer le retour en outil de progression plutôt qu’en source de tension.</p></div>
+          <div class="card"><h3>Juges et acteurs de la compétition</h3><p>Pour réfléchir à la manière de formuler un retour lorsqu’il est demandé, en tenant compte du contexte et de ce que le danseur peut réellement en faire.</p></div>
+        </div>
+      </section>
+
+      <section id="commande" aria-labelledby="format-title">
+        <h2 id="format-title">Le livre</h2>
+        <p class="section-intro">Ajoutez un ou plusieurs ouvrages au panier, puis réglez l’ensemble en une seule fois sur la page sécurisée Stripe.</p>
+        <div class="offer">
+          <div>
+            <div class="offer-price">Livre papier — 18&nbsp;€</div>
+            <p>Format A5 — 118 pages — Éditions Perspectives.</p>
+            <p><strong>Exercices, cas pratiques corrigés et fiches directement utilisables.</strong></p>
+            <p class="ep-purchase-note"><strong>Livraison :</strong> 3&nbsp;€ pour un panier de livres inférieur à 35&nbsp;€ ; 0,01&nbsp;€ à partir de 35&nbsp;€ d’achats de livres.</p>
+          </div>
+          <div class="btnrow">
+            <button type="button" class="ep-add-button" data-cart-add="feedback">Ajouter au panier</button>
+            <button type="button" class="ep-cart-open ep-add-button secondary">Voir le panier</button>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="practical-info-title">
+        <h2 id="practical-info-title">Informations pratiques</h2>
+        <div class="grid two">
+          <div class="card"><h3>Éditeur</h3><p>Éditions Perspectives — Marc Delacour</p></div>
+          <div class="card"><h3>ISBN</h3><p>979-10-98289-35-4</p></div>
+          <div class="card"><h3>Dépôt légal</h3><p>Septembre 2026</p></div>
+          <div class="card"><h3>Contact</h3><p><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© Éditions Perspectives — Marc Delacour</span>
+      <span><a href="/">Toutes les publications</a></span>
+    
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales-en.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv-en.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite-en.html">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation-en.html">Withdrawal</a>
+  </span>
+</div>
+</footer>
+  </div>
+  <script src="assets/cart.js" defer></script>
+</body>
+</html>

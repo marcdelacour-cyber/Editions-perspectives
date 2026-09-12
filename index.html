@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Le jugement en danse — Éditions Perspectives</title>
-  <meta name="description" content="Le livre, les cahiers d’application, la collection Développement du regard du juge et l’Assistant du juge." />
+  <title>Éditions Perspectives — Livres et outils pour la danse</title>
+  <meta name="description" content="Éditions Perspectives : ouvrages et outils pour comprendre le jugement, la préparation mentale, le feedback et les situations réelles de la danse." />
   <style>
     :root{
       --text:#1c1c1c;
@@ -15,6 +15,9 @@
       --soft:#f4f4f2;
       --btn:#111111;
       --btnText:#ffffff;
+      --judge:#c95d08;
+      --mental:#d9ac32;
+      --feedback:#6e91cf;
     }
 
     *{box-sizing:border-box}
@@ -30,7 +33,7 @@
     a{color:inherit}
 
     .wrap{
-      max-width:1040px;
+      max-width:1100px;
       margin:0 auto;
       padding:24px 20px 72px;
     }
@@ -45,8 +48,9 @@
     }
 
     .brand{
-      font-weight:700;
+      font-weight:750;
       letter-spacing:.02em;
+      text-decoration:none;
     }
 
     .lang{
@@ -62,57 +66,82 @@
 
     .lang a:hover{border-bottom-color:currentColor}
 
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .access-link{
+      display:inline-block;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:9px;
+      font-size:.92rem;
+      font-weight:700;
+      text-decoration:none;
+      white-space:nowrap;
+      background:#fff;
+    }
+
+    .access-link:hover{background:var(--soft)}
+
     header{
-      padding:52px 0 34px;
-      max-width:850px;
+      padding:56px 0 42px;
+      max-width:900px;
     }
 
     .eyebrow{
       margin:0 0 10px;
       color:var(--muted);
       font-size:.95rem;
-      font-weight:650;
+      font-weight:700;
       text-transform:uppercase;
       letter-spacing:.08em;
     }
 
     h1{
-      font-size:clamp(2.35rem,6vw,4.25rem);
-      line-height:1.05;
-      margin:0 0 16px;
-      letter-spacing:-.035em;
+      font-size:clamp(2.45rem,6vw,4.6rem);
+      line-height:1.03;
+      margin:0 0 18px;
+      letter-spacing:-.04em;
     }
 
     .subtitle{
-      font-size:clamp(1.18rem,2.4vw,1.5rem);
-      line-height:1.4;
+      font-size:clamp(1.18rem,2.4vw,1.55rem);
+      line-height:1.45;
       color:var(--muted);
-      margin:0 0 20px;
-      max-width:760px;
+      margin:0 0 18px;
+      max-width:820px;
     }
 
     .lead{
       font-size:1.08rem;
-      max-width:780px;
+      max-width:820px;
       margin:0;
     }
 
     .key{
-      margin:0 0 38px;
+      margin:0 0 46px;
       padding:18px 20px;
       border-left:4px solid var(--text);
       background:var(--soft);
       font-size:1.08rem;
     }
 
+    section{margin-top:48px}
+
     h2{
-      font-size:1.65rem;
+      font-size:1.75rem;
       line-height:1.25;
       margin:0 0 10px;
     }
 
     h3{
-      font-size:1.25rem;
+      font-size:1.35rem;
       line-height:1.25;
       margin:0 0 9px;
     }
@@ -121,53 +150,70 @@
 
     .section-intro{
       color:var(--muted);
-      max-width:760px;
-      margin-bottom:22px;
+      max-width:790px;
+      margin-bottom:24px;
     }
 
-    .grid{
+    .universes{
       display:grid;
       grid-template-columns:1fr;
-      gap:18px;
+      gap:22px;
     }
 
-    @media (min-width:780px){
-      .grid{grid-template-columns:1fr 1fr}
+    @media (min-width:860px){
+      .universes{grid-template-columns:repeat(3,1fr)}
     }
 
-    .card{
+    .universe{
       display:flex;
       flex-direction:column;
-      min-height:300px;
+      min-height:100%;
       border:1px solid var(--line);
       background:var(--card);
-      border-radius:16px;
-      padding:22px;
+      border-radius:18px;
+      overflow:hidden;
     }
 
-    .card .number{
-      display:inline-flex;
-      align-items:center;
+    .accent{height:7px;background:#ccc}
+    .universe.judge .accent{background:var(--judge)}
+    .universe.mental .accent{background:var(--mental)}
+    .universe.feedback .accent{background:var(--feedback)}
+
+    .universe-inner{
+      display:flex;
+      flex-direction:column;
+      flex:1;
+      padding:24px;
+    }
+
+    .cover-wrap{
+      display:flex;
       justify-content:center;
-      width:34px;
-      height:34px;
-      margin-bottom:18px;
-      border:1px solid #cfcfcf;
-      border-radius:50%;
-      color:var(--muted);
-      font-weight:700;
-      font-size:.9rem;
+      align-items:flex-start;
+      min-height:300px;
+      margin-bottom:24px;
     }
 
-    .card p{color:#353535}
+    .cover-wrap img{
+      width:min(100%,205px);
+      height:auto;
+      aspect-ratio:148/210;
+      object-fit:cover;
+      border:1px solid #d5d5d5;
+      box-shadow:0 10px 24px rgba(0,0,0,.11);
+    }
 
-    .card .meta{
-      color:var(--muted);
-      font-size:.95rem;
+    .universe h3{margin-bottom:10px}
+    .universe .promise{font-weight:700;margin-bottom:12px}
+    .universe p{color:#353535}
+
+    .audience{
+      color:var(--muted)!important;
+      font-size:.94rem;
       margin-top:2px;
     }
 
-    .card .spacer{flex:1}
+    .spacer{flex:1}
 
     .btnrow{
       display:flex;
@@ -183,36 +229,49 @@
       text-decoration:none;
       padding:11px 14px;
       border-radius:10px;
-      font-weight:680;
+      font-weight:700;
     }
 
-    a.btn.secondary{background:#333333}
+    a.btn.secondary{background:#3b3b3b}
 
-    section{margin-top:44px}
+    .subresources{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      font-size:.95rem;
+    }
 
-    .explain{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
+    .subresources strong{display:block;margin-bottom:7px}
+    .subresources a{text-decoration:none;border-bottom:1px solid #bbb}
+    .subresources a:hover{border-bottom-color:currentColor}
+
+    .english{
       padding:24px;
-      background:var(--soft);
+      border:1px solid var(--line);
       border-radius:16px;
+      background:var(--soft);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
     }
 
-    @media (min-width:780px){
-      .explain{grid-template-columns:1fr 1fr}
+    @media (min-width:760px){
+      .english{
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+        gap:24px;
+      }
     }
 
-    .explain strong{display:block;margin-bottom:4px}
+    .english p{margin:0;color:#353535}
 
-
-    .small{
-      color:var(--muted);
-      font-size:.94rem;
-    }
+    .small{color:var(--muted);font-size:.94rem}
 
     footer{
-      margin-top:36px;
+      margin-top:42px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
       color:var(--muted);
       font-size:.92rem;
       display:flex;
@@ -221,120 +280,157 @@
       flex-wrap:wrap;
     }
   </style>
+  <link rel="stylesheet" href="assets/cart.css" />
+
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="brand">Éditions Perspectives</div>
-      <div class="lang">Français &nbsp;|&nbsp; <a href="index-en.html">English</a></div>
+      <a class="brand" href="/">Éditions Perspectives</a>
+      <div class="top-actions">
+        <div class="lang">Français &nbsp;|&nbsp; <a href="index-en.html">English</a></div>
+        <a class="access-link" href="retrouver-mes-acces.html?lang=fr">Mes accès / My access</a>
+        <button type="button" class="ep-cart-open">Panier <span class="ep-cart-count" data-cart-count>0</span></button>
+      </div>
     </div>
 
     <header>
-      <p class="eyebrow">Jugement, perception et décision</p>
-      <h1>Le jugement en danse</h1>
-      <p class="subtitle">Comprendre comment on voit, compare et décide — sans dire quoi voir.</p>
+      <p class="eyebrow">Danse · jugement · performance · communication</p>
+      <h1>Des livres pour des situations réelles.</h1>
+      <p class="subtitle">Des repères concrets pour mieux comprendre ce qui se joue, trouver des réponses adaptées et continuer à progresser.</p>
       <p class="lead">
-        Un ensemble éditorial destiné aux juges, danseurs, coachs, enseignants et à toutes les personnes qui souhaitent mieux comprendre les mécanismes humains du jugement en danse.
+        Éditions Perspectives publie des ouvrages nés du terrain de la danse, à la croisée du jugement, de la préparation mentale, du feedback et de la transmission.
       </p>
     </header>
 
     <div class="key">
-      <strong>Un livre pour comprendre. Des cahiers pour assimiler. Une collection pour approfondir. Un Assistant pour prolonger la réflexion.</strong>
+      <strong>Choisissez l’univers qui vous concerne. Chaque ouvrage dispose ensuite de sa propre page pour découvrir son contenu, ses outils et ses prolongements.</strong>
     </div>
 
     <main>
-      <section aria-labelledby="publications-title">
-        <h2 id="publications-title">Quatre façons d’aller plus loin</h2>
+      <section aria-labelledby="univers-title">
+        <h2 id="univers-title">Trois univers</h2>
         <p class="section-intro">
-          Chaque proposition peut être utilisée séparément. Ensemble, elles permettent de passer de la compréhension générale à l’analyse de situations personnelles et à l’approfondissement progressif de sa pratique.
+          La page d’accueil vous oriente. Les pages dédiées prennent ensuite le temps de présenter chaque livre, ses usages et les ressources qui l’accompagnent.
         </p>
 
-        <div class="grid">
-          <article class="card">
-            <div class="number">01</div>
-            <h3>Le livre</h3>
-            <p><em>Le jugement en danse</em> explore les mécanismes attentionnels, perceptifs, cognitifs, émotionnels et sociaux qui interviennent lorsque nous portons un jugement.</p>
-            <p class="meta">Livre broché et e-book PDF</p>
-            <div class="spacer"></div>
-            <div class="btnrow">
-              <a class="btn" href="livre-jugement-danse.html">Découvrir le livre</a>
+        <div class="universes">
+          <article class="universe judge">
+            <div class="accent"></div>
+            <div class="universe-inner">
+              <div class="cover-wrap">
+                <img src="assets/covers/le-jugement-en-danse.png" alt="Couverture du livre Le jugement en danse" />
+              </div>
+              <h3>Juger et comprendre le jugement</h3>
+              <p class="promise">Et si mieux juger commençait par mieux comprendre ce que notre regard sélectionne… et ce qu’il laisse échapper&nbsp;?</p>
+              <p>Des ressources pour comprendre les mécanismes du jugement, interroger sa pratique et développer un regard plus lucide sans imposer une manière unique de juger.</p>
+              <p class="audience">Pour juges, élèves juges, chairpersons, formateurs, entraîneurs et danseurs.</p>
+              <div class="subresources">
+                <strong>Dans cet univers</strong>
+                <div><a href="livre-jugement-danse.html">Le jugement en danse</a> · Assistant du juge inclus avec le livre</div>
+                <div style="margin-top:8px"><strong style="display:inline">À découvrir :</strong> <a href="cahiers-application-jugement-danse.html">Cahiers d’application</a> · <a href="developpement-regard-juge.html">Développer le regard du juge</a> — 36 rendez-vous + hors-séries.</div>
+                <div class="audience" style="margin-top:6px">Ces deux formats prolongent eux aussi le travail avec l’Assistant du juge.</div>
+              </div>
+              <div class="spacer"></div>
+              <div class="btnrow">
+                <a class="btn" href="livre-jugement-danse.html">Découvrir le livre</a>
+              </div>
             </div>
           </article>
 
-          <article class="card">
-            <div class="number">02</div>
-            <h3>Les 12 cahiers d’application</h3>
-            <p>Des exercices, QCM, cas pratiques, reformulations et questions ouvertes pour assimiler les notions du livre et apprendre à expliciter son propre raisonnement.</p>
-            <p class="meta">12 cahiers + 4 bonus en français</p>
-            <div class="spacer"></div>
-            <div class="btnrow">
-              <a class="btn" href="cahiers-application-jugement-danse.html">Découvrir les cahiers</a>
+          <article class="universe mental">
+            <div class="accent"></div>
+            <div class="universe-inner">
+              <div class="cover-wrap">
+                <img src="assets/covers/prevoir-imprevu.png" alt="Couverture du livre Prévoir l’imprévu ?" />
+              </div>
+              <h3>Préparation mentale et compétition</h3>
+              <p class="promise">On ne peut pas empêcher l’imprévu. On peut apprendre à ne plus lui laisser décider de sa performance.</p>
+              <p>Erreur, attente, stress, perte de musique, partenaire, regard des juges&nbsp;: comprendre ce qui change lorsque la compétition ne ressemble plus à l’entraînement.</p>
+              <p class="audience">Pour compétiteurs, couples, entraîneurs et enseignants.</p>
+              <div class="subresources">
+                <strong>Dans cet univers</strong>
+                <span><em>Prévoir l’imprévu&nbsp;?</em> · Assistant du compétiteur inclus avec le livre</span>
+              </div>
+              <div class="spacer"></div>
+              <div class="btnrow">
+                <a class="btn" href="prevoir-imprevu.html">Découvrir le livre</a>
+              </div>
             </div>
           </article>
 
-          <article class="card">
-            <div class="number">03</div>
-            <h3>Développement du regard du juge</h3>
-            <p>Une collection de 36 volumes pour approfondir sa pratique, interroger ses habitudes de perception et développer une lecture plus lucide des situations de jugement.</p>
-            <p class="meta">36 volumes répartis sur trois années<br>Collection disponible en français</p>
-            <div class="spacer"></div>
-            <div class="btnrow">
-              <a class="btn" href="developpement-regard-juge.html">Découvrir la collection</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="number">04</div>
-            <h3>L’Assistant du juge</h3>
-            <p>Un outil spécialisé pour poser une question personnelle, éclaircir une notion, analyser une situation vécue ou prolonger les pistes proposées par le livre, les cahiers et les volumes.</p>
-            <p><strong>Multilingue, il répond dans la langue de la question.</strong> Un lecteur peut ainsi consulter les publications françaises ou anglaises et poursuivre l’échange dans la langue qui lui est la plus familière.</p>
-            <p class="meta">Il ne remplace ni les règlements, ni les cadres institutionnels, ni l’appréciation personnelle.</p>
-            <div class="spacer"></div>
-            <div class="btnrow">
-              <a class="btn" href="assistant-du-juge.html">Découvrir l’Assistant</a>
-              <a class="btn secondary" href="exemple-reponse-assistant.html">Voir un exemple</a>
+          <article class="universe feedback">
+            <div class="accent"></div>
+            <div class="universe-inner">
+              <div class="cover-wrap">
+                <img src="assets/covers/le-feedback-en-danse.png" alt="Couverture du livre Le Feedback en danse" />
+              </div>
+              <h3>Feedback et communication</h3>
+              <p class="promise">Une phrase peut faire progresser. La même, dite autrement ou au mauvais moment, peut fermer l’écoute.</p>
+              <p>Des repères pour choisir quoi dire, quand le dire et comment le dire, avec des exemples, exercices, cas corrigés et fiches directement utilisables.</p>
+              <p class="audience">Pour entraîneurs, enseignants, danseurs, couples, juges et formateurs.</p>
+              <div class="subresources">
+                <strong>Dans cet univers</strong>
+                <span><em>Le Feedback en danse</em> · Exercices, cas corrigés et mise en pratique</span>
+              </div>
+              <div class="spacer"></div>
+              <div class="btnrow">
+                <a class="btn" href="feedback-danse.html">Découvrir le livre</a>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
-      <section aria-labelledby="coherence-title">
-        <h2 id="coherence-title">Un ensemble cohérent, sans modèle imposé</h2>
-        <p class="section-intro">
-          Ces publications ne constituent ni un règlement, ni un référentiel fédéral, ni une méthode unique de jugement. Elles proposent des repères pour mieux comprendre ce qui se joue réellement lorsqu’une performance est observée, comparée et évaluée.
-        </p>
-
-        <div class="explain">
+      <section aria-labelledby="english-title">
+        <div class="english">
           <div>
-            <strong>Comprendre les mécanismes</strong>
-            <p>Attention limitée, perception sélective, fatigue, émotions, expérience, préférences, biais et influence du contexte.</p>
+            <h2 id="english-title">For international readers</h2>
+            <p>Selected titles and resources are also available in English.</p>
           </div>
-          <div>
-            <strong>Relier les notions au terrain</strong>
-            <p>Situations concrètes, regards divergents, décisions sous contrainte, relations avec les danseurs, les coachs et le public.</p>
-          </div>
-          <div>
-            <strong>Développer sa lucidité</strong>
-            <p>Identifier ses propres repères, distinguer observation et interprétation, expliciter ses choix et accueillir le doute utile.</p>
-          </div>
-          <div>
-            <strong>Respecter la diversité des pratiques</strong>
-            <p>Les outils proposés s’adaptent aux disciplines, aux formats, aux niveaux et aux cadres institutionnels existants.</p>
+          <div class="btnrow">
+            <a class="btn secondary" href="index-en.html">English editions</a>
           </div>
         </div>
       </section>
 
       <section aria-labelledby="contact-title">
         <h2 id="contact-title">Éditions Perspectives</h2>
-        <p>Des ouvrages consacrés aux mécanismes humains du jugement, de la perception et de la décision.</p>
+        <p>Des ouvrages et des outils pour comprendre, progresser et transmettre autrement dans la danse.</p>
         <p class="small">Contact : <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
       </section>
     </main>
 
     <footer>
       <span>© Éditions Perspectives — Marc Delacour</span>
-      <span>Usage des publications selon les conditions précisées lors de l’achat.</span>
-    </footer>
+      <span>editions-perspectives.fr</span>
+    
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales-en.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv-en.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite-en.html">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation-en.html">Withdrawal</a>
+  </span>
+</div>
+</footer>
   </div>
+  <script src="assets/cart.js" defer></script>
 </body>
 </html>

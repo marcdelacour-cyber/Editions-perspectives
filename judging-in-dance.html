@@ -1,485 +1,102 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Judging in Dance — The Book | Éditions Perspectives</title>
-  <meta name="description" content="Judging in Dance by Marc Delacour: understanding the attentional, perceptual, cognitive, emotional and social mechanisms involved in judging." />
-  <style>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Judging in Dance — Éditions Perspectives</title>
+<meta name="description" content="Judging in Dance by Marc Delacour: understand what happens when we observe, compare and decide. Printed book with the multilingual Judging Assistant included." />
+<style>
     :root{
       --text:#1c1c1c;
       --muted:#5a5a5a;
       --line:#e5e5e5;
       --bg:#ffffff;
       --card:#fafafa;
-      --soft:#f4f4f2;
+      --soft:#fbf0e8;
       --btn:#111111;
       --btnText:#ffffff;
+      --judge:#c95d08;
+      --judge-dark:#7c3905;
     }
-
     *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.65;
-    }
-
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65}
     a{color:inherit}
-
-    .wrap{
-      max-width:1040px;
-      margin:0 auto;
-      padding:24px 20px 72px;
-    }
-
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      padding:4px 0 22px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .brand{
-      font-weight:700;
-      letter-spacing:.02em;
-      text-decoration:none;
-    }
-
-    .lang{
-      font-size:.95rem;
-      color:var(--muted);
-      white-space:nowrap;
-    }
-
-    .lang a{
-      text-decoration:none;
-      border-bottom:1px solid transparent;
-    }
-
-    .lang a:hover{border-bottom-color:currentColor}
-
-    .back{
-      margin-top:22px;
-      font-size:.95rem;
-      color:var(--muted);
-    }
-
-    .back a{text-decoration:none}
-    .back a:hover{text-decoration:underline}
-
-    header{
-      padding:38px 0 30px;
-      max-width:860px;
-    }
-
-    .eyebrow{
-      margin:0 0 10px;
-      color:var(--muted);
-      font-size:.95rem;
-      font-weight:650;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    h1{
-      font-size:clamp(2.35rem,6vw,4.25rem);
-      line-height:1.05;
-      margin:0 0 16px;
-      letter-spacing:-.035em;
-    }
-
-    .subtitle{
-      font-size:clamp(1.18rem,2.4vw,1.5rem);
-      line-height:1.4;
-      color:var(--muted);
-      margin:0 0 20px;
-      max-width:780px;
-    }
-
-    .lead{
-      font-size:1.08rem;
-      max-width:800px;
-      margin:0;
-    }
-
-    .key{
-      margin:0 0 38px;
-      padding:18px 20px;
-      border-left:4px solid var(--text);
-      background:var(--soft);
-      font-size:1.08rem;
-    }
-
-    section{margin-top:46px}
-
-    h2{
-      font-size:1.65rem;
-      line-height:1.25;
-      margin:0 0 10px;
-    }
-
-    h3{
-      font-size:1.22rem;
-      line-height:1.3;
-      margin:0 0 8px;
-    }
-
-    p{margin:0 0 12px}
-
-    .section-intro{
-      color:var(--muted);
-      max-width:800px;
-      margin-bottom:22px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-    }
-
-    @media (min-width:780px){
-      .grid.two{grid-template-columns:1fr 1fr}
-      .grid.three{grid-template-columns:repeat(3,1fr)}
-    }
-
-    .card{
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:16px;
-      padding:22px;
-    }
-
-    .card p:last-child{margin-bottom:0}
-
-    .quote{
-      font-size:1.05rem;
-      line-height:1.6;
-      margin-bottom:16px;
-    }
-
-    .person{
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    ul{
-      margin:0;
-      padding-left:21px;
-    }
-
-    li{margin:7px 0}
-
-    .assistant{
-      padding:24px;
-      background:var(--soft);
-      border-radius:16px;
-    }
-
-    .assistant strong{font-weight:750}
-
-    .offers{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-    }
-
-    @media (min-width:780px){
-      .offers{grid-template-columns:1fr 1fr}
-    }
-
-    .offer{
-      display:flex;
-      flex-direction:column;
-      min-height:255px;
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:16px;
-      padding:24px;
-    }
-
-    .price{
-      font-weight:760;
-      font-size:1.25rem;
-      margin:0 0 12px;
-    }
-
-    .offer .spacer{flex:1}
-
-    .small{
-      color:var(--muted);
-      font-size:.94rem;
-    }
-
-    .btnrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:18px;
-    }
-
-    a.btn{
-      display:inline-block;
-      background:var(--btn);
-      color:var(--btnText);
-      text-decoration:none;
-      padding:11px 14px;
-      border-radius:10px;
-      font-weight:680;
-    }
-
-    a.btn.secondary{background:#333333}
-
-    .practical{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-      padding:22px;
-      border:1px solid var(--line);
-      border-radius:16px;
-    }
-
-    @media (min-width:780px){
-      .practical{grid-template-columns:1fr 1fr}
-    }
-
-    footer{
-      margin-top:38px;
-      padding-top:22px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:.92rem;
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-  </style>
+    .wrap{max-width:1060px;margin:0 auto;padding:24px 20px 72px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:4px 0 22px;border-bottom:1px solid var(--line)}
+    .brand{font-weight:750;letter-spacing:.02em;text-decoration:none}
+    .lang{font-size:.95rem;color:var(--muted);white-space:nowrap}
+    .lang a{text-decoration:none;border-bottom:1px solid transparent}.lang a:hover{border-bottom-color:currentColor}
+    .back{margin-top:22px;font-size:.95rem;color:var(--muted)}.back a{text-decoration:none}.back a:hover{text-decoration:underline}
+    .hero{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;padding:42px 0 34px}
+    @media(min-width:820px){.hero{grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);gap:54px}}
+    .eyebrow{margin:0 0 10px;color:var(--judge-dark);font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.03;margin:0 0 12px;letter-spacing:-.04em}
+    .subtitle{font-size:clamp(1.14rem,2.4vw,1.45rem);line-height:1.4;color:var(--muted);margin:0 0 22px;max-width:720px}
+    .signature{font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.35;font-weight:780;max-width:750px;margin:0}
+    .coverbox{text-align:center}.coverbox img{width:min(100%,270px);height:auto;aspect-ratio:148/210;object-fit:cover;border:1px solid #d5d5d5;box-shadow:0 16px 38px rgba(0,0,0,.16)}
+    .coverbox .price{margin-top:13px;font-weight:800;font-size:1.08rem}
+    .key{margin:0 0 42px;padding:20px 22px;border-left:5px solid var(--judge);background:var(--soft);font-size:1.12rem}
+    section{margin-top:48px}h2{font-size:1.72rem;line-height:1.25;margin:0 0 10px}h3{font-size:1.22rem;line-height:1.3;margin:0 0 8px}p{margin:0 0 12px}
+    .section-intro{color:var(--muted);max-width:830px;margin-bottom:22px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:760px){.grid.two{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:21px}.card p:last-child{margin-bottom:0}.card.accent{border-top:5px solid var(--judge)}
+    .situations{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:720px){.situations{grid-template-columns:repeat(2,1fr)}}
+    .situation{padding:17px 18px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-weight:670}
+    .axes{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:760px){.axes{grid-template-columns:1fr 1fr}}
+    .axis{padding:19px 20px;border:1px solid var(--line);border-radius:15px;background:#fff}.axis strong{display:block;margin-bottom:3px}.axis span{color:#3b3b3b}
+    .principle{padding:24px;border-radius:16px;background:var(--soft);border:1px solid #efd3bf}.principle blockquote{margin:16px 0 0;padding-left:18px;border-left:3px solid var(--judge-dark);font-size:1.08rem;font-weight:680}
+    .quote{font-size:1.02rem;line-height:1.6}.person{color:var(--muted);font-size:.94rem}
+    .assistant{padding:26px;border-radius:18px;background:#171717;color:#fff}.assistant h2,.assistant h3{color:#fff}.assistant .section-intro{color:#d7d7d7}
+    .assistant-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}@media(min-width:760px){.assistant-grid{grid-template-columns:repeat(2,1fr)}}
+    .prompt{padding:17px 18px;border:1px solid #4b4b4b;border-radius:13px;background:#222;font-weight:650}
+    .example{margin-top:22px;padding:20px;background:#fff;color:var(--text);border-radius:14px}.example .q{font-weight:800;margin-bottom:12px}.assistant-note{color:#cfcfcf;font-size:.93rem;margin-top:14px}
+    .audiences{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:760px){.audiences{grid-template-columns:repeat(3,1fr)}}
+    .offers{display:grid;grid-template-columns:1fr;gap:18px}@media(min-width:780px){.offers{grid-template-columns:1fr 1fr}}
+    .offer{display:flex;flex-direction:column;min-height:285px;border:1px solid var(--line);background:var(--card);border-radius:16px;padding:24px}.offer .spacer{flex:1}.offer-price{font-size:1.8rem;font-weight:850;margin-bottom:6px}
+    .purchase-option{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.purchase-option h3{margin:0 0 6px;font-size:1.05rem}.purchase-option p{margin:0 0 10px}
+    stripe-buy-button{display:block;margin-top:10px}
+    .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}a.btn{display:inline-block;background:var(--btn);color:var(--btnText);text-decoration:none;padding:11px 15px;border-radius:10px;font-weight:750}a.btn.secondary{background:#3b3b3b}
+    .small{color:var(--muted);font-size:.93rem}
+    footer{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  </style><link rel="stylesheet" href="assets/cart.css" />
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
 </head>
-<body>
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="index-en.html">Éditions Perspectives</a>
-      <div class="lang"><a href="livre-jugement-danse.html" lang="fr">Français</a> &nbsp;|&nbsp; English</div>
-    </div>
-
-    <div class="back"><a href="index-en.html">← Back to all publications</a></div>
-
-    <header>
-      <p class="eyebrow">The book</p>
-      <h1>Judging in Dance</h1>
-      <p class="subtitle">What really happens when we observe, compare and decide.</p>
-      <p class="lead">
-        A book by Marc Delacour about the human mechanisms involved in dance judging:
-        attention, perception, emotions, fatigue, experience, preferences, cognitive biases
-        and the influence of context.
-      </p>
-    </header>
-
-    <div class="key">
-      <strong>Understanding judging does not mean imposing one way of judging. It means becoming more aware of what influences our perception and our decisions.</strong>
-    </div>
-
-    <main>
-      <section aria-labelledby="why-title">
-        <h2 id="why-title">Why this book?</h2>
-        <p class="section-intro">
-          Competent and fair-minded adjudicators may observe the same performance and reach different conclusions.
-          These differences do not always result from error or arbitrary decisions. They may also come from the normal
-          way human attention, perception and decision-making work.
-        </p>
-
-        <div class="grid two">
-          <div class="card">
-            <h3>Making the mechanisms easier to understand</h3>
-            <p>
-              The book gives words to processes that are often experienced without being clearly identified:
-              what attracts attention, what is remembered, how comparisons are made and what guides a decision.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Moving beyond simple oppositions</h3>
-            <p>
-              It helps readers move beyond labels such as “good judge” or “bad judge”, “objective” or “subjective”,
-              in order to understand the real complexity of judging in a specific situation.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="contents-title">
-        <h2 id="contents-title">What you will find in the book</h2>
-        <div class="grid two">
-          <div class="card">
-            <ul>
-              <li>The limits of attention and selective perception;</li>
-              <li>The role of emotions, fatigue and context;</li>
-              <li>Artistic sensitivity and personal preferences;</li>
-              <li>The cognitive biases most often involved in judging;</li>
-              <li>Intuitive and analytical thinking, and the role of expertise.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <ul>
-              <li>The adjudicator’s inner dialogue and personal routines;</li>
-              <li>Group influence and the role of the panel;</li>
-              <li>How dancers, coaches and audiences perceive judging;</li>
-              <li>Reputation, appearance and the halo effect;</li>
-              <li>Ways to develop greater awareness and improve personal practice.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="audience-title">
-        <h2 id="audience-title">Who is the book for?</h2>
-        <p class="section-intro">
-          The book can be read from several points of view, depending on the reader’s role in dance.
-        </p>
-
-        <div class="grid three">
-          <div class="card">
-            <h3>Adjudicators and panel chairs</h3>
-            <p>
-              To question their own perception, explain their decisions more clearly
-              and recognise the conditions in which judging takes place.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Dancers, couples and coaches</h3>
-            <p>
-              To understand more clearly how a performance may be perceived, compared
-              and interpreted by different adjudicators.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Teachers, organisers and audiences</h3>
-            <p>
-              To move beyond a purely emotional or suspicious interpretation of results
-              and better understand the role of the panel.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="views-title">
-        <h2 id="views-title">Two complementary perspectives</h2>
-        <p class="section-intro">
-          The book combines a scientific perspective on the mechanisms of judging
-          with experience gained at the highest level of dance.
-        </p>
-
-        <div class="grid two">
-          <div class="card">
-            <p class="quote">
-              Patrick Lemaire highlights the richness, relevance and accessibility
-              of the psychological knowledge used to understand the activity of judging.
-            </p>
-            <p class="person">
-              <strong>Patrick Lemaire</strong><br>
-              Professor of Psychology<br>
-              Aix-Marseille University &amp; CNRS
-            </p>
-          </div>
-          <div class="card">
-            <p class="quote">
-              Steeve Gaudet explains that a better understanding of judging can help dancers
-              regain control over what they present, help coaches guide their work more effectively
-              and help adjudicators accept their responsibility with greater clarity.
-            </p>
-            <p class="person">
-              <strong>Steeve Gaudet</strong><br>
-              Professional 10-Dance World Champion and Show Dance World Champion<br>
-              15-time National Champion in France and Moldova — International Adjudicator
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="assistant-title">
-        <div class="assistant">
-          <h2 id="assistant-title">A book that continues through dialogue</h2>
-          <p>
-            A book cannot answer every personal situation faced by an adjudicator, dancer or coach.
-            The Judge’s Assistant can be used to ask a question, clarify a concept, examine a real situation
-            or continue a reflection based on the content of the book.
-          </p>
-          <p>
-            <strong>It is multilingual and replies in the language of the question.</strong>
-            It does not replace regulations, institutional frameworks or personal judgement.
-          </p>
-          <div class="btnrow">
-            <a class="btn" href="assistant-du-juge-en.html">Discover the Judge’s Assistant</a>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="formats-title">
-        <h2 id="formats-title">Available formats</h2>
-        <p class="section-intro">
-          The English edition is available in print and PDF. Purchase links and delivery details
-          will be added before publication of this page.
-        </p>
-
-        <div class="offers">
-          <article class="offer">
-            <div class="price">Printed book</div>
-            <p>English-language printed edition.</p>
-            <p>Shipping conditions will be specified according to the destination country.</p>
-            <div class="spacer"></div>
-            <div class="btnrow">
-              <a class="btn" href="mailto:contact@editions-perspectives.fr?subject=Printed%20English%20edition%20of%20Judging%20in%20Dance">Contact us</a>
-            </div>
-          </article>
-
-          <article class="offer">
-            <div class="price">PDF e-book</div>
-            <p>English-language digital edition.</p>
-            <p>For reading on a computer, tablet or PDF-compatible e-reader.</p>
-            <p>For personal use only.</p>
-            <div class="spacer"></div>
-            <div class="btnrow">
-              <a class="btn secondary" href="mailto:contact@editions-perspectives.fr?subject=English%20PDF%20edition%20of%20Judging%20in%20Dance">Contact us</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section aria-labelledby="practical-title">
-        <h2 id="practical-title">Practical information</h2>
-        <div class="practical">
-          <div>
-            <strong>Publisher</strong>
-            <p>Éditions Perspectives — Marc Delacour</p>
-          </div>
-          <div>
-            <strong>ISBN</strong>
-            <p>An ISBN has been assigned to each format.</p>
-          </div>
-          <div>
-            <strong>Nature of the publication</strong>
-            <p>
-              An independent editorial publication, complementary to existing regulations
-              and institutional frameworks.
-            </p>
-          </div>
-          <div>
-            <strong>Contact</strong>
-            <p><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>© Éditions Perspectives — Marc Delacour</span>
-      <span><a href="index-en.html">All publications</a></span>
-    </footer>
-  </div>
-</body>
-</html>
+<body><div class="wrap">
+<div class="topbar"><a class="brand" href="index-en.html">Éditions Perspectives</a><div class="top-actions"><div class="lang"><a href="livre-jugement-danse.html" lang="fr">Français</a> &nbsp;|&nbsp; English</div><button type="button" class="ep-cart-open">Cart <span class="ep-cart-count" data-cart-count>0</span></button></div></div>
+<div class="back"><a href="index-en.html">← Back to the English editions</a></div>
+<header class="hero"><div><p class="eyebrow">Judging and understanding judgement</p><h1>Judging in Dance</h1><p class="subtitle">Understanding what really happens when we observe, compare and decide</p><p class="signature">What if judging better began with understanding what our attention selects… and what it leaves out?</p></div>
+<div class="coverbox"><img src="assets/covers/judging-in-dance.png" alt="Cover of Judging in Dance" /><div class="price">Printed book — €24</div><div class="btnrow" style="justify-content:center"><button type="button" class="ep-add-button" data-cart-add="judging_en">Add to cart</button></div></div></header>
+<div class="key"><strong>Understanding judgement is not about imposing one way of judging. It is about recognising more clearly what can influence our attention and our decisions.</strong></div>
+<main>
+<section aria-labelledby="recognize-title"><h2 id="recognize-title">You may already have asked yourself one of these questions</h2><p class="section-intro">Two competent adjudicators can watch the same performance without reading it in exactly the same way. The book begins with that reality and explores what happens between what we see and the decision we make.</p><div class="situations">
+<div class="situation">Why can two fair-minded adjudicators rank the same couple differently?</div><div class="situation">Did I watch every couple with the same degree of availability?</div><div class="situation">Did a highly visible couple occupy more of my attention than it should have?</div><div class="situation">Do I remember precise observations… or mainly the impression the couple created?</div><div class="situation">Did fatigue, running order or context alter the way I looked?</div><div class="situation">How can I distinguish what attracts me spontaneously from what genuinely supports my judgement?</div></div></section>
+<section aria-labelledby="why-title"><h2 id="why-title">Judgement is not a simple photograph of the performance</h2><p class="section-intro">Observing, comparing and deciding involve human mechanisms. Understanding them does not diminish expertise; it helps us see more clearly what expertise relies on and where our own points of vigilance may lie.</p><div class="grid two"><div class="card accent"><h3>Understand what captures attention</h3><p>Selective attention, salience, immediate memory, experience, preferences, emotion and fatigue can influence what we notice, what we retain and what we compare.</p></div><div class="card accent"><h3>Make the decision process more explicit</h3><p>The aim is not to remove intuition, but to distinguish more clearly between impression, criteria, comparison and decision so that we can revisit our own practice with greater awareness.</p></div></div></section>
+<section aria-labelledby="contents-title"><h2 id="contents-title">What you will explore</h2><p class="section-intro">The book brings together cognitive psychology, field situations and judging experience to put words to mechanisms that are often experienced without being clearly identified.</p><div class="axes"><div class="axis"><strong>Attention and perception</strong><span>What attracts the eye, what remains less visible, and how selective observation shapes what becomes available for judgement.</span></div><div class="axis"><strong>Memory and comparison</strong><span>What we retain from a performance and how impressions are formed, recalled and compared.</span></div><div class="axis"><strong>Emotion, fatigue and context</strong><span>Their possible influence on the adjudicator’s availability, attention and decision-making.</span></div><div class="axis"><strong>Preferences and cognitive biases</strong><span>Reputation, appearance, halo effects, salience and other mechanisms that may orient attention.</span></div><div class="axis"><strong>Intuition, analysis and expertise</strong><span>The role of experience, fast reasoning and more analytical forms of control.</span></div><div class="axis"><strong>The panel and the perception of results</strong><span>How panels work and how dancers, coaches and audiences interpret differences between judgements.</span></div></div></section>
+<section aria-labelledby="principle-title"><div class="principle"><h2 id="principle-title">No perfect neutrality — but greater awareness</h2><p>The book does not try to turn adjudicators into machines or remove every difference in appreciation. It invites readers to identify possible influences on attention, distinguish observed information from the impression produced, and build their own points of vigilance.</p><blockquote>Understanding more clearly what influences our attention helps us take greater responsibility for the decisions we make.</blockquote></div></section>
+<section aria-labelledby="views-title"><h2 id="views-title">Two complementary perspectives</h2><p class="section-intro">The book is informed both by a scientific perspective on the mechanisms of judgement and by experience at the highest level of dance.</p><div class="grid two"><div class="card"><p class="quote">Patrick Lemaire highlights the breadth, relevance and accessibility of the psychological knowledge used to understand the activity of judging.</p><p class="person"><strong>Patrick Lemaire</strong><br>Professor of Psychology<br>Aix-Marseille University &amp; CNRS</p></div><div class="card"><p class="quote">Steeve Gaudet points out that a better understanding of judging can help dancers regain control over what they present, help coaches guide their work more effectively and help adjudicators accept their responsibility with greater clarity.</p><p class="person"><strong>Steeve Gaudet</strong><br>Professional 10-Dance World Champion and Show Dance World Champion<br>15-time National Champion in France and Moldova — International Adjudicator</p></div></div></section>
+<section aria-labelledby="assistant-title"><div class="assistant"><h2 id="assistant-title">The book continues with you: Judging Assistant included</h2><p class="section-intro">Once the book has been read, some questions only arise from your own experience. The Judging Assistant lets you explore a situation you have experienced, clarify a concept or continue a line of reflection grounded in the book.</p><div class="assistant-grid"><div class="prompt">“I think I may have been influenced by a very visible couple. How can I analyse what happened?”</div><div class="prompt">“Two adjudicators ranked this couple very differently. What might explain the difference without immediately assuming that one of them was wrong?”</div><div class="prompt">“After a competition, how can I revisit my judgement without convincing myself afterwards that I must have been right?”</div><div class="prompt">“I feel naturally drawn to certain styles of dancing. How can I make that a point of vigilance without pretending I have no preferences?”</div></div><div class="example"><div class="q">Deliberately shortened example</div><p><strong>Question:</strong> “I think I may have been influenced by a very visible couple. How can I avoid that at my next competition?”</p><p>The Assistant first distinguishes what attracted your attention from what actually supported your decision. It then asks you to step back: what did you really observe? Did you watch this couple for longer? Do you remember specific criteria, or mainly an overall impression?</p><p>The full example goes further: it explains a possible mechanism, helps separate “visible” from “better”, then suggests points of vigilance to adapt to your own way of judging.</p><div class="btnrow"><a class="btn" href="example-judge-assistant-response.html">See the full example</a><a class="btn secondary" href="#order">Get the book with the Assistant</a></div></div><p class="assistant-note">The Assistant is multilingual and replies in the language of the question. It does not replace regulations, institutional frameworks or the adjudicator’s personal judgement.</p></div></section>
+<section aria-labelledby="audience-title"><h2 id="audience-title">Who is this book for?</h2><div class="audiences"><div class="card"><h3>Adjudicators and panel chairs</h3><p>To question their own attention, explain their choices more clearly and recognise the constraints within which judgement is formed.</p></div><div class="card"><h3>Dancers, couples and coaches</h3><p>To understand more clearly how a performance may be perceived, compared and interpreted by different adjudicators.</p></div><div class="card"><h3>Teachers, trainers and audiences</h3><p>To move beyond a purely emotional or suspicious interpretation of results and better understand the role of the panel.</p></div></div></section>
+<section id="order" aria-labelledby="format-title"><h2 id="format-title">The book</h2><p class="section-intro">Add one or more books to your cart, then pay for the whole order securely through Stripe.</p><div class="offer"><div class="offer-price">Printed book — €24</div><p>A5 format — Éditions Perspectives.</p><p><strong>Judging Assistant included with the book.</strong></p><p class="ep-purchase-note"><strong>Delivery in France:</strong> €3 for a book order below €35; €0.01 from €35 of book purchases.</p><p class="small">For readers outside France, the English editions are also distributed through Casa Musica.</p><div class="spacer"></div><div class="btnrow"><button type="button" class="ep-add-button" data-cart-add="judging_en">Add to cart</button><button type="button" class="ep-cart-open ep-add-button secondary">View cart</button></div></div></section>
+<section aria-labelledby="practical-title"><h2 id="practical-title">Practical information</h2><div class="grid two"><div class="card"><h3>Publisher</h3><p>Éditions Perspectives — Marc Delacour</p></div><div class="card"><h3>Print ISBN</h3><p>979-10-98289-30-9</p></div><div class="card"><h3>Legal deposit</h3><p>September 2026</p></div><div class="card"><h3>Contact</h3><p><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p></div></div></section>
+</main><footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="index-en.html">English editions</a></span>
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales-en.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv-en.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite-en.html">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation-en.html">Withdrawal</a>
+  </span>
+</div>
+</footer></div><script src="assets/cart.js" defer></script></body></html>

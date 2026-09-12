@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Your Competitor Assistant — Éditions Perspectives</title>
-  <meta name="description" content="Access to the Competitor Assistant included with When the Unexpected Takes the Floor.">
+  <title>Éditions Perspectives</title>
+  <meta name="description" content="">
   <style>
     :root{
       --bg:#f5f3ef;
@@ -14,11 +14,12 @@
       --muted:#666;
       --accent:#9a4d12;
       --line:#ded8cf;
+      --soft:#f0ece6;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:Arial,Helvetica,sans-serif;
       color:var(--text);
       background:var(--bg);
       line-height:1.6;
@@ -26,30 +27,23 @@
     header{
       max-width:980px;
       margin:0 auto;
-      padding:26px 22px 18px;
+      padding:24px 22px 18px;
       display:flex;
       justify-content:space-between;
       align-items:center;
+      gap:18px;
       border-bottom:1px solid var(--line);
     }
-    .brand{
-      font-weight:700;
-      letter-spacing:.2px;
-    }
-    .lang{
-      color:var(--muted);
-      font-size:14px;
-    }
-    main{
-      max-width:760px;
-      margin:48px auto 60px;
-      padding:0 22px;
-    }
+    .brand{font-weight:700;letter-spacing:.2px}
+    .langs{font-size:14px;color:var(--muted);white-space:nowrap}
+    .langs a{color:inherit;text-decoration:none}
+    .langs a.active{font-weight:700;color:var(--text)}
+    main{max-width:760px;margin:46px auto 60px;padding:0 22px}
     .card{
       background:var(--paper);
       border:1px solid var(--line);
       border-radius:14px;
-      padding:42px 42px 36px;
+      padding:40px 42px 36px;
       box-shadow:0 6px 18px rgba(0,0,0,.04);
     }
     .eyebrow{
@@ -60,22 +54,13 @@
       font-size:13px;
       margin-bottom:8px;
     }
-    h1{
-      font-size:36px;
-      line-height:1.15;
-      margin:0 0 18px;
-    }
-    h2{
-      font-size:20px;
-      margin:34px 0 12px;
-    }
+    h1{font-size:36px;line-height:1.15;margin:0 0 18px}
+    h2{font-size:20px;margin:30px 0 10px}
     p{margin:0 0 16px}
-    .book{
-      font-style:italic;
-    }
+    .book{font-style:italic}
     .button{
       display:inline-block;
-      margin:12px 0 10px;
+      margin:10px 0 8px;
       padding:14px 22px;
       border-radius:8px;
       background:#111;
@@ -83,90 +68,136 @@
       text-decoration:none;
       font-weight:700;
     }
-    .note{
-      margin-top:16px;
-      font-size:14px;
-      color:var(--muted);
+    .key{
+      margin:22px 0 0;
+      padding:16px 18px;
+      border-left:4px solid var(--accent);
+      background:var(--soft);
     }
-    .divider{
-      height:1px;
-      background:var(--line);
-      margin:34px 0 26px;
+    details{
+      margin-top:24px;
+      border-top:1px solid var(--line);
+      padding-top:22px;
     }
+    summary{cursor:pointer;font-weight:700}
+    .help{margin-top:14px;color:var(--muted);font-size:14px}
+    .help p{margin-bottom:10px}
     .catalogue{
       display:inline-block;
+      margin-top:20px;
       color:var(--accent);
       font-weight:700;
       text-decoration:none;
     }
     footer{
       max-width:760px;
-      margin:0 auto 40px;
+      margin:0 auto 38px;
       padding:0 22px;
       color:var(--muted);
       font-size:13px;
       text-align:center;
     }
     @media (max-width:620px){
-      header{padding:20px 18px 15px}
+      header{padding:18px 16px 14px}
       main{margin:26px auto 40px;padding:0 14px}
       .card{padding:28px 22px}
       h1{font-size:30px}
+      .button{display:block;text-align:center;width:100%}
     }
-  </style>
+</style>
+
+<style id="ep-legal-footer-style">
+  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
+  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+  .ep-legal-links a{color:inherit;text-decoration:none}
+  .ep-legal-links a:hover{text-decoration:underline}
+  .ep-legal-links > .ep-legal-fr{display:flex}
+  .ep-legal-links > .ep-legal-en{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
+  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
+</style>
 </head>
 <body>
   <header>
     <div class="brand">Éditions Perspectives</div>
-    <div class="lang">English</div>
+    <div class="langs">
+      <a id="lang-fr" href="?lang=fr">Français</a>
+      &nbsp;|&nbsp;
+      <a id="lang-en" href="?lang=en">English</a>
+    </div>
   </header>
 
   <main>
     <section class="card">
-      <div class="eyebrow">Included with your book</div>
-      <h1>Your Competitor Assistant</h1>
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 id="title"></h1>
+      <p id="p1"></p>
+      <p id="p2"></p>
 
-      <p>
-        Your copy of <span class="book">When the Unexpected Takes the Floor</span>
-        includes access to the <strong>Competitor Assistant</strong>.
+      <div class="key" id="key"></div>
+
+      <p style="margin-top:22px">
+        <a class="button" href="https://chatgpt.com/g/g-68966741654081919ac4422445aec678-assistant-du-competiteur-de-danse" target="_blank" rel="noopener noreferrer" id="accessButton"></a>
       </p>
 
-      <p>
-        It is designed to help you apply the ideas in the book to your own
-        competition situations: preparation, focus, stress, routines, recovery
-        after a mistake, communication with your partner, and other situations
-        you may encounter in competition.
-      </p>
+      <details>
+        <summary id="helpTitle"></summary>
+        <div class="help">
+          <p id="help1"></p>
+          <p id="help2"></p>
+          <p id="help3"></p>
+        </div>
+      </details>
 
-      <p>
-        <strong>The Assistant is multilingual and replies in the language used
-        to ask the question.</strong>
-      </p>
-
-      <a class="button"
-         href="https://chatgpt.com/g/g-68966741654081919ac4422445aec678-assistant-du-competiteur-de-danse"
-         target="_blank" rel="noopener">
-        Access the Competitor Assistant
-      </a>
-
-      <p class="note">
-        Access is included for readers of <span class="book">When the Unexpected Takes the Floor</span>.
-      </p>
-
-      <div class="divider"></div>
-
-      <h2>Discover Éditions Perspectives</h2>
-      <p>
-        Explore the other books published by Éditions Perspectives on judgement,
-        feedback, mental preparation and communication in dance.
-      </p>
-
-      <a class="catalogue" href="/?lang=en">Discover the books →</a>
+      <a class="catalogue" href="/" id="catalogue"></a>
     </section>
   </main>
 
-  <footer>
-    © 2026 Éditions Perspectives — Marc Delacour
-  </footer>
+  <footer>© 2026 Éditions Perspectives — Marc Delacour
+<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
+  <span class="ep-legal-fr">
+    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
+    <a href="retractation.html">Se rétracter</a>
+  </span>
+  <span class="ep-legal-en" lang="en">
+    <a href="mentions-legales-en.html">Legal notice</a><span aria-hidden="true">·</span>
+    <a href="cgv-en.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
+    <a href="politique-confidentialite-en.html">Privacy</a><span aria-hidden="true">·</span>
+    <a href="retractation-en.html">Withdrawal</a>
+  </span>
+</div>
+</footer>
+
+  <script>
+    const texts = {"fr": {"title": "Votre Assistant du compétiteur — Éditions Perspectives", "desc": "Accès à l’Assistant du compétiteur associé à Prévoir l’imprévu ?", "eyebrow": "Inclus avec votre livre", "h1": "Votre Assistant du compétiteur", "p1": "Votre exemplaire de <span class='book'>Prévoir l’imprévu ?</span> comprend l’accès à l’<strong>Assistant du compétiteur</strong>.", "p2": "Il est conçu pour vous aider à appliquer les idées du livre à vos propres situations de compétition : préparation, attention, stress, routines, récupération après une erreur, communication avec le partenaire et adaptation à l’imprévu.", "key": "<strong>L’Assistant est multilingue et répond dans la langue utilisée pour poser la question.</strong>", "button": "Accéder à l’Assistant du compétiteur", "helpTitle": "Difficulté sur téléphone ?", "help1": "Vous devez être connecté à un compte ChatGPT pour commencer la conversation.", "help2": "Si un appui normal ouvre ChatGPT sans charger directement l’Assistant, faites un appui long sur le bouton ci-dessus puis choisissez l’ouverture dans votre navigateur (Chrome, Safari, etc.).", "help3": "Si nécessaire, ouvrez le lien dans un nouvel onglet ou en navigation privée, puis connectez-vous à ChatGPT.", "catalogue": "← Retour aux livres"}, "en": {"title": "Your Competitor Assistant — Éditions Perspectives", "desc": "Access to the Competitor Assistant associated with When the Unexpected Takes the Floor.", "eyebrow": "Included with your book", "h1": "Your Competitor Assistant", "p1": "Your copy of <span class='book'>When the Unexpected Takes the Floor</span> includes access to the <strong>Competitor Assistant</strong>.", "p2": "It is designed to help you apply the ideas in the book to your own competition situations: preparation, focus, stress, routines, recovery after a mistake, communication with your partner and adapting to the unexpected.", "key": "<strong>The Assistant is multilingual and replies in the language used to ask the question.</strong>", "button": "Access the Competitor Assistant", "helpTitle": "Having trouble on your phone?", "help1": "You need to be signed in to a ChatGPT account to start the conversation.", "help2": "If a normal tap opens ChatGPT without loading the Assistant, press and hold the button above, then choose to open it in your browser (Chrome, Safari, etc.).", "help3": "If necessary, open the link in a new tab or private browsing window, then sign in to ChatGPT.", "catalogue": "← Back to the books"}};
+    const params = new URLSearchParams(window.location.search);
+    let lang = params.get("lang");
+    if (lang !== "fr" && lang !== "en") {
+      lang = (navigator.language || "").toLowerCase().startsWith("en") ? "en" : "fr";
+    }
+    const t = texts[lang];
+
+    document.documentElement.lang = lang;
+    document.title = t.title;
+    document.querySelector('meta[name="description"]').setAttribute("content", t.desc);
+
+    document.getElementById("eyebrow").textContent = t.eyebrow;
+    document.getElementById("title").textContent = t.h1;
+    document.getElementById("p1").innerHTML = t.p1;
+    document.getElementById("p2").innerHTML = t.p2;
+    document.getElementById("key").innerHTML = t.key;
+    document.getElementById("accessButton").textContent = t.button;
+    document.getElementById("helpTitle").textContent = t.helpTitle;
+    document.getElementById("help1").textContent = t.help1;
+    document.getElementById("help2").textContent = t.help2;
+    document.getElementById("help3").textContent = t.help3;
+    document.getElementById("catalogue").textContent = t.catalogue;
+    document.getElementById("catalogue").href = lang === "en" ? "/index-en.html" : "/";
+
+    document.getElementById("lang-fr").classList.toggle("active", lang === "fr");
+    document.getElementById("lang-en").classList.toggle("active", lang === "en");
+  </script>
 </body>
 </html>
