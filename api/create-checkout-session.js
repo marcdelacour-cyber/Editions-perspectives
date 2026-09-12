@@ -3,42 +3,49 @@
  *
  * The browser sends only internal product references and quantities.
  * Stripe Price IDs, prices and delivery rules remain server-side.
- * This version uses the five Stripe TEST catalogue prices created on 2026-09-06.
+ * This version keeps Stripe TEST and LIVE catalogue prices side by side.
+ * The server selects the matching Price ID from STRIPE_SECRET_KEY, so Preview
+ * continues to use TEST while Production can use LIVE without changing the site code.
  */
 
 const CATALOGUE = Object.freeze({
   feedback: {
     name: "Le Feedback en danse",
     unitAmount: 1800,
-    priceId: "price_1UCkEGBLF5IwE45QVtpCbnpI",
+    testPriceId: "price_1UCkEGBLF5IwE45QVtpCbnpI",
+    livePriceId: "price_1UErWEBLF5IwE45QjnUoQxpG",
     lang: "fr",
     assistant: null,
   },
   jugement: {
     name: "Le jugement en danse",
     unitAmount: 2400,
-    priceId: "price_1UCjzvBLF5IwE45Q5BQnFxkU",
+    testPriceId: "price_1UCjzvBLF5IwE45Q5BQnFxkU",
+    livePriceId: "price_1UErUOBLF5IwE45QtOC6vRbq",
     lang: "fr",
     assistant: "judge",
   },
   imprevu: {
     name: "Prévoir l’imprévu ?",
     unitAmount: 3000,
-    priceId: "price_1UCk31BLF5IwE45QYxID469w",
+    testPriceId: "price_1UCk31BLF5IwE45QYxID469w",
+    livePriceId: "price_1UErVMBLF5IwE45QW1sZB6jn",
     lang: "fr",
     assistant: "competitor",
   },
   judging_en: {
     name: "Judging in Dance",
     unitAmount: 2400,
-    priceId: "price_1UCkHJBLF5IwE45Qb0cDXtTZ",
+    testPriceId: "price_1UCkHJBLF5IwE45Qb0cDXtTZ",
+    livePriceId: "price_1UErX8BLF5IwE45QyS59Ni5j",
     lang: "en",
     assistant: "judge",
   },
   unexpected_en: {
     name: "When the Unexpected Takes the Floor",
     unitAmount: 3000,
-    priceId: "price_1UCkHzBLF5IwE45QMKcA8kI6",
+    testPriceId: "price_1UCkHzBLF5IwE45QMKcA8kI6",
+    livePriceId: "price_1UErXvBLF5IwE45Qok2pZtos",
     lang: "en",
     assistant: "competitor",
   },
@@ -93,10 +100,21 @@ function normalizeCart(items) {
   return [...quantities.entries()].map(([id, quantity]) => ({ id, quantity }));
 }
 
+function stripeMode() {
+  const key = String(process.env.STRIPE_SECRET_KEY || "");
+  if (/^(sk|rk)_live_/.test(key)) return "live";
+  if (/^(sk|rk)_test_/.test(key)) return "test";
+  throw new Error("Configuration Stripe invalide / Invalid Stripe configuration.");
+}
+
+function resolveStripePriceId(product) {
+  return stripeMode() === "live" ? product.livePriceId : product.testPriceId;
+}
+
 function addStripeLineItem(params, index, product, quantity) {
-  // Use the Stripe catalogue Price ID so Checkout gets the Stripe product name,
-  // description and image rather than rebuilding a temporary product via price_data.
-  params.append(`line_items[${index}][price]`, product.priceId);
+  // Use the Stripe catalogue Price ID matching the current Stripe secret key.
+  // This keeps Preview on TEST and Production on LIVE with the same codebase.
+  params.append(`line_items[${index}][price]`, resolveStripePriceId(product));
   params.append(`line_items[${index}][quantity]`, String(quantity));
 }
 
