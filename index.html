@@ -332,6 +332,28 @@
     .feature-card h2{margin-bottom:10px}
     .feature-card p{max-width:720px}
 
+    /* Mise en avant des prolongements : assistants + collection */
+    .prolongements-highlight{
+      background:linear-gradient(180deg,#fbfaf6 0%,#ffffff 100%);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:28px;
+    }
+
+    .prolongements-highlight > h2{margin-bottom:8px}
+    .prolongements-highlight .section-intro{margin-bottom:20px}
+
+    .feature-card.assistants{background:#fffaf5}
+    .feature-card.collection{background:#f7f9fe}
+
+    .feature-card .btn.assistant-judge{background:var(--judge);color:#fff}
+    .feature-card .btn.assistant-mental{background:var(--mental);color:#1c1c1c}
+    .feature-card .btn.collection-link{background:var(--feedback);color:#fff}
+
+    .feature-card .btn.assistant-judge:hover,
+    .feature-card .btn.assistant-mental:hover,
+    .feature-card .btn.collection-link:hover{filter:brightness(.94)}
+
     .assistant-pills{
       display:flex;
       flex-wrap:wrap;
@@ -364,6 +386,7 @@
       section{margin-top:34px}
       .section-intro{margin-bottom:18px}
       .feature-card{padding:18px}
+      .prolongements-highlight{padding:18px}
       .cover-wrap{min-height:0;margin-bottom:18px}
       .cover-wrap img{width:min(72vw,190px)}
       .universe-inner{padding:18px}
@@ -427,7 +450,7 @@
     </div>
 
     <main>
-      <section aria-labelledby="prolongements-title">
+      <section class="prolongements-highlight" aria-labelledby="prolongements-title">
         <h2 id="prolongements-title">Des livres qui continuent après la dernière page</h2>
         <p class="section-intro">Deux prolongements sont mis en avant dès l’accueil&nbsp;: les assistants personnels inclus avec certains ouvrages et la collection progressive destinée aux juges.</p>
         <div class="feature-grid">
@@ -440,8 +463,8 @@
               <span>Assistant du compétiteur</span>
             </div>
             <div class="btnrow">
-              <a class="btn" href="livre-jugement-danse.html">Découvrir l’Assistant du juge</a>
-              <a class="btn secondary" href="prevoir-imprevu.html">Découvrir l’Assistant du compétiteur</a>
+              <a class="btn assistant-judge" href="livre-jugement-danse.html">Découvrir l’Assistant du juge</a>
+              <a class="btn assistant-mental" href="prevoir-imprevu.html">Découvrir l’Assistant du compétiteur</a>
             </div>
           </article>
 
@@ -450,7 +473,7 @@
             <h2>Développer le regard du juge</h2>
             <p>36 rendez-vous progressifs, complétés par des hors-séries, pour continuer à entraîner son regard et approfondir sa pratique dans la durée.</p>
             <div class="btnrow">
-              <a class="btn" href="developpement-regard-juge.html">Découvrir la collection</a>
+              <a class="btn collection-link" href="developpement-regard-juge.html">Découvrir la collection</a>
             </div>
           </article>
         </div>
