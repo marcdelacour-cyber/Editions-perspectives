@@ -268,6 +268,100 @@
 
     .small{color:var(--muted);font-size:.94rem}
 
+
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+
+    .hero-actions a{
+      text-decoration:none;
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 13px;
+      border-radius:10px;
+      font-weight:750;
+    }
+
+    .hero-actions a:hover{background:var(--soft)}
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+
+    @media (min-width:760px){
+      .feature-grid{grid-template-columns:1.1fr .9fr}
+    }
+
+    .feature-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:var(--card);
+      padding:24px;
+    }
+
+    .feature-card.assistants{border-top:7px solid var(--judge)}
+    .feature-card.collection{border-top:7px solid var(--feedback)}
+
+    .feature-kicker{
+      display:inline-block;
+      margin-bottom:8px;
+      color:var(--muted);
+      font-size:.86rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+    }
+
+    .feature-card h2{margin-bottom:10px}
+    .feature-card p{max-width:720px}
+
+    .assistant-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .assistant-pills span{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:var(--soft);
+      font-size:.92rem;
+      font-weight:700;
+    }
+
+    @media (max-width:759px){
+      .wrap{padding:16px 14px 48px}
+      .topbar{flex-direction:column;align-items:flex-start;padding-bottom:16px}
+      .top-actions{width:100%;justify-content:flex-start;gap:8px}
+      .lang{width:100%}
+      .access-link{white-space:normal}
+      header{padding:32px 0 24px}
+      h1{font-size:clamp(2rem,10vw,3rem)}
+      .subtitle{font-size:1.1rem;line-height:1.4}
+      .lead{font-size:1rem}
+      .hero-actions{display:grid;grid-template-columns:1fr;margin-top:18px}
+      .hero-actions a{text-align:center}
+      .key{margin-bottom:28px;padding:16px}
+      section{margin-top:34px}
+      .section-intro{margin-bottom:18px}
+      .feature-card{padding:18px}
+      .cover-wrap{min-height:0;margin-bottom:18px}
+      .cover-wrap img{width:min(72vw,190px)}
+      .universe-inner{padding:18px}
+      .btnrow{display:grid;grid-template-columns:1fr;width:100%}
+      a.btn{width:100%;text-align:center}
+      .english{padding:18px}
+    }
+
     footer{
       margin-top:42px;
       padding-top:22px;
@@ -305,19 +399,53 @@
     </div>
 
     <header>
-      <p class="eyebrow">Danse · jugement · performance · communication</p>
-      <h1>Des livres pour des situations réelles.</h1>
-      <p class="subtitle">Des repères concrets pour mieux comprendre ce qui se joue, trouver des réponses adaptées et continuer à progresser.</p>
+      <p class="eyebrow">Éditions Perspectives</p>
+      <h1>Comprendre ce qui influence nos décisions.</h1>
+      <p class="subtitle"><strong>Mieux juger, mieux se préparer, mieux communiquer.</strong></p>
       <p class="lead">
-        Éditions Perspectives publie des ouvrages nés du terrain de la danse, à la croisée du jugement, de la préparation mentale, du feedback et de la transmission.
+        Des ouvrages nés du terrain de la danse, nourris par la psychologie cognitive, la préparation mentale, le feedback et l’expérience des situations réelles. Leur vocation&nbsp;: rendre les mécanismes plus lisibles et proposer des repères directement utilisables.
       </p>
+      <div class="hero-actions" aria-label="Choisir un univers">
+        <a href="#juger">Juger et comprendre</a>
+        <a href="#preparer">Se préparer à la compétition</a>
+        <a href="#communiquer">Communiquer et faire progresser</a>
+      </div>
     </header>
 
     <div class="key">
-      <strong>Choisissez l’univers qui vous concerne. Chaque ouvrage dispose ensuite de sa propre page pour découvrir son contenu, ses outils et ses prolongements.</strong>
+      <strong>Choisissez d’abord votre besoin. Vous pourrez ensuite approfondir seulement ce qui vous concerne.</strong>
     </div>
 
     <main>
+      <section aria-labelledby="prolongements-title">
+        <h2 id="prolongements-title">Des livres qui continuent après la dernière page</h2>
+        <p class="section-intro">Deux prolongements sont mis en avant dès l’accueil&nbsp;: les assistants personnels inclus avec certains ouvrages et la collection progressive destinée aux juges.</p>
+        <div class="feature-grid">
+          <article class="feature-card assistants">
+            <span class="feature-kicker">Inclus avec certains livres</span>
+            <h2>Posez vos propres questions à un assistant</h2>
+            <p>L’Assistant du juge et l’Assistant du compétiteur permettent de prolonger la lecture avec des questions liées à votre situation, dans le cadre des ouvrages auxquels ils sont associés.</p>
+            <div class="assistant-pills" aria-label="Assistants disponibles">
+              <span>Assistant du juge</span>
+              <span>Assistant du compétiteur</span>
+            </div>
+            <div class="btnrow">
+              <a class="btn" href="livre-jugement-danse.html">Découvrir l’Assistant du juge</a>
+              <a class="btn secondary" href="prevoir-imprevu.html">Découvrir l’Assistant du compétiteur</a>
+            </div>
+          </article>
+
+          <article class="feature-card collection">
+            <span class="feature-kicker">Collection progressive</span>
+            <h2>Développer le regard du juge</h2>
+            <p>36 rendez-vous progressifs, complétés par des hors-séries, pour continuer à entraîner son regard et approfondir sa pratique dans la durée.</p>
+            <div class="btnrow">
+              <a class="btn" href="developpement-regard-juge.html">Découvrir la collection</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section aria-labelledby="univers-title">
         <h2 id="univers-title">Trois univers</h2>
         <p class="section-intro">
@@ -325,7 +453,7 @@
         </p>
 
         <div class="universes">
-          <article class="universe judge">
+          <article class="universe judge" id="juger">
             <div class="accent"></div>
             <div class="universe-inner">
               <div class="cover-wrap">
@@ -336,10 +464,8 @@
               <p>Des ressources pour comprendre les mécanismes du jugement, interroger sa pratique et développer un regard plus lucide sans imposer une manière unique de juger.</p>
               <p class="audience">Pour juges, élèves juges, chairpersons, formateurs, entraîneurs et danseurs.</p>
               <div class="subresources">
-                <strong>Dans cet univers</strong>
-                <div><a href="livre-jugement-danse.html">Le jugement en danse</a> · Assistant du juge inclus avec le livre</div>
-                <div style="margin-top:8px"><strong style="display:inline">À découvrir :</strong> <a href="cahiers-application-jugement-danse.html">Cahiers d’application</a> · <a href="developpement-regard-juge.html">Développer le regard du juge</a> — 36 rendez-vous + hors-séries.</div>
-                <div class="audience" style="margin-top:6px">Ces deux formats prolongent eux aussi le travail avec l’Assistant du juge.</div>
+                <strong>Pour aller plus loin</strong>
+                <div><a href="cahiers-application-jugement-danse.html">Cahiers d’application</a> · <a href="developpement-regard-juge.html">Développer le regard du juge</a></div>
               </div>
               <div class="spacer"></div>
               <div class="btnrow">
@@ -348,7 +474,7 @@
             </div>
           </article>
 
-          <article class="universe mental">
+          <article class="universe mental" id="preparer">
             <div class="accent"></div>
             <div class="universe-inner">
               <div class="cover-wrap">
@@ -359,8 +485,8 @@
               <p>Erreur, attente, stress, perte de musique, partenaire, regard des juges&nbsp;: comprendre ce qui change lorsque la compétition ne ressemble plus à l’entraînement.</p>
               <p class="audience">Pour compétiteurs, couples, entraîneurs et enseignants.</p>
               <div class="subresources">
-                <strong>Dans cet univers</strong>
-                <span><em>Prévoir l’imprévu&nbsp;?</em> · Assistant du compétiteur inclus avec le livre</span>
+                <strong>Inclus avec le livre</strong>
+                <span>Accès à l’Assistant du compétiteur.</span>
               </div>
               <div class="spacer"></div>
               <div class="btnrow">
@@ -369,7 +495,7 @@
             </div>
           </article>
 
-          <article class="universe feedback">
+          <article class="universe feedback" id="communiquer">
             <div class="accent"></div>
             <div class="universe-inner">
               <div class="cover-wrap">
