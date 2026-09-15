@@ -66,29 +66,6 @@
 
     .lang a:hover{border-bottom-color:currentColor}
 
-
-    .top-actions{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .access-link{
-      display:inline-block;
-      padding:8px 10px;
-      border:1px solid var(--line);
-      border-radius:9px;
-      font-size:.92rem;
-      font-weight:700;
-      text-decoration:none;
-      white-space:nowrap;
-      background:#fff;
-    }
-
-    .access-link:hover{background:var(--soft)}
-
     header{
       padding:56px 0 42px;
       max-width:900px;
@@ -282,16 +259,106 @@
   </style>
   <link rel="stylesheet" href="assets/cart.css" />
 
-<style id="ep-legal-footer-style">
-  .ep-legal-links{flex-basis:100%;width:100%;margin-top:7px;font-size:.76rem;line-height:1.4;opacity:.72;text-align:center}
-  .ep-legal-links > span{justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
-  .ep-legal-links a{color:inherit;text-decoration:none}
-  .ep-legal-links a:hover{text-decoration:underline}
-  .ep-legal-links > .ep-legal-fr{display:flex}
-  .ep-legal-links > .ep-legal-en{display:none}
-  html[lang="en"] .ep-legal-links > .ep-legal-fr{display:none}
-  html[lang="en"] .ep-legal-links > .ep-legal-en{display:flex}
-</style>
+  <style id="ep-home-enhancements-en">
+    .top-actions{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+    .hero-actions a{
+      display:inline-block;
+      text-decoration:none;
+      border:1px solid transparent;
+      padding:11px 15px;
+      border-radius:10px;
+      font-weight:800;
+      box-shadow:0 2px 7px rgba(0,0,0,.08);
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
+    }
+    .hero-actions a.judge-link{background:var(--judge);color:#fff}
+    .hero-actions a.mental-link{background:var(--mental);color:#1c1c1c}
+    .hero-actions a:hover{
+      filter:brightness(.94);
+      transform:translateY(-1px);
+      box-shadow:0 4px 10px rgba(0,0,0,.12);
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    @media (min-width:760px){
+      .feature-grid{grid-template-columns:1.1fr .9fr}
+    }
+    .feature-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:var(--card);
+      padding:24px;
+    }
+    .feature-card.assistants{border-top:7px solid var(--judge);background:#fffaf5}
+    .feature-card.collection{border-top:7px solid var(--feedback);background:#f7f9fe}
+    .feature-kicker{
+      display:inline-block;
+      margin-bottom:8px;
+      color:var(--muted);
+      font-size:.86rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+    }
+    .feature-card h2{margin-bottom:10px}
+    .feature-card p{max-width:720px}
+    .prolongements-highlight{
+      background:linear-gradient(180deg,#fbfaf6 0%,#ffffff 100%);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:28px;
+    }
+    .prolongements-highlight > h2{margin-bottom:8px}
+    .prolongements-highlight .section-intro{margin-bottom:20px}
+    .feature-card .btn.assistant-judge{background:var(--judge);color:#fff}
+    .feature-card .btn.assistant-mental{background:var(--mental);color:#1c1c1c}
+    .feature-card .btn.collection-link{background:var(--feedback);color:#fff}
+    .feature-card .btn.assistant-judge:hover,
+    .feature-card .btn.assistant-mental:hover,
+    .feature-card .btn.collection-link:hover{filter:brightness(.94)}
+
+    @media (max-width:759px){
+      .wrap{padding:16px 14px 48px}
+      .topbar{flex-direction:column;align-items:flex-start;padding-bottom:16px}
+      .top-actions{width:100%;justify-content:flex-start;gap:8px}
+      .lang{width:100%}
+      header{padding:32px 0 24px}
+      h1{font-size:clamp(2rem,10vw,3rem)}
+      .subtitle{font-size:1.1rem;line-height:1.4}
+      .lead{font-size:1rem}
+      .hero-actions{display:grid;grid-template-columns:1fr;margin-top:18px}
+      .hero-actions a{text-align:center}
+      .key{margin-bottom:28px;padding:16px}
+      section{margin-top:34px}
+      .section-intro{margin-bottom:18px}
+      .feature-card{padding:18px}
+      .prolongements-highlight{padding:18px}
+      .cover-wrap{min-height:0;margin-bottom:18px}
+      .cover-wrap img{width:min(72vw,190px)}
+      .universe-inner{padding:18px}
+      .btnrow{display:grid;grid-template-columns:1fr;width:100%}
+      a.btn{width:100%;text-align:center}
+      .english{padding:18px}
+    }
+  </style>
 </head>
 <body>
   <div class="wrap">
@@ -299,7 +366,6 @@
       <a class="brand" href="index-en.html">Éditions Perspectives</a>
       <div class="top-actions">
         <div class="lang"><a href="/" lang="fr">Français</a> &nbsp;|&nbsp; English</div>
-        <a class="access-link" href="retrouver-mes-acces.html?lang=en">My access / Mes accès</a>
         <button type="button" class="ep-cart-open">Cart <span class="ep-cart-count" data-cart-count>0</span></button>
       </div>
     </div>
@@ -308,9 +374,39 @@
       <h1>Understand differently.<br>Prepare differently.<br>Act differently.</h1>
       <p class="subtitle">Practical perspectives on judging and performance in dance.</p>
       <p class="lead">Two English-language books, each extended by a specialised Assistant designed to help readers explore their own situations rather than apply ready-made answers.</p>
+      <div class="hero-actions" aria-label="Choose an area">
+        <a class="judge-link" href="judging-in-dance.html">Judging and understanding judgement</a>
+        <a class="mental-link" href="when-the-unexpected-takes-the-floor.html">Preparing for competition</a>
+      </div>
     </header>
     <div class="key"><strong>Choose the situation that concerns you. The detailed book pages do the rest.</strong></div>
     <main>
+
+      <section class="prolongements-highlight" aria-labelledby="extensions-title">
+        <h2 id="extensions-title">Books that continue after the last page</h2>
+        <p class="section-intro">The English editions are extended by specialised Assistants, while the judging universe also opens onto a progressive collection.</p>
+        <div class="feature-grid">
+          <article class="feature-card assistants">
+            <span class="feature-kicker">Included with the books</span>
+            <h2>Ask your own questions to an Assistant</h2>
+            <p>The Judge’s Assistant and the Competitor Assistant help readers connect the ideas in the books with situations they have actually experienced. Both are multilingual and are designed as extensions of the books rather than stand-alone products.</p>
+            <div class="btnrow">
+              <a class="btn assistant-judge" href="judging-in-dance.html">Discover the Judge’s Assistant</a>
+              <a class="btn assistant-mental" href="when-the-unexpected-takes-the-floor.html">Discover the Competitor Assistant</a>
+            </div>
+          </article>
+
+          <article class="feature-card collection">
+            <span class="feature-kicker">Progressive collection</span>
+            <h2>Developing the Judge’s Eye</h2>
+            <p>A 36-volume collection designed to deepen judging practice over time. The English edition is planned; the page presents the structure and approach of the collection.</p>
+            <div class="btnrow">
+              <a class="btn collection-link" href="developing-the-judges-eye.html">Explore the collection</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section aria-labelledby="universes-title">
         <h2 id="universes-title">Two areas, two ways in</h2>
         <p class="section-intro">The English site currently presents the titles already available in English. Additional publications may be added later.</p>
@@ -322,7 +418,7 @@
               <p class="promise">What if judging better began with understanding what our attention selects… and what it leaves out?</p>
               <p><em>Judging in Dance</em> explores the human mechanisms involved when we observe, compare and decide.</p>
               <p class="audience">For adjudicators, dancers, coaches, teachers and trainers.</p>
-              <div class="subresources"><strong>Included with the book</strong>Judging Assistant — a multilingual extension for exploring personal judging situations.</div>
+              <div class="subresources"><strong>Included with the book</strong>Judge’s Assistant — a multilingual extension for exploring personal judging situations.</div>
               <div class="spacer"></div><div class="btnrow"><a class="btn" href="judging-in-dance.html">Discover Judging in Dance</a></div>
             </div>
           </article>
@@ -343,24 +439,8 @@
         <h2 id="distribution-title">Buying the English editions</h2>
         <p>Orders placed on this website are currently intended for delivery in France. For readers in other countries, the English editions are also distributed through Casa Musica.</p>
       </div></div></section>
-
     </main>
-    <footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></span>
-<div class="ep-legal-links" aria-label="Liens légaux / Legal links">
-  <span class="ep-legal-fr">
-    <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
-    <a href="cgv.html">CGV</a><span aria-hidden="true">·</span>
-    <a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true">·</span>
-    <a href="retractation.html">Se rétracter</a>
-  </span>
-  <span class="ep-legal-en" lang="en">
-    <a href="mentions-legales-en.html">Legal notice</a><span aria-hidden="true">·</span>
-    <a href="cgv-en.html">Terms &amp; Conditions</a><span aria-hidden="true">·</span>
-    <a href="politique-confidentialite-en.html">Privacy</a><span aria-hidden="true">·</span>
-    <a href="retractation-en.html">Withdrawal</a>
-  </span>
-</div>
-</footer>
+    <footer><span>© Éditions Perspectives — Marc Delacour</span><span><a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></span></footer>
   </div>
   <script src="assets/cart.js" defer></script>
 </body></html>
