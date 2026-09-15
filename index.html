@@ -278,15 +278,25 @@
     }
 
     .hero-actions a{
+      display:inline-block;
       text-decoration:none;
-      border:1px solid var(--line);
-      background:#fff;
-      padding:10px 13px;
+      border:1px solid transparent;
+      padding:11px 15px;
       border-radius:10px;
-      font-weight:750;
+      font-weight:800;
+      box-shadow:0 2px 7px rgba(0,0,0,.08);
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
 
-    .hero-actions a:hover{background:var(--soft)}
+    .hero-actions a.judge-link{background:var(--judge);color:#fff}
+    .hero-actions a.mental-link{background:var(--mental);color:#1c1c1c}
+    .hero-actions a.feedback-link{background:var(--feedback);color:#fff}
+
+    .hero-actions a:hover{
+      filter:brightness(.94);
+      transform:translateY(-1px);
+      box-shadow:0 4px 10px rgba(0,0,0,.12);
+    }
 
     .feature-grid{
       display:grid;
@@ -406,9 +416,9 @@
         Des ouvrages nés du terrain de la danse, nourris par la psychologie cognitive, la préparation mentale, le feedback et l’expérience des situations réelles. Leur vocation&nbsp;: rendre les mécanismes plus lisibles et proposer des repères directement utilisables.
       </p>
       <div class="hero-actions" aria-label="Choisir un univers">
-        <a href="#juger">Juger et comprendre</a>
-        <a href="#preparer">Se préparer à la compétition</a>
-        <a href="#communiquer">Communiquer et faire progresser</a>
+        <a class="judge-link" href="livre-jugement-danse.html">Juger et comprendre</a>
+        <a class="mental-link" href="prevoir-imprevu.html">Se préparer à la compétition</a>
+        <a class="feedback-link" href="feedback-danse.html">Communiquer et faire progresser</a>
       </div>
     </header>
 
