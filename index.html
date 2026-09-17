@@ -268,6 +268,28 @@
 
     .small{color:var(--muted);font-size:.94rem}
 
+    .author-teaser{
+      position:relative;
+      overflow:hidden;
+      padding:24px 26px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:linear-gradient(135deg,#fffaf5 0%,#fffdf7 48%,#f7f9fe 100%);
+    }
+
+    .author-teaser::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:5px;
+      background:linear-gradient(90deg,var(--judge) 0 34%,var(--mental) 34% 67%,var(--feedback) 67% 100%);
+    }
+
+    .author-teaser h2{margin-bottom:8px}
+    .author-teaser p{max-width:820px;color:#353535}
+    .author-teaser a{font-weight:800;text-decoration:none;border-bottom:2px solid var(--feedback)}
+    .author-teaser a:hover{border-bottom-color:currentColor}
+
 
 
     .hero-actions{
@@ -547,6 +569,12 @@
         <h2 id="contact-title">Éditions Perspectives</h2>
         <p>Des ouvrages et des outils pour comprendre, progresser et transmettre autrement dans la danse.</p>
         <p class="small">Contact : <a href="mailto:contact@editions-perspectives.fr">contact@editions-perspectives.fr</a></p>
+      </section>
+
+      <section class="author-teaser" aria-labelledby="author-title">
+        <h2 id="author-title">L’auteur</h2>
+        <p>Marc Delacour croise l’expérience du terrain, la psychologie cognitive et l’accompagnement pour mieux comprendre comment nous jugeons, décidons, apprenons et progressons.</p>
+        <p><a href="auteur.html">Découvrir l’auteur →</a></p>
       </section>
     </main>
 
